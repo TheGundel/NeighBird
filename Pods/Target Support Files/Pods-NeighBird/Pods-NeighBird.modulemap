@@ -1,0 +1,6 @@
+framework module Pods_NeighBird {
+  umbrella header "Pods-NeighBird-umbrella.h"
+
+  export *
+  module * { export * }
+}
