@@ -7,7 +7,25 @@
 		<key>NeighBird.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>7</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>56F5F2D41F8F51F2004D3E62</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>56F5F2E81F8F51F2004D3E62</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>56F5F2F31F8F51F2004D3E62</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
