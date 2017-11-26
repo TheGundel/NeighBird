@@ -10,6 +10,7 @@ target 'NeighBird' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'JSQMessagesViewController'
 
   target 'NeighBirdTests' do
     inherit! :search_paths

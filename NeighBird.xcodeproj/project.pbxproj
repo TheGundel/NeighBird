@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		56196CEA1FC9970800D36A00 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56196CE91FC9970800D36A00 /* CustomTabBarController.swift */; };
+		561FFA1D1FCB2DC30067D893 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561FFA1C1FCB2DC30067D893 /* GroupViewController.swift */; };
+		561FFA1F1FCB300D0067D893 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561FFA1E1FCB300D0067D893 /* Group.swift */; };
+		561FFA231FCB32FD0067D893 /* CreateGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 561FFA221FCB32FD0067D893 /* CreateGroupCell.swift */; };
 		5633C4001FAAFC1F00B091F9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5633C3FF1FAAFC1F00B091F9 /* LoginViewController.swift */; };
 		5633C4021FAB0D7100B091F9 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5633C4011FAB0D7100B091F9 /* SignupViewController.swift */; };
 		564EBA871FC6CF4C00BFCB45 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564EBA861FC6CF4C00BFCB45 /* EditProfileViewController.swift */; };
@@ -52,6 +55,9 @@
 		470FEED7DD5BE16006A1B5BB /* Pods_NeighBird.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NeighBird.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB611A700720D00CF0F57E9 /* Pods-NeighBirdTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeighBirdTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NeighBirdTests/Pods-NeighBirdTests.debug.xcconfig"; sourceTree = "<group>"; };
 		56196CE91FC9970800D36A00 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		561FFA1C1FCB2DC30067D893 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		561FFA1E1FCB300D0067D893 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		561FFA221FCB32FD0067D893 /* CreateGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupCell.swift; sourceTree = "<group>"; };
 		5633C3FF1FAAFC1F00B091F9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5633C4011FAB0D7100B091F9 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		564EBA861FC6CF4C00BFCB45 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +113,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		561FFA211FCB32D30067D893 /* Group and Chat */ = {
+			isa = PBXGroup;
+			children = (
+				561FFA1E1FCB300D0067D893 /* Group.swift */,
+				561FFA221FCB32FD0067D893 /* CreateGroupCell.swift */,
+			);
+			path = "Group and Chat";
+			sourceTree = "<group>";
+		};
+		561FFA241FCB33D30067D893 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5633C3FF1FAAFC1F00B091F9 /* LoginViewController.swift */,
+				5633C4011FAB0D7100B091F9 /* SignupViewController.swift */,
+				564EBA861FC6CF4C00BFCB45 /* EditProfileViewController.swift */,
+				56B9FD7E1FB4BA3B00F82589 /* SignUpControllerHandler.swift */,
+				561FFA1C1FCB2DC30067D893 /* GroupViewController.swift */,
+				56196CE91FC9970800D36A00 /* CustomTabBarController.swift */,
+				564EBA8A1FC6D0A900BFCB45 /* ProfilViewController.swift */,
+				56B9FD7C1FB44BDD00F82589 /* ResetPasswordViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		56F5F2CC1F8F51F2004D3E62 = {
 			isa = PBXGroup;
 			children = (
@@ -132,17 +162,12 @@
 		56F5F2D71F8F51F2004D3E62 /* NeighBird */ = {
 			isa = PBXGroup;
 			children = (
+				561FFA211FCB32D30067D893 /* Group and Chat */,
 				56F5F2D81F8F51F2004D3E62 /* AppDelegate.swift */,
 				56F5F2DA1F8F51F2004D3E62 /* ViewController.swift */,
-				5633C3FF1FAAFC1F00B091F9 /* LoginViewController.swift */,
-				5633C4011FAB0D7100B091F9 /* SignupViewController.swift */,
-				564EBA861FC6CF4C00BFCB45 /* EditProfileViewController.swift */,
-				56B9FD7E1FB4BA3B00F82589 /* SignUpControllerHandler.swift */,
+				561FFA241FCB33D30067D893 /* ViewControllers */,
 				56F5F2DC1F8F51F2004D3E62 /* Main.storyboard */,
-				56196CE91FC9970800D36A00 /* CustomTabBarController.swift */,
-				564EBA8A1FC6D0A900BFCB45 /* ProfilViewController.swift */,
 				5677BC281FC6DC32000F8176 /* ProfileHandler.swift */,
-				56B9FD7C1FB44BDD00F82589 /* ResetPasswordViewController.swift */,
 				56F5F2DF1F8F51F2004D3E62 /* Assets.xcassets */,
 				56F5F2E11F8F51F2004D3E62 /* LaunchScreen.storyboard */,
 				56F5F2E41F8F51F2004D3E62 /* Info.plist */,
@@ -359,6 +384,8 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-NeighBird/Pods-NeighBird-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -366,6 +393,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -495,6 +524,9 @@
 				564EBA8B1FC6D0A900BFCB45 /* ProfilViewController.swift in Sources */,
 				564EBA871FC6CF4C00BFCB45 /* EditProfileViewController.swift in Sources */,
 				56196CEA1FC9970800D36A00 /* CustomTabBarController.swift in Sources */,
+				561FFA1F1FCB300D0067D893 /* Group.swift in Sources */,
+				561FFA231FCB32FD0067D893 /* CreateGroupCell.swift in Sources */,
+				561FFA1D1FCB2DC30067D893 /* GroupViewController.swift in Sources */,
 				56B9FD7F1FB4BA3B00F82589 /* SignUpControllerHandler.swift in Sources */,
 				5633C4001FAAFC1F00B091F9 /* LoginViewController.swift in Sources */,
 				56F5F2DB1F8F51F2004D3E62 /* ViewController.swift in Sources */,
