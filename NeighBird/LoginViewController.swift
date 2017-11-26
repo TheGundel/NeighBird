@@ -10,6 +10,17 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
+func getDocumentsURL() -> URL {
+    let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    return documentsURL
+}
+
+func fileInDocumentsDirectory(filename: String) -> String {
+    
+    let fileURL = getDocumentsURL().appendingPathComponent(filename)
+    return fileURL.path
+}
+
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     

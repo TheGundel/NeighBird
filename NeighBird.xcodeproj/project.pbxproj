@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56196CEA1FC9970800D36A00 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56196CE91FC9970800D36A00 /* CustomTabBarController.swift */; };
 		5633C4001FAAFC1F00B091F9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5633C3FF1FAAFC1F00B091F9 /* LoginViewController.swift */; };
 		5633C4021FAB0D7100B091F9 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5633C4011FAB0D7100B091F9 /* SignupViewController.swift */; };
 		564EBA871FC6CF4C00BFCB45 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564EBA861FC6CF4C00BFCB45 /* EditProfileViewController.swift */; };
@@ -50,6 +51,7 @@
 		34C116EB062585FFAD4D4CCC /* Pods-NeighBirdTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeighBirdTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NeighBirdTests/Pods-NeighBirdTests.release.xcconfig"; sourceTree = "<group>"; };
 		470FEED7DD5BE16006A1B5BB /* Pods_NeighBird.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NeighBird.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FB611A700720D00CF0F57E9 /* Pods-NeighBirdTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeighBirdTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NeighBirdTests/Pods-NeighBirdTests.debug.xcconfig"; sourceTree = "<group>"; };
+		56196CE91FC9970800D36A00 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		5633C3FF1FAAFC1F00B091F9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5633C4011FAB0D7100B091F9 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		564EBA861FC6CF4C00BFCB45 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				564EBA861FC6CF4C00BFCB45 /* EditProfileViewController.swift */,
 				56B9FD7E1FB4BA3B00F82589 /* SignUpControllerHandler.swift */,
 				56F5F2DC1F8F51F2004D3E62 /* Main.storyboard */,
+				56196CE91FC9970800D36A00 /* CustomTabBarController.swift */,
 				564EBA8A1FC6D0A900BFCB45 /* ProfilViewController.swift */,
 				5677BC281FC6DC32000F8176 /* ProfileHandler.swift */,
 				56B9FD7C1FB44BDD00F82589 /* ResetPasswordViewController.swift */,
@@ -491,6 +494,7 @@
 			files = (
 				564EBA8B1FC6D0A900BFCB45 /* ProfilViewController.swift in Sources */,
 				564EBA871FC6CF4C00BFCB45 /* EditProfileViewController.swift in Sources */,
+				56196CEA1FC9970800D36A00 /* CustomTabBarController.swift in Sources */,
 				56B9FD7F1FB4BA3B00F82589 /* SignUpControllerHandler.swift in Sources */,
 				5633C4001FAAFC1F00B091F9 /* LoginViewController.swift in Sources */,
 				56F5F2DB1F8F51F2004D3E62 /* ViewController.swift in Sources */,

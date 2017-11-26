@@ -54,8 +54,6 @@ class ProfilViewController: UIViewController {
                 }
             })
             
-            
-        
         }) { (error) in
             print (error.localizedDescription)
         }}
