@@ -37,5 +37,26 @@ struct ProfileHandler {
         
     }
 
+    func setDefaults(){
+        UserDefaults.standard.set(firstName, forKey: "firstName")
+        UserDefaults.standard.set(lastName, forKey: "lastName")
+        UserDefaults.standard.set(adress, forKey: "address")
+        UserDefaults.standard.set(city, forKey: "city")
+        UserDefaults.standard.set(zipcode, forKey: "zipcode")
+        UserDefaults.standard.set(email, forKey: "email")
+        UserDefaults.standard.set(phoneNumber, forKey: "phoneNumber")
+        
+        storageRef.reference(forURL: imageURL!).getData(maxSize: 2 * 1024 * 1024, completion: { (photoData, error) in
+            
+            if error == nil {
+                if let data = photoData {
+                    UserDefaults.standard.set(data, forKey: "picture")
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        })
+        
+    }
     let userID = Auth.auth().currentUser?.uid
 }

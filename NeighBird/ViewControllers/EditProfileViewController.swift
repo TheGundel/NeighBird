@@ -28,8 +28,15 @@ class EditProfileViewController: UIViewController {
     
     @IBAction func saveChanges(_ sender: UIButton) {
         self.updateUserInfo()
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home")
-        self.present(vc!, animated: true, completion: nil)
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home") as! UITabBarController
+        vc.selectedIndex = 2
+        self.present(vc, animated: true, completion: nil)
+        
+        
+//        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+//        let tabbarVC = storyboard.instantiateViewController(withIdentifier: "profile") as! UITabBarController
+//        self.present(tabbarVC, animated: true, completion: nil)
+        
     }
     
     var dataBaseRef: DatabaseReference! {
@@ -41,36 +48,21 @@ class EditProfileViewController: UIViewController {
     }
     
     func loadUserInfo() {
+        firstName.text = UserDefaults.standard.object(forKey: "firstName") as? String
+        lastName.text = UserDefaults.standard.object(forKey: "lastName") as? String
+        address.text = UserDefaults.standard.object(forKey: "address") as? String
+        zipcode.text = UserDefaults.standard.object(forKey: "zipcode") as? String
+        City.text = UserDefaults.standard.object(forKey: "city") as? String
+        phoneNumber.text = UserDefaults.standard.object(forKey: "phoneNumber") as? String
+        email.text = UserDefaults.standard.object(forKey: "email") as? String
         
-        let userRef = dataBaseRef.child("users").child((Auth.auth().currentUser!.uid))
-        userRef.observe(.value, with: {(snapshot) in
-            
-            let user = ProfileHandler(snapshot: snapshot)
-            self.firstName.text = user.firstName!
-            self.lastName.text = user.lastName!
-            self.zipcode.text = user.zipcode!
-            self.address.text = user.adress!
-            self.City.text = user.city!
-            self.phoneNumber.text = user.phoneNumber!
-            self.email.text = user.email!
-            
-            let photoURL = user.imageURL!
-            self.storageRef.reference(forURL: photoURL).getData(maxSize: 2 * 1024 * 1024, completion: { (photoData, error) in
-                
-                if error == nil {
-                    if let data = photoData {
-                        self.image.image = UIImage(data: data)
-                    }
-                } else {
-                    print(error!.localizedDescription)
-                }
-            })
-            
-            
-        }) { (error) in
-            print (error.localizedDescription)
-        }}
-    
+        if let picture = UIImage(data: UserDefaults.standard.object(forKey: "picture") as! Data){
+            image.image = picture
+        }
+        
+        
+    }
+
     func updateUserInfo(){
         if(self.firstName.text!.isEmpty || self.lastName.text!.isEmpty || self.zipcode.text!.isEmpty || self.address.text!.isEmpty || self.City.text!.isEmpty || self.phoneNumber.text!.isEmpty || self.email.text!.isEmpty){
             
@@ -83,22 +75,25 @@ class EditProfileViewController: UIViewController {
             
         } else {
             let userRef = dataBaseRef.child("users").child((Auth.auth().currentUser!.uid))
-        let post = ["firstName": self.firstName.text!, "lastName": self.lastName.text!, "email": self.email.text!, "zipcode": self.zipcode.text!, "address": self.address.text!, "city": self.City.text!, "phoneNumber": self.phoneNumber.text!]
-        userRef.updateChildValues(post)
+            let post = ["firstName": self.firstName.text!, "lastName": self.lastName.text!, "email": self.email.text!, "zipcode": self.zipcode.text!, "address": self.address.text!, "city": self.City.text!, "phoneNumber": self.phoneNumber.text!]
+            userRef.updateChildValues(post)
+            self.updateUserDefaults()
+            
+            
         }
     }
     
     
-//    func fillFieldsWithInfo() {
-  //      Handler.getUserInformation(Handler.userID)
-    //    self.firstNameTextField.text = Handler.firstName
-      //  self.lastNameTextField.text = Handler.lastName
-       
-        //self.cityTextField.text = Handler.city
-   //     self.emailTextField.text = Handler.email
-   //     self.zipcodeTextField.text = Handler.zipcode
-   //     self.phoneNumberTextField.text = Handler.phoneNumber
-  //  }
+    func updateUserDefaults(){
+        let userRef = dataBaseRef.child("users").child((Auth.auth().currentUser!.uid))
+        userRef.observe(.value, with: {(snapshot) in
+            
+            let user = ProfileHandler(snapshot: snapshot)
+            user.setDefaults()
+        }) { (error) in
+            print (error.localizedDescription)
+        }
+    }
     
     override func viewDidLoad() {
         image.layer.borderColor = UIColor.white.cgColor
@@ -112,6 +107,5 @@ class EditProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.loadUserInfo()
-     //   self.fillFieldsWithInfo()
     }
 }

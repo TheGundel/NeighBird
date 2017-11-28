@@ -207,7 +207,7 @@
         <!--Profil View Controller-->
         <scene sceneID="Azl-fK-OIX">
             <objects>
-                <viewController id="h45-RU-wCc" customClass="ProfilViewController" customModule="NeighBird" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="profile" id="h45-RU-wCc" customClass="ProfilViewController" customModule="NeighBird" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pfq-Ot-Xtm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -375,13 +375,13 @@
         <!--Group Table View Controller-->
         <scene sceneID="Qjt-Jz-Wrp">
             <objects>
-                <viewController storyboardIdentifier="profile" id="PO8-3o-giM" customClass="GroupTableViewController" customModule="NeighBird" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="groups" id="PO8-3o-giM" customClass="GroupTableViewController" customModule="NeighBird" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wfm-8y-lg3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="top_banner" translatesAutoresizingMaskIntoConstraints="NO" id="dRr-Lc-YUp">
-                                <rect key="frame" x="0.0" y="20" width="375" height="58"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Baggrund" translatesAutoresizingMaskIntoConstraints="NO" id="Qpp-aQ-dEa">
+                                <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Groups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAy-cd-Oow">
@@ -391,9 +391,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="427-K1-ad4">
-                                <rect key="frame" x="200" y="525" width="22" height="22"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="top_banner" translatesAutoresizingMaskIntoConstraints="NO" id="dRr-Lc-YUp">
+                                <rect key="frame" x="0.0" y="20" width="375" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="427-K1-ad4">
+                                <rect key="frame" x="200" y="525" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gNo-br-rD7">
                                 <rect key="frame" x="0.0" y="138" width="375" height="379"/>
@@ -437,10 +442,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Baggrund" translatesAutoresizingMaskIntoConstraints="NO" id="Qpp-aQ-dEa">
-                                <rect key="frame" x="20" y="27" width="375" height="598"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.98438358309999996" green="0.93139153720000001" blue="0.30968376990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="KLX-hV-mgN"/>
