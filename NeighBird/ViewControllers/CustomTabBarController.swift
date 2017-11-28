@@ -32,32 +32,32 @@ class CustomTabBarController: UITabBarController {
         }
     }
     
-    func getImage(){
-        let userRef = dataBaseRef.child("users").child((Auth.auth().currentUser!.uid))
-        userRef.observe(.value, with: {(snapshot) in
-            
-            let user = ProfileHandler(snapshot: snapshot)
-            
-            print(user.firstName!)
-            
-            let photoURL = user.imageURL!
-            self.storageRef.reference(forURL: photoURL).getData(maxSize: 2 * 1024 * 1024, completion: { (photoData, error) in
-                
-                if error == nil {
-                    if let data = photoData {
-                        self.middleButton.setImage(UIImage(data:data), for: UIControlState.normal)
-//                        image = UIImage(data: data)
-                        print("The picture is hereeee")
-                    }
-                } else {
-                    print(error!.localizedDescription)
-                }
-            })
-            
-        }) { (error) in
-            print (error.localizedDescription)
-        }
-    }
+//    func getImage(){
+//        let userRef = dataBaseRef.child("users").child((Auth.auth().currentUser!.uid))
+//        userRef.observe(.value, with: {(snapshot) in
+//
+//            let user = ProfileHandler(snapshot: snapshot)
+//
+//            print(user.firstName!)
+//
+//            let photoURL = user.imageURL!
+//            self.storageRef.reference(forURL: photoURL).getData(maxSize: 2 * 1024 * 1024, completion: { (photoData, error) in
+//
+//                if error == nil {
+//                    if let data = photoData {
+//                        self.middleButton.setImage(UIImage(data:data), for: UIControlState.normal)
+////                        image = UIImage(data: data)
+//                        print("The picture is hereeee")
+//                    }
+//                } else {
+//                    print(error!.localizedDescription)
+//                }
+//            })
+//
+//        }) { (error) in
+//            print (error.localizedDescription)
+//        }
+//    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -73,7 +73,10 @@ class CustomTabBarController: UITabBarController {
         middleButton.backgroundColor = .black
         middleButton.layer.borderWidth = 4
         middleButton.layer.borderColor = UIColor.white.cgColor
-        getImage()
+//        getImage()
+        if let picture = UIImage(data: UserDefaults.standard.object(forKey: "picture") as! Data){
+            middleButton.setImage(picture, for: UIControlState.normal)
+        }
         middleButton.layer.masksToBounds = false
         middleButton.clipsToBounds = true
         middleButton.contentMode = .scaleAspectFit

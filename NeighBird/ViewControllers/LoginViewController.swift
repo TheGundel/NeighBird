@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
 
 func getDocumentsURL() -> URL {
     let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -47,6 +49,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     print("Login successful")
                     
                     //Go to home screen if login was successfull
+                    
+                    loadUserInfo()
                     let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home")
                     self.present(vc!, animated: true, completion: nil)
                     
@@ -94,5 +98,49 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    
 }
+
+var dataBaseRef: DatabaseReference! {
+    return Database.database().reference()
+}
+
+var storageRef: Storage {
+    return Storage.storage()
+}
+
+func loadUserInfo() {
+    
+    let userRef = dataBaseRef.child("users").child((Auth.auth().currentUser!.uid))
+    userRef.observe(.value, with: {(snapshot) in
+        
+        let user = ProfileHandler(snapshot: snapshot)
+        UserDefaults.standard.set(user.firstName, forKey: "firstName")
+        UserDefaults.standard.set(user.lastName, forKey: "lastName")
+        UserDefaults.standard.set(user.adress, forKey: "address")
+        UserDefaults.standard.set(user.city, forKey: "city")
+        UserDefaults.standard.set(user.zipcode, forKey: "zipcode")
+        UserDefaults.standard.set(user.email, forKey: "email")
+        UserDefaults.standard.set(user.phoneNumber, forKey: "phoneNumber")
+        
+        
+        
+        
+        let photoURL = user.imageURL!
+        storageRef.reference(forURL: photoURL).getData(maxSize: 2 * 1024 * 1024, completion: { (photoData, error) in
+            
+            if error == nil {
+                if let data = photoData {
+                    UserDefaults.standard.set(data, forKey: "picture")
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        })
+        
+    }) { (error) in
+        print (error.localizedDescription)
+    }}
+
+
 
