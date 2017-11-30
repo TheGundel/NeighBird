@@ -1,56 +1,52 @@
 //
-//  GroupTableViewController.swift
+//  CreateGroupTableViewController.swift
 //  NeighBird
 //
-//  Created by Sara Nordberg on 27/11/2017.
+//  Created by Sara Nordberg on 29/11/2017.
 //  Copyright © 2017 Sara Nordberg. All rights reserved.
 //
 
 import UIKit
+import FirebaseDatabase
 
-class GroupTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    //    Mark: Properties
-    
-    
-    var groups = [Group]()
-    
-    @IBOutlet weak var groupTableView: UITableView!
-    
-    @IBAction func createGroup(_ sender: Any) {
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "createGroup")
-        self.present(vc!, animated: true, completion: nil)
+class CreateGroupTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+    var userElements = [UserTableElement]()
+    var ref: DatabaseReference! {
+        return Database.database().reference()
     }
     
-    private func loadGroups(){
-        let photo1 = UIImage(named: "Bird")
-        let photo2 = #imageLiteral(resourceName: "App ikon")
-        
-        guard let group1 = Group(name: "Ringtoften", members: 5, photo: photo1) else {
-            fatalError("Unable to instantiate group")
+    @IBOutlet weak var userTable: UITableView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var createButton: UIButton!
+    
+    func getUsers(){
+        let usersRef = ref.child("users")
+        usersRef.observe(.value) { (snapshot) in
+            let users = UsersHandler(snapshot: snapshot)
+            self.userElements = users.getUsersElements()
+            self.userTable.dataSource = self
+            self.userTable.delegate = self
+            
         }
-        guard let group2 = Group(name: "Ny Mæglergårds alle", members: 32, photo: photo2) else {
-            fatalError("Unable to instantiate group")
-        }
         
-        
-        groups += [group1, group2]
-        
+    }
+    
+    func createGroup(){
+        self.ref.child("groups").child(NSUUID().uuidString).setValue(["groupName": "\nameLabel.Text!"])
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.groupTableView.dataSource = self
-        self.groupTableView.delegate = self
-        self.groupTableView.backgroundColor = .clear
-        
-        //load Groups
-        loadGroups()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.getUsers()
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,26 +57,26 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
         return 1
     }
-    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return groups.count
+        return userElements.count
     }
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "GroupTableViewCell"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? GroupTableViewCell  else {
-            fatalError("Dequeued cell is not instance of GroupTableViewCell")
+        let cellIdentifier = "UserTableViewCell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? UserTableViewCell else {
+            fatalError("Dequeue cell is not instance of UserTableViewCell")
         }
-        let group = groups[indexPath.row]
+
+        let user = userElements[indexPath.row]
         // Configure the cell...
-        cell.nameLabel.text = group.name
-        cell.membersLabel.text = "\(group.members) medlemmer"
-        cell.groupImage.image = group.photo
+        cell.UserLabel.text = user.name
+        cell.addressLabel.text = user.address
 
         return cell
     }
@@ -95,7 +91,8 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
     */
 
     /*
-func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    // Override to support editing the table view.
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
             tableView.deleteRows(at: [indexPath], with: .fade)

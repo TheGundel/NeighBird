@@ -10,6 +10,12 @@
 		56196CEA1FC9970800D36A00 /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56196CE91FC9970800D36A00 /* CustomTabBarController.swift */; };
 		5633C4001FAAFC1F00B091F9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5633C3FF1FAAFC1F00B091F9 /* LoginViewController.swift */; };
 		5633C4021FAB0D7100B091F9 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5633C4011FAB0D7100B091F9 /* SignupViewController.swift */; };
+		563FF4AB1FCEF7B6009ACCA5 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FF4AA1FCEF7B6009ACCA5 /* SettingsViewController.swift */; };
+		563FF4AD1FCF1BB7009ACCA5 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FF4AC1FCF1BB7009ACCA5 /* UserTableViewCell.swift */; };
+		563FF4AF1FCF1E4B009ACCA5 /* CreateGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FF4AE1FCF1E4B009ACCA5 /* CreateGroupTableViewController.swift */; };
+		563FF4B11FCF20C3009ACCA5 /* UsersHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FF4B01FCF20C3009ACCA5 /* UsersHandler.swift */; };
+		563FF4B31FCF21D4009ACCA5 /* UserTableElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FF4B21FCF21D4009ACCA5 /* UserTableElement.swift */; };
+		56461CB91FCDD67B005B500B /* ChatMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56461CB81FCDD67B005B500B /* ChatMessageTableViewCell.swift */; };
 		564EBA871FC6CF4C00BFCB45 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564EBA861FC6CF4C00BFCB45 /* EditProfileViewController.swift */; };
 		564EBA8B1FC6D0A900BFCB45 /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564EBA8A1FC6D0A900BFCB45 /* ProfilViewController.swift */; };
 		5677BC291FC6DC32000F8176 /* ProfileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5677BC281FC6DC32000F8176 /* ProfileHandler.swift */; };
@@ -57,6 +63,12 @@
 		56196CE91FC9970800D36A00 /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		5633C3FF1FAAFC1F00B091F9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		5633C4011FAB0D7100B091F9 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		563FF4AA1FCEF7B6009ACCA5 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		563FF4AC1FCF1BB7009ACCA5 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		563FF4AE1FCF1E4B009ACCA5 /* CreateGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupTableViewController.swift; sourceTree = "<group>"; };
+		563FF4B01FCF20C3009ACCA5 /* UsersHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersHandler.swift; sourceTree = "<group>"; };
+		563FF4B21FCF21D4009ACCA5 /* UserTableElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableElement.swift; sourceTree = "<group>"; };
+		56461CB81FCDD67B005B500B /* ChatMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageTableViewCell.swift; sourceTree = "<group>"; };
 		564EBA861FC6CF4C00BFCB45 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		564EBA8A1FC6D0A900BFCB45 /* ProfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilViewController.swift; sourceTree = "<group>"; };
 		5677BC281FC6DC32000F8176 /* ProfileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHandler.swift; sourceTree = "<group>"; };
@@ -119,6 +131,9 @@
 				5682DBC91FCC75EE00DEECC3 /* GroupTableViewCell.swift */,
 				5682DBCB1FCC7A1600DEECC3 /* GroupTableViewController.swift */,
 				5682DBCD1FCC7B4900DEECC3 /* Group.swift */,
+				56461CB81FCDD67B005B500B /* ChatMessageTableViewCell.swift */,
+				563FF4AC1FCF1BB7009ACCA5 /* UserTableViewCell.swift */,
+				563FF4B21FCF21D4009ACCA5 /* UserTableElement.swift */,
 			);
 			path = "Group and Chat";
 			sourceTree = "<group>";
@@ -133,6 +148,8 @@
 				56196CE91FC9970800D36A00 /* CustomTabBarController.swift */,
 				564EBA8A1FC6D0A900BFCB45 /* ProfilViewController.swift */,
 				56B9FD7C1FB44BDD00F82589 /* ResetPasswordViewController.swift */,
+				563FF4AA1FCEF7B6009ACCA5 /* SettingsViewController.swift */,
+				563FF4AE1FCF1E4B009ACCA5 /* CreateGroupTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -168,6 +185,7 @@
 				561FFA241FCB33D30067D893 /* ViewControllers */,
 				56F5F2DC1F8F51F2004D3E62 /* Main.storyboard */,
 				5677BC281FC6DC32000F8176 /* ProfileHandler.swift */,
+				563FF4B01FCF20C3009ACCA5 /* UsersHandler.swift */,
 				56F5F2DF1F8F51F2004D3E62 /* Assets.xcassets */,
 				56F5F2E11F8F51F2004D3E62 /* LaunchScreen.storyboard */,
 				56F5F2E41F8F51F2004D3E62 /* Info.plist */,
@@ -522,18 +540,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				564EBA8B1FC6D0A900BFCB45 /* ProfilViewController.swift in Sources */,
+				563FF4B11FCF20C3009ACCA5 /* UsersHandler.swift in Sources */,
 				564EBA871FC6CF4C00BFCB45 /* EditProfileViewController.swift in Sources */,
 				56196CEA1FC9970800D36A00 /* CustomTabBarController.swift in Sources */,
 				5682DBCA1FCC75EE00DEECC3 /* GroupTableViewCell.swift in Sources */,
+				563FF4AD1FCF1BB7009ACCA5 /* UserTableViewCell.swift in Sources */,
+				563FF4AF1FCF1E4B009ACCA5 /* CreateGroupTableViewController.swift in Sources */,
 				56B9FD7F1FB4BA3B00F82589 /* SignUpControllerHandler.swift in Sources */,
 				5682DBCC1FCC7A1600DEECC3 /* GroupTableViewController.swift in Sources */,
 				5682DBCE1FCC7B4900DEECC3 /* Group.swift in Sources */,
 				5633C4001FAAFC1F00B091F9 /* LoginViewController.swift in Sources */,
+				563FF4AB1FCEF7B6009ACCA5 /* SettingsViewController.swift in Sources */,
 				56F5F2DB1F8F51F2004D3E62 /* ViewController.swift in Sources */,
 				56B9FD7D1FB44BDD00F82589 /* ResetPasswordViewController.swift in Sources */,
+				563FF4B31FCF21D4009ACCA5 /* UserTableElement.swift in Sources */,
 				5677BC291FC6DC32000F8176 /* ProfileHandler.swift in Sources */,
 				5633C4021FAB0D7100B091F9 /* SignupViewController.swift in Sources */,
 				56F5F2D91F8F51F2004D3E62 /* AppDelegate.swift in Sources */,
+				56461CB91FCDD67B005B500B /* ChatMessageTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
