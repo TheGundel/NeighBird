@@ -13,6 +13,7 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     var groups = [Group]()
+    @IBOutlet weak var addButton: UIButton!
     
     @IBOutlet weak var groupTableView: UITableView!
     
@@ -45,7 +46,10 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
         
         //load Groups
         loadGroups()
-
+        
+        addButton.layer.borderWidth = 4
+        addButton.layer.borderColor = UIColor.white.cgColor
+        addButton.titleLabel?.baselineAdjustment = .alignCenters
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

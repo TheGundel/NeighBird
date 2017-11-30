@@ -26,6 +26,12 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var phoneNumber: UITextField!
     @IBOutlet weak var email: UITextField!
     
+    @IBAction func cancelEdit(_ sender: UIButton) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home") as! UITabBarController
+        vc.selectedIndex = 2
+        self.present(vc, animated: true, completion: nil )
+    }
+    
     @IBAction func saveChanges(_ sender: UIButton) {
         self.updateUserInfo()
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home") as! UITabBarController
