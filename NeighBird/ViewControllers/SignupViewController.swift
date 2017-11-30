@@ -12,7 +12,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
-class SignupViewController: UIViewController {
+class SignupViewController: UIViewController, SlideToControlDelegate {
     
     var ref: DatabaseReference!
     
@@ -26,8 +26,32 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var repeatpassword: UITextField!
+    @IBOutlet weak var slideButton: SlideToControl!
     
-    @IBAction func createUserAction(_ sender: UIButton) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        photo.layer.borderColor = UIColor.white.cgColor
+        photo.layer.borderWidth = 5
+        photo.layer.masksToBounds = false
+        photo.layer.cornerRadius = photo.frame.height/2
+        photo.clipsToBounds = true
+        photo.contentMode = .scaleAspectFit
+        
+        photo.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfilePhoto)))
+        // Do any additional setup after loading the view, typically from a nib.
+        self.hideKeyboardWhenTappedAround()
+        
+        ref = Database.database().reference()
+        
+        slideButton.labelText = "Opret bruger"
+        slideButton.backgroundColor = .clear
+
+        slideButton.delegate = self
+        
+        
+    }
+    
+    func sliderCameToEnd(){
         if email.text == "" {
             let alertComtroller = UIAlertController(title: "Fejl", message: "Indtast venligst email", preferredStyle: .alert)
             
@@ -57,7 +81,7 @@ class SignupViewController: UIViewController {
                     let storageRef = Storage.storage().reference().child("\(photoName).png")
                     
                     if let uploadData = UIImagePNGRepresentation(self.photo.image!) {
-                    
+                        
                         storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                             //Check hvis der sker en fejl ved upload
                             if error != nil {
@@ -67,15 +91,23 @@ class SignupViewController: UIViewController {
                             print (metadata!)
                             
                             if let profilePhotoUurl = metadata?.downloadURL()?.absoluteString {
-                                 self.ref.child("users").child("\(user)").setValue(["firstName": "\(firstName!)", "lastName": "\(lastName!)", "email": "\(email!)", "address": "\(address!)", "zipcode": "\(zipcode!)", "city": "\(city!)", "phoneNumber": "\(phoneNumber!)", "profilePhotoURL": profilePhotoUurl])
+                                self.ref.child("users").child("\(user)").setValue(["firstName": "\(firstName!)", "lastName": "\(lastName!)", "email": "\(email!)", "address": "\(address!)", "zipcode": "\(zipcode!)", "city": "\(city!)", "phoneNumber": "\(phoneNumber!)", "profilePhotoURL": profilePhotoUurl])
                             }
                             
                         })
                     }
+                            let alert: UIAlertController = UIAlertController(title: "Bruger oprettet", message: "Log nu ind i NeighBird", preferredStyle: .alert)
+                            let action: UIAlertAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                                alert.dismiss(animated: true, completion: nil)
+                               
+                                //Changes view
+                                let vc = self.storyboard?.instantiateViewController(withIdentifier: "Login")
+                                self.present(vc!, animated: true, completion: nil)
+                            }
+                            alert.addAction(action)
+                            self.present(alert, animated: true, completion: nil)
                     
-                    //Changes view
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "Login")
-                    self.present(vc!, animated: true, completion: nil)
+                    
                     
                 }else {
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
@@ -87,22 +119,6 @@ class SignupViewController: UIViewController {
                 }
             }
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        photo.layer.borderColor = UIColor.white.cgColor
-        photo.layer.borderWidth = 5
-        photo.layer.masksToBounds = false
-        photo.layer.cornerRadius = photo.frame.height/2
-        photo.clipsToBounds = true
-        photo.contentMode = .scaleAspectFit
-        
-        photo.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfilePhoto)))
-        // Do any additional setup after loading the view, typically from a nib.
-        self.hideKeyboardWhenTappedAround()
-        
-        ref = Database.database().reference()
     }
     
     override func didReceiveMemoryWarning() {

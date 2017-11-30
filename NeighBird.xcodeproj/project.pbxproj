@@ -22,6 +22,8 @@
 		5682DBCA1FCC75EE00DEECC3 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682DBC91FCC75EE00DEECC3 /* GroupTableViewCell.swift */; };
 		5682DBCC1FCC7A1600DEECC3 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682DBCB1FCC7A1600DEECC3 /* GroupTableViewController.swift */; };
 		5682DBCE1FCC7B4900DEECC3 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682DBCD1FCC7B4900DEECC3 /* Group.swift */; };
+		569766AE1FD02CFE0096D3BC /* SlideToControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569766AD1FD02CFE0096D3BC /* SlideToControl.xib */; };
+		569766B01FD02D120096D3BC /* SlideToControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569766AF1FD02D120096D3BC /* SlideToControl.swift */; };
 		56B9FD7D1FB44BDD00F82589 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B9FD7C1FB44BDD00F82589 /* ResetPasswordViewController.swift */; };
 		56B9FD7F1FB4BA3B00F82589 /* SignUpControllerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B9FD7E1FB4BA3B00F82589 /* SignUpControllerHandler.swift */; };
 		56E9E2271FA1D2E100864703 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 56E9E2261FA1CABB00864703 /* GoogleService-Info.plist */; };
@@ -75,6 +77,8 @@
 		5682DBC91FCC75EE00DEECC3 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		5682DBCB1FCC7A1600DEECC3 /* GroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
 		5682DBCD1FCC7B4900DEECC3 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		569766AD1FD02CFE0096D3BC /* SlideToControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SlideToControl.xib; sourceTree = "<group>"; };
+		569766AF1FD02D120096D3BC /* SlideToControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideToControl.swift; sourceTree = "<group>"; };
 		56B9FD7C1FB44BDD00F82589 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		56B9FD7E1FB4BA3B00F82589 /* SignUpControllerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpControllerHandler.swift; sourceTree = "<group>"; };
 		56E9E2261FA1CABB00864703 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 				56F5F2DA1F8F51F2004D3E62 /* ViewController.swift */,
 				561FFA241FCB33D30067D893 /* ViewControllers */,
 				56F5F2DC1F8F51F2004D3E62 /* Main.storyboard */,
+				569766AF1FD02D120096D3BC /* SlideToControl.swift */,
+				569766AD1FD02CFE0096D3BC /* SlideToControl.xib */,
 				5677BC281FC6DC32000F8176 /* ProfileHandler.swift */,
 				563FF4B01FCF20C3009ACCA5 /* UsersHandler.swift */,
 				56F5F2DF1F8F51F2004D3E62 /* Assets.xcassets */,
@@ -355,6 +361,7 @@
 				56E9E2271FA1D2E100864703 /* GoogleService-Info.plist in Resources */,
 				56F5F2E01F8F51F2004D3E62 /* Assets.xcassets in Resources */,
 				56F5F2DE1F8F51F2004D3E62 /* Main.storyboard in Resources */,
+				569766AE1FD02CFE0096D3BC /* SlideToControl.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +546,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				569766B01FD02D120096D3BC /* SlideToControl.swift in Sources */,
 				564EBA8B1FC6D0A900BFCB45 /* ProfilViewController.swift in Sources */,
 				563FF4B11FCF20C3009ACCA5 /* UsersHandler.swift in Sources */,
 				564EBA871FC6CF4C00BFCB45 /* EditProfileViewController.swift in Sources */,

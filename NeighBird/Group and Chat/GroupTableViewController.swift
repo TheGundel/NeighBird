@@ -50,6 +50,9 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
         addButton.layer.borderWidth = 4
         addButton.layer.borderColor = UIColor.white.cgColor
         addButton.titleLabel?.baselineAdjustment = .alignCenters
+        addButton.clipsToBounds = true
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
