@@ -74,9 +74,11 @@ class CustomTabBarController: UITabBarController {
         middleButton.layer.borderWidth = 4
         middleButton.layer.borderColor = UIColor.white.cgColor
 //        getImage()
-        if let picture = UIImage(data: UserDefaults.standard.object(forKey: "picture") as! Data){
-            middleButton.setImage(picture, for: UIControlState.normal)
+        if(UserDefaults.standard.object(forKey: "picture") != nil){
+            let picture = UIImage(data: UserDefaults.standard.object(forKey: "picture") as! Data)
+                middleButton.setImage(picture, for: UIControlState.normal)
         }
+        
         middleButton.layer.masksToBounds = false
         middleButton.clipsToBounds = true
         middleButton.contentMode = .scaleAspectFit
