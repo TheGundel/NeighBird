@@ -58,8 +58,17 @@ class SignupViewController: UIViewController, SlideToControlDelegate {
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertComtroller.addAction(defaultAction)
             
+            slideButton.setThumbViewX()
             present(alertComtroller, animated: true, completion: nil)
-        } else {
+        } else if(password.text != repeatpassword.text) {
+            let alertComtroller = UIAlertController(title: "Fejl", message: "Passwords er ikke ens", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertComtroller.addAction(defaultAction)
+            
+            slideButton.setThumbViewX()
+            present(alertComtroller, animated: true, completion: nil)
+        }else {
             Auth.auth().createUser(withEmail: email.text!, password: password.text!) { (user, error) in
                 
                 if error == nil {
@@ -114,7 +123,7 @@ class SignupViewController: UIViewController, SlideToControlDelegate {
                     
                     let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                     alertController.addAction(defaultAction)
-                    
+                    self.slideButton.setThumbViewX()
                     self.present(alertController, animated: true, completion: nil)
                 }
             }

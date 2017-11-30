@@ -147,7 +147,16 @@ class SlideToControl: UIControl {
     }
     isAnimaionEnabled = true
   }
+    
+    func setThumbViewX(){
+        updateThumbPositionWith(value: Constants.thumbInset)
+        self.textLabel.alpha = 1
+        self.layoutIfNeeded()
+    }
+    
 }
+
+
 
   //MARK: Inspectable
 
