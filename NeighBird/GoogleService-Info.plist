@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>843385721370-d8sl2ohfqpk5fbnmaajm5muqqdnjabml.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.843385721370-d8sl2ohfqpk5fbnmaajm5muqqdnjabml</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDUP29X6pm3f1x4B2wyquXJzQVqMsA8g9w</string>
+	<key>GCM_SENDER_ID</key>
+	<string>843385721370</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.saranordberg.NeighBird</string>
+	<key>PROJECT_ID</key>
+	<string>neighbird-dbecb</string>
+	<key>STORAGE_BUCKET</key>
+	<string>neighbird-dbecb.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:843385721370:ios:58640ab54b3f9928</string>
+	<key>DATABASE_URL</key>
+	<string>https://neighbird-dbecb.firebaseio.com</string>
+</dict>
+</plist>
