@@ -16,6 +16,33 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var about: UIButton!
     @IBOutlet weak var help: UIButton!
     
+    @IBAction func aboutPopUp(_ sender: UIButton) {
+        let popUpVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PopUp") as! PopUpViewController
+        self.addChildViewController(popUpVc)
+        popUpVc.view.frame = self.view.frame
+        self.view.addSubview(popUpVc.view)
+        popUpVc.didMove(toParentViewController: self)
+        
+        popUpVc.headerText.text = "Om NeighBird"
+        popUpVc.textBox.numberOfLines = 0
+        popUpVc.textBox.text = "Nogle smarte ord omkring Neighbird"
+        popUpVc.textBox.sizeToFit()
+    
+    }
+    
+    @IBAction func helpPopUp(_ sender: UIButton) {
+        let popUpVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PopUp") as! PopUpViewController
+        self.addChildViewController(popUpVc)
+        popUpVc.view.frame = self.view.frame
+        self.view.addSubview(popUpVc.view)
+        popUpVc.didMove(toParentViewController: self)
+        
+        popUpVc.headerText.text = "Hjælp"
+        popUpVc.textBox.numberOfLines = 0
+        popUpVc.textBox.text = "Nogle kloge ord som kan hjælpe en med at bruge app'en"
+        popUpVc.textBox.sizeToFit()
+    }
+    
     @IBAction func signOut(_ sender: UIButton) {
         if Auth.auth().currentUser != nil {
             do {

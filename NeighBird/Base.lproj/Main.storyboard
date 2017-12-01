@@ -189,6 +189,9 @@
                                 <state key="normal" title="Om NeighBird">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="aboutPopUp:" destination="zpb-VS-sMI" eventType="touchUpInside" id="KmO-YB-sMn"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7nH-eg-Ftl">
                                 <rect key="frame" x="16" y="517" width="343" height="60"/>
@@ -210,6 +213,9 @@
                                 <state key="normal" title="Hjælp">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
+                                <connections>
+                                    <action selector="helpPopUp:" destination="zpb-VS-sMI" eventType="touchUpInside" id="fue-HS-OAN"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.98438358309999996" green="0.93139153720000001" blue="0.30968376990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -470,6 +476,72 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wXL-FH-Rd9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2605.5999999999999" y="-196.55172413793105"/>
+        </scene>
+        <!--Pop Up View Controller-->
+        <scene sceneID="jh7-hV-1pb">
+            <objects>
+                <viewController storyboardIdentifier="PopUp" id="nMy-li-eUP" customClass="PopUpViewController" customModule="NeighBird" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Do1-3p-Nuf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPq-xf-2aM">
+                                <rect key="frame" x="37" y="83" width="300" height="500"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qo4-WR-3uR">
+                                        <rect key="frame" x="25" y="450" width="250" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Luk">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="closeButton:" destination="nMy-li-eUP" eventType="touchUpInside" id="sSs-ww-n1c"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Smart text" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m9x-ge-H51">
+                                        <rect key="frame" x="8" y="82" width="284" height="360"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Heading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9IH-dC-63M">
+                                        <rect key="frame" x="8" y="15" width="284" height="66"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="500" id="rwT-N4-wZm"/>
+                                    <constraint firstAttribute="width" constant="300" id="vAi-ej-vMD"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aPq-xf-2aM" firstAttribute="centerX" secondItem="Do1-3p-Nuf" secondAttribute="centerX" id="M6M-KO-eLt"/>
+                            <constraint firstItem="aPq-xf-2aM" firstAttribute="centerY" secondItem="Do1-3p-Nuf" secondAttribute="centerY" id="S0T-dW-S4f"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9Un-Ql-LaL"/>
+                    </view>
+                    <connections>
+                        <outlet property="headerText" destination="9IH-dC-63M" id="k0m-hR-Z5O"/>
+                        <outlet property="textBox" destination="m9x-ge-H51" id="faG-gM-hKc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nOm-Mj-99p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2608.8000000000002" y="1183.3583208395803"/>
         </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="pqO-VK-Q9q">
