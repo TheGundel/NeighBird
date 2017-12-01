@@ -1,58 +1,42 @@
 //
-//  CreateGroupTableViewController.swift
+//  TestTableViewController.swift
 //  NeighBird
 //
-//  Created by Sara Nordberg on 29/11/2017.
+//  Created by RHG on 30/11/2017.
 //  Copyright © 2017 Sara Nordberg. All rights reserved.
 //
 
 import UIKit
-import FirebaseDatabase
-import FirebaseAuth
+import Firebase
 
-class CreateGroupTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
-    var userElements = [UserTableElement]()
-    var ref: DatabaseReference! {
-        return Database.database().reference()
-    }
-    
-    @IBOutlet weak var userTable: UITableView!
-    @IBOutlet weak var groupNameLabel: UITextField!
-    
-    @IBAction func createGroupButton(_ sender: UIButton) {
-        createGroup()
-        changeView()
-    }
-    @IBAction func Cancel(_ sender: UIButton) {
-        changeView()
-    }
-    func getUsers(){
-        let usersRef = ref.child("users")
-        usersRef.observe(.value) { (snapshot) in
-            let users = UsersHandler(snapshot: snapshot)
-            self.userElements = users.getUsersElements()
-            self.userTable.dataSource = self
-            self.userTable.delegate = self
-        }
-    }
-    
-    func createGroup(){
-        let owner = Auth.auth().currentUser?.uid
-        self.ref.child("groups").child(NSUUID().uuidString).setValue(["groupName": "\(groupNameLabel.text!)", "owner": "\(owner!)"])
-    }
+enum Section: Int {
+    case createNewGroupSection = 0
+    case currentGroupSection
+}
 
+class TestTableViewController: UITableViewController {
+    //Properties
+    var senderDisplayName: String?
+    var NewGroupTextField: UITextField?
+    private var groups :[Group] = []
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        groups.append(Group(name: "test1", members: 3, photo: #imageLiteral(resourceName: "Bird"))!)
+        groups.append(Group(name: "test2", members: 4, photo: #imageLiteral(resourceName: "Bird"))!)
+        groups.append(Group(name: "test3", members: 5, photo: #imageLiteral(resourceName: "Bird"))!)
+        self.tableView.reloadData()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(userElements.count)
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.getUsers()
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,35 +46,35 @@ class CreateGroupTableViewController: UIViewController, UITableViewDataSource, U
 
     // MARK: - Table view data source
 
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 2
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return userElements.count
-    }
-
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "UserTableViewCell"
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? UserTableViewCell else {
-            fatalError("Dequeue cell is not instance of UserTableViewCell")
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let currentSection: Section = Section(rawValue: section) {
+            switch currentSection {
+            case .createNewGroupSection:
+                return 1
+            case .currentGroupSection:
+                return groups.count
+            }
+        } else {
+            return 0
         }
-
-        let user = userElements[indexPath.row]
-        // Configure the cell...
-        cell.UserLabel.text = user.name
-        cell.addressLabel.text = user.address
-
-        return cell
     }
+
     
-    func changeView(){
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home") as! UITabBarController
-        vc.selectedIndex = 3
-        self.present(vc, animated: true, completion: nil )
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let reuseIdentifier = (indexPath as NSIndexPath).section == Section.createNewGroupSection.rawValue ? "NewGroup" : "ExistingGroup"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        
+        if (indexPath as NSIndexPath).section == Section.currentGroupSection.rawValue {
+            cell.textLabel?.text = groups[(indexPath as NSIndexPath).row].name
+        }
+        // Configure the cell...
+            
+        return cell
     }
     
 
@@ -140,3 +124,4 @@ class CreateGroupTableViewController: UIViewController, UITableViewDataSource, U
     */
 
 }
+

@@ -15,7 +15,6 @@
 		563FF4AF1FCF1E4B009ACCA5 /* CreateGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FF4AE1FCF1E4B009ACCA5 /* CreateGroupTableViewController.swift */; };
 		563FF4B11FCF20C3009ACCA5 /* UsersHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FF4B01FCF20C3009ACCA5 /* UsersHandler.swift */; };
 		563FF4B31FCF21D4009ACCA5 /* UserTableElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FF4B21FCF21D4009ACCA5 /* UserTableElement.swift */; };
-		56461CB91FCDD67B005B500B /* ChatMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56461CB81FCDD67B005B500B /* ChatMessageTableViewCell.swift */; };
 		564EBA871FC6CF4C00BFCB45 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564EBA861FC6CF4C00BFCB45 /* EditProfileViewController.swift */; };
 		564EBA8B1FC6D0A900BFCB45 /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564EBA8A1FC6D0A900BFCB45 /* ProfilViewController.swift */; };
 		5677BC291FC6DC32000F8176 /* ProfileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5677BC281FC6DC32000F8176 /* ProfileHandler.swift */; };
@@ -25,7 +24,6 @@
 		56B9FD7D1FB44BDD00F82589 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B9FD7C1FB44BDD00F82589 /* ResetPasswordViewController.swift */; };
 		56B9FD7F1FB4BA3B00F82589 /* SignUpControllerHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B9FD7E1FB4BA3B00F82589 /* SignUpControllerHandler.swift */; };
 		56F5F2D91F8F51F2004D3E62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F5F2D81F8F51F2004D3E62 /* AppDelegate.swift */; };
-		56F5F2DB1F8F51F2004D3E62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F5F2DA1F8F51F2004D3E62 /* ViewController.swift */; };
 		56F5F2DE1F8F51F2004D3E62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56F5F2DC1F8F51F2004D3E62 /* Main.storyboard */; };
 		56F5F2E01F8F51F2004D3E62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56F5F2DF1F8F51F2004D3E62 /* Assets.xcassets */; };
 		56F5F2E31F8F51F2004D3E62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56F5F2E11F8F51F2004D3E62 /* LaunchScreen.storyboard */; };
@@ -34,6 +32,8 @@
 		84358A9C9A4C221EBC4D9BA3 /* Pods_NeighBird.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 470FEED7DD5BE16006A1B5BB /* Pods_NeighBird.framework */; };
 		9DD0DF86F55997198912126D /* Pods_NeighBirdUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 155D8122008B2F12588E4023 /* Pods_NeighBirdUITests.framework */; };
 		9E7031DD4F62892B7FDCD774 /* Pods_NeighBirdTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB40251809776094194F89DF /* Pods_NeighBirdTests.framework */; };
+		E934430B1FD02C020043B1BC /* preChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934430A1FD02C020043B1BC /* preChatTableViewController.swift */; };
+		E934430D1FD034530043B1BC /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934430C1FD034530043B1BC /* TestTableViewController.swift */; };
 		E9428D901FCFED8F0055EE1C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9428D8F1FCFED8F0055EE1C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -68,7 +68,6 @@
 		563FF4AE1FCF1E4B009ACCA5 /* CreateGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGroupTableViewController.swift; sourceTree = "<group>"; };
 		563FF4B01FCF20C3009ACCA5 /* UsersHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersHandler.swift; sourceTree = "<group>"; };
 		563FF4B21FCF21D4009ACCA5 /* UserTableElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableElement.swift; sourceTree = "<group>"; };
-		56461CB81FCDD67B005B500B /* ChatMessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageTableViewCell.swift; sourceTree = "<group>"; };
 		564EBA861FC6CF4C00BFCB45 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		564EBA8A1FC6D0A900BFCB45 /* ProfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilViewController.swift; sourceTree = "<group>"; };
 		5677BC281FC6DC32000F8176 /* ProfileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHandler.swift; sourceTree = "<group>"; };
@@ -79,7 +78,6 @@
 		56B9FD7E1FB4BA3B00F82589 /* SignUpControllerHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpControllerHandler.swift; sourceTree = "<group>"; };
 		56F5F2D51F8F51F2004D3E62 /* NeighBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NeighBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		56F5F2D81F8F51F2004D3E62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		56F5F2DA1F8F51F2004D3E62 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		56F5F2DD1F8F51F2004D3E62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		56F5F2DF1F8F51F2004D3E62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		56F5F2E21F8F51F2004D3E62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -94,6 +92,8 @@
 		9367FAA3DC1FDFF858FBC794 /* Pods-NeighBird.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeighBird.release.xcconfig"; path = "Pods/Target Support Files/Pods-NeighBird/Pods-NeighBird.release.xcconfig"; sourceTree = "<group>"; };
 		BB40251809776094194F89DF /* Pods_NeighBirdTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NeighBirdTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4AC3462DE1B9DD75DCFB781 /* Pods-NeighBird.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeighBird.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NeighBird/Pods-NeighBird.debug.xcconfig"; sourceTree = "<group>"; };
+		E934430A1FD02C020043B1BC /* preChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = preChatTableViewController.swift; sourceTree = "<group>"; };
+		E934430C1FD034530043B1BC /* TestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
 		E9428D8F1FCFED8F0055EE1C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,7 +131,6 @@
 				5682DBC91FCC75EE00DEECC3 /* GroupTableViewCell.swift */,
 				5682DBCB1FCC7A1600DEECC3 /* GroupTableViewController.swift */,
 				5682DBCD1FCC7B4900DEECC3 /* Group.swift */,
-				56461CB81FCDD67B005B500B /* ChatMessageTableViewCell.swift */,
 				563FF4AC1FCF1BB7009ACCA5 /* UserTableViewCell.swift */,
 				563FF4B21FCF21D4009ACCA5 /* UserTableElement.swift */,
 			);
@@ -150,6 +149,8 @@
 				56B9FD7C1FB44BDD00F82589 /* ResetPasswordViewController.swift */,
 				563FF4AA1FCEF7B6009ACCA5 /* SettingsViewController.swift */,
 				563FF4AE1FCF1E4B009ACCA5 /* CreateGroupTableViewController.swift */,
+				E934430A1FD02C020043B1BC /* preChatTableViewController.swift */,
+				E934430C1FD034530043B1BC /* TestTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -181,7 +182,6 @@
 			children = (
 				561FFA211FCB32D30067D893 /* Group and Chat */,
 				56F5F2D81F8F51F2004D3E62 /* AppDelegate.swift */,
-				56F5F2DA1F8F51F2004D3E62 /* ViewController.swift */,
 				561FFA241FCB33D30067D893 /* ViewControllers */,
 				56F5F2DC1F8F51F2004D3E62 /* Main.storyboard */,
 				5677BC281FC6DC32000F8176 /* ProfileHandler.swift */,
@@ -550,14 +550,14 @@
 				5682DBCC1FCC7A1600DEECC3 /* GroupTableViewController.swift in Sources */,
 				5682DBCE1FCC7B4900DEECC3 /* Group.swift in Sources */,
 				5633C4001FAAFC1F00B091F9 /* LoginViewController.swift in Sources */,
+				E934430D1FD034530043B1BC /* TestTableViewController.swift in Sources */,
 				563FF4AB1FCEF7B6009ACCA5 /* SettingsViewController.swift in Sources */,
-				56F5F2DB1F8F51F2004D3E62 /* ViewController.swift in Sources */,
 				56B9FD7D1FB44BDD00F82589 /* ResetPasswordViewController.swift in Sources */,
 				563FF4B31FCF21D4009ACCA5 /* UserTableElement.swift in Sources */,
+				E934430B1FD02C020043B1BC /* preChatTableViewController.swift in Sources */,
 				5677BC291FC6DC32000F8176 /* ProfileHandler.swift in Sources */,
 				5633C4021FAB0D7100B091F9 /* SignupViewController.swift in Sources */,
 				56F5F2D91F8F51F2004D3E62 /* AppDelegate.swift in Sources */,
-				56461CB91FCDD67B005B500B /* ChatMessageTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
