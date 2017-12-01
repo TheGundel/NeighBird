@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseDatabase
 
 class GroupTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //    Mark: Properties
@@ -23,18 +25,20 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     private func loadGroups(){
-        let photo1 = UIImage(named: "Bird")
-        let photo2 = #imageLiteral(resourceName: "App ikon")
-        
-        guard let group1 = Group(name: "Ringtoften", members: 5, photo: photo1) else {
-            fatalError("Unable to instantiate group")
-        }
-        guard let group2 = Group(name: "Ny Mæglergårds alle", members: 32, photo: photo2) else {
-            fatalError("Unable to instantiate group")
-        }
-        
-        
-        groups += [group1, group2]
+        Database.database().reference().child("groups").observe(.childAdded, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                
+                
+            }
+            
+            print(snapshot)
+            
+            
+            
+            
+            
+        }, withCancel: <#T##((Error) -> Void)?##((Error) -> Void)?##(Error) -> Void#>)
         
     }
 
@@ -86,8 +90,6 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
         let group = groups[indexPath.row]
         // Configure the cell...
         cell.nameLabel.text = group.name
-        cell.membersLabel.text = "\(group.members) medlemmer"
-        cell.groupImage.image = group.photo
 
         return cell
     }

@@ -8,20 +8,9 @@
 
 import UIKit
 
-class Group {
+class Group: NSObject {
     //    Mark: Properties
     
-    var name: String
-    var members: Int
-    var photo: UIImage?
-    
-    init?(name:String, members: Int, photo: UIImage?) {
-        self.name = name
-        self.members = members
-        self.photo = photo
-        
-        if(name.isEmpty) {
-            return nil
-        }
-    }
+    var name: String?
+    var owner: String?
 }
