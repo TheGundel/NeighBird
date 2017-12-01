@@ -13,8 +13,8 @@ import FirebaseDatabase
 class GroupTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //    Mark: Properties
     
-    
     var groups = [Group]()
+    
     @IBOutlet weak var addButton: UIButton!
     
     @IBOutlet weak var groupTableView: UITableView!
@@ -25,20 +25,21 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     private func loadGroups(){
-        Database.database().reference().child("groups").observe(.childAdded, with: { (snapshot) in
-            
-            if let dictionary = snapshot.value as? [String: AnyObject] {
-                
-                
+        let rootRef = Database.database().reference()
+        let query = rootRef.child("groups").queryOrdered(byChild: "name")
+        query.observe(.value) { (snapshot) in
+            for child in snapshot.children.allObjects as! [DataSnapshot] {
+                if let value = child.value as? NSDictionary {
+                    let group = Group()
+                    let name = value["name"] as? String ?? "Name not found"
+                    let owner = value["owner"] as? String ?? "Owner not found"
+                    group.name = name
+                    group.owner = owner
+                    self.groups.append(group)
+                    DispatchQueue.main.async { self.groupTableView.reloadData() }
+                }
             }
-            
-            print(snapshot)
-            
-            
-            
-            
-            
-        }, withCancel: <#T##((Error) -> Void)?##((Error) -> Void)?##(Error) -> Void#>)
+        }
         
     }
 
@@ -87,10 +88,9 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? GroupTableViewCell  else {
             fatalError("Dequeued cell is not instance of GroupTableViewCell")
         }
-        let group = groups[indexPath.row]
         // Configure the cell...
+        let group = groups[indexPath.row]
         cell.nameLabel.text = group.name
-
         return cell
     }
     

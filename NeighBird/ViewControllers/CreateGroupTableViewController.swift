@@ -38,7 +38,7 @@ class CreateGroupTableViewController: UIViewController, UITableViewDataSource, U
     
     func createGroup(){
         let owner = Auth.auth().currentUser?.uid
-        self.ref.child("groups").child(NSUUID().uuidString).setValue(["groupName": "\(groupNameLabel.text!)", "owner": "\(owner!)"])
+        self.ref.child("groups").child(NSUUID().uuidString).setValue(["name": "\(groupNameLabel.text!)", "owner": "\(owner!)"])
     }
 
     override func viewDidLoad() {

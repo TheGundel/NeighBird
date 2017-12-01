@@ -21,7 +21,6 @@
 		5677BC291FC6DC32000F8176 /* ProfileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5677BC281FC6DC32000F8176 /* ProfileHandler.swift */; };
 		5682DBCA1FCC75EE00DEECC3 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682DBC91FCC75EE00DEECC3 /* GroupTableViewCell.swift */; };
 		5682DBCC1FCC7A1600DEECC3 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682DBCB1FCC7A1600DEECC3 /* GroupTableViewController.swift */; };
-		5682DBCE1FCC7B4900DEECC3 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5682DBCD1FCC7B4900DEECC3 /* Group.swift */; };
 		569766AE1FD02CFE0096D3BC /* SlideToControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = 569766AD1FD02CFE0096D3BC /* SlideToControl.xib */; };
 		569766B01FD02D120096D3BC /* SlideToControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569766AF1FD02D120096D3BC /* SlideToControl.swift */; };
 		56B9FD7D1FB44BDD00F82589 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B9FD7C1FB44BDD00F82589 /* ResetPasswordViewController.swift */; };
@@ -36,6 +35,7 @@
 		9DD0DF86F55997198912126D /* Pods_NeighBirdUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 155D8122008B2F12588E4023 /* Pods_NeighBirdUITests.framework */; };
 		9E7031DD4F62892B7FDCD774 /* Pods_NeighBirdTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB40251809776094194F89DF /* Pods_NeighBirdTests.framework */; };
 		E9032C371FD1B51800360D0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9032C361FD1B51800360D0C /* GoogleService-Info.plist */; };
+		E9032C3D1FD1C04E00360D0C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9032C3C1FD1C04E00360D0C /* Group.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +75,6 @@
 		5677BC281FC6DC32000F8176 /* ProfileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHandler.swift; sourceTree = "<group>"; };
 		5682DBC91FCC75EE00DEECC3 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
 		5682DBCB1FCC7A1600DEECC3 /* GroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
-		5682DBCD1FCC7B4900DEECC3 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		569766AD1FD02CFE0096D3BC /* SlideToControl.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SlideToControl.xib; sourceTree = "<group>"; };
 		569766AF1FD02D120096D3BC /* SlideToControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideToControl.swift; sourceTree = "<group>"; };
 		56B9FD7C1FB44BDD00F82589 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +96,7 @@
 		BB40251809776094194F89DF /* Pods_NeighBirdTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NeighBirdTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4AC3462DE1B9DD75DCFB781 /* Pods-NeighBird.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeighBird.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NeighBird/Pods-NeighBird.debug.xcconfig"; sourceTree = "<group>"; };
 		E9032C361FD1B51800360D0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E9032C3C1FD1C04E00360D0C /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,9 +132,9 @@
 			children = (
 				5682DBC91FCC75EE00DEECC3 /* GroupTableViewCell.swift */,
 				5682DBCB1FCC7A1600DEECC3 /* GroupTableViewController.swift */,
-				5682DBCD1FCC7B4900DEECC3 /* Group.swift */,
 				563FF4AC1FCF1BB7009ACCA5 /* UserTableViewCell.swift */,
 				563FF4B21FCF21D4009ACCA5 /* UserTableElement.swift */,
+				E9032C3C1FD1C04E00360D0C /* Group.swift */,
 			);
 			path = "Group and Chat";
 			sourceTree = "<group>";
@@ -545,12 +545,12 @@
 				563FF4B11FCF20C3009ACCA5 /* UsersHandler.swift in Sources */,
 				564EBA871FC6CF4C00BFCB45 /* EditProfileViewController.swift in Sources */,
 				56196CEA1FC9970800D36A00 /* CustomTabBarController.swift in Sources */,
+				E9032C3D1FD1C04E00360D0C /* Group.swift in Sources */,
 				5682DBCA1FCC75EE00DEECC3 /* GroupTableViewCell.swift in Sources */,
 				563FF4AD1FCF1BB7009ACCA5 /* UserTableViewCell.swift in Sources */,
 				563FF4AF1FCF1E4B009ACCA5 /* CreateGroupTableViewController.swift in Sources */,
 				56B9FD7F1FB4BA3B00F82589 /* SignUpControllerHandler.swift in Sources */,
 				5682DBCC1FCC7A1600DEECC3 /* GroupTableViewController.swift in Sources */,
-				5682DBCE1FCC7B4900DEECC3 /* Group.swift in Sources */,
 				5633C4001FAAFC1F00B091F9 /* LoginViewController.swift in Sources */,
 				563FF4AB1FCEF7B6009ACCA5 /* SettingsViewController.swift in Sources */,
 				56B9FD7D1FB44BDD00F82589 /* ResetPasswordViewController.swift in Sources */,
