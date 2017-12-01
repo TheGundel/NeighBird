@@ -36,8 +36,6 @@
 		84358A9C9A4C221EBC4D9BA3 /* Pods_NeighBird.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 470FEED7DD5BE16006A1B5BB /* Pods_NeighBird.framework */; };
 		9DD0DF86F55997198912126D /* Pods_NeighBirdUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 155D8122008B2F12588E4023 /* Pods_NeighBirdUITests.framework */; };
 		9E7031DD4F62892B7FDCD774 /* Pods_NeighBirdTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB40251809776094194F89DF /* Pods_NeighBirdTests.framework */; };
-		E934430B1FD02C020043B1BC /* preChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934430A1FD02C020043B1BC /* preChatTableViewController.swift */; };
-		E934430D1FD034530043B1BC /* TestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E934430C1FD034530043B1BC /* TestTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,8 +97,6 @@
 		9367FAA3DC1FDFF858FBC794 /* Pods-NeighBird.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeighBird.release.xcconfig"; path = "Pods/Target Support Files/Pods-NeighBird/Pods-NeighBird.release.xcconfig"; sourceTree = "<group>"; };
 		BB40251809776094194F89DF /* Pods_NeighBirdTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NeighBirdTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4AC3462DE1B9DD75DCFB781 /* Pods-NeighBird.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeighBird.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NeighBird/Pods-NeighBird.debug.xcconfig"; sourceTree = "<group>"; };
-		E934430A1FD02C020043B1BC /* preChatTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = preChatTableViewController.swift; sourceTree = "<group>"; };
-		E934430C1FD034530043B1BC /* TestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,8 +150,6 @@
 				56B9FD7C1FB44BDD00F82589 /* ResetPasswordViewController.swift */,
 				563FF4AA1FCEF7B6009ACCA5 /* SettingsViewController.swift */,
 				563FF4AE1FCF1E4B009ACCA5 /* CreateGroupTableViewController.swift */,
-				E934430A1FD02C020043B1BC /* preChatTableViewController.swift */,
-				E934430C1FD034530043B1BC /* TestTableViewController.swift */,
 				564E4E031FD168E500EAF251 /* AlertViewController.swift */,
 			);
 			path = ViewControllers;
@@ -412,8 +406,6 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-NeighBird/Pods-NeighBird-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
-				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -421,8 +413,6 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -562,11 +552,9 @@
 				5682DBCC1FCC7A1600DEECC3 /* GroupTableViewController.swift in Sources */,
 				5682DBCE1FCC7B4900DEECC3 /* Group.swift in Sources */,
 				5633C4001FAAFC1F00B091F9 /* LoginViewController.swift in Sources */,
-				E934430D1FD034530043B1BC /* TestTableViewController.swift in Sources */,
 				563FF4AB1FCEF7B6009ACCA5 /* SettingsViewController.swift in Sources */,
 				56B9FD7D1FB44BDD00F82589 /* ResetPasswordViewController.swift in Sources */,
 				563FF4B31FCF21D4009ACCA5 /* UserTableElement.swift in Sources */,
-				E934430B1FD02C020043B1BC /* preChatTableViewController.swift in Sources */,
 				5677BC291FC6DC32000F8176 /* ProfileHandler.swift in Sources */,
 				5633C4021FAB0D7100B091F9 /* SignupViewController.swift in Sources */,
 				56F5F2D91F8F51F2004D3E62 /* AppDelegate.swift in Sources */,
