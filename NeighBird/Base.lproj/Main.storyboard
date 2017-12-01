@@ -8,6 +8,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue-BoldItalic</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -623,10 +628,10 @@
             </objects>
             <point key="canvasLocation" x="1857" y="1217"/>
         </scene>
-        <!--View Controller-->
+        <!--Alert View Controller-->
         <scene sceneID="BTh-oa-dEq">
             <objects>
-                <viewController id="MTM-yY-2K3" sceneMemberID="viewController">
+                <viewController id="MTM-yY-2K3" customClass="AlertViewController" customModule="NeighBird" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w0c-wk-c0V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -635,26 +640,122 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUa-hn-orU">
-                                <rect key="frame" x="118" y="249" width="160" height="71"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="top_banner" translatesAutoresizingMaskIntoConstraints="NO" id="FbG-gu-DIX">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_banner" translatesAutoresizingMaskIntoConstraints="NO" id="FbG-gu-DIX">
                                 <rect key="frame" x="0.0" y="20" width="375" height="58"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="kmW-8C-ZXo"/>
+                                    <constraint firstAttribute="width" constant="375" id="sym-WH-guN"/>
+                                </constraints>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="4Lh-ys-oUw">
+                                <rect key="frame" x="0.0" y="178" width="375" height="70"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="WPg-rQ-G4D">
+                                        <rect key="frame" x="20" y="0.0" width="335" height="70"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="4Qi-64-rT3"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="16"/>
+                                        <state key="normal" title="Vælg besked">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="selectionHandler:" destination="MTM-yY-2K3" eventType="touchUpInside" id="P39-5a-b72"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ibj-Bk-Gok">
+                                        <rect key="frame" x="20" y="-178" width="335" height="70"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="fPm-We-d8X"/>
+                                        </constraints>
+                                        <state key="normal">
+                                            <string key="title">Hej NeighBirds!
+Mit kamera har taget dette billede. 
+Nogen som kan tjekke op på det?</string>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="messageTap:" destination="MTM-yY-2K3" eventType="touchUpInside" id="cxi-1c-siN"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Odq-3J-ejZ">
+                                        <rect key="frame" x="20" y="-178" width="335" height="70"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="4ML-Yn-8KR"/>
+                                        </constraints>
+                                        <state key="normal">
+                                            <string key="title">Hej NeighBirds!
+Min alarm er gået. Jeg er på ferie, 
+nogen som kan tjekke op på det?</string>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="messageTap:" destination="MTM-yY-2K3" eventType="touchUpInside" id="hkr-hh-0vJ"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="IsQ-gN-vxl">
+                                        <rect key="frame" x="20" y="-178" width="335" height="70"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="70" id="QxI-5s-d4R"/>
+                                        </constraints>
+                                        <state key="normal">
+                                            <string key="title">Hej Neighbirds!
+Skriv besked...................................</string>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="messageTap:" destination="MTM-yY-2K3" eventType="touchUpInside" id="aFQ-8w-EnW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="IsQ-gN-vxl" secondAttribute="trailing" constant="20" id="91X-TY-A58"/>
+                                    <constraint firstItem="IsQ-gN-vxl" firstAttribute="leading" secondItem="4Lh-ys-oUw" secondAttribute="leading" constant="20" id="HVF-we-5Hv"/>
+                                    <constraint firstAttribute="trailing" secondItem="WPg-rQ-G4D" secondAttribute="trailing" constant="20" id="Tee-rW-zbz"/>
+                                    <constraint firstItem="ibj-Bk-Gok" firstAttribute="leading" secondItem="4Lh-ys-oUw" secondAttribute="leading" constant="20" id="UvH-nc-10y"/>
+                                    <constraint firstItem="WPg-rQ-G4D" firstAttribute="leading" secondItem="4Lh-ys-oUw" secondAttribute="leading" constant="20" id="Za7-RR-4wv"/>
+                                    <constraint firstAttribute="trailing" secondItem="ibj-Bk-Gok" secondAttribute="trailing" constant="20" id="ap0-mv-m4N"/>
+                                    <constraint firstAttribute="trailing" secondItem="Odq-3J-ejZ" secondAttribute="trailing" constant="20" id="pSk-ny-TUt"/>
+                                    <constraint firstItem="Odq-3J-ejZ" firstAttribute="leading" secondItem="4Lh-ys-oUw" secondAttribute="leading" constant="20" id="yIh-9m-nsL"/>
+                                </constraints>
+                            </stackView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wsq-vB-AJV" customClass="SlideToControl" customModule="NeighBird" customModuleProvider="target">
+                                <rect key="frame" x="32" y="519" width="310" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="slideButton:" destination="cOV-De-U5V" eventType="valueChanged" id="Ptg-hh-5jg"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.98438358309999996" green="0.93139153720000001" blue="0.30968376990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="4Lh-ys-oUw" firstAttribute="leading" secondItem="IpA-Ow-vnj" secondAttribute="leading" id="3z4-Bd-uPg"/>
+                            <constraint firstItem="FbG-gu-DIX" firstAttribute="leading" secondItem="IpA-Ow-vnj" secondAttribute="leading" id="9Ma-F1-xJX"/>
+                            <constraint firstItem="FbG-gu-DIX" firstAttribute="top" secondItem="IpA-Ow-vnj" secondAttribute="top" id="LdR-nN-rIO"/>
+                            <constraint firstItem="4Lh-ys-oUw" firstAttribute="top" secondItem="FbG-gu-DIX" secondAttribute="bottom" constant="100" id="fjM-Sd-kgV"/>
+                            <constraint firstItem="IpA-Ow-vnj" firstAttribute="trailing" secondItem="4Lh-ys-oUw" secondAttribute="trailing" id="iSA-rj-JuM"/>
+                            <constraint firstItem="FbG-gu-DIX" firstAttribute="trailing" secondItem="IpA-Ow-vnj" secondAttribute="trailing" id="iba-ZP-nLh"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="IpA-Ow-vnj"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="iconTab3" id="gUW-sK-5I2">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="alertButton" destination="wsq-vB-AJV" id="MXk-oV-K6J"/>
+                        <outlet property="topButton" destination="WPg-rQ-G4D" id="ZtG-R4-8DT"/>
+                        <outletCollection property="messageButtons" destination="ibj-Bk-Gok" collectionClass="NSMutableArray" id="6zp-no-Pnz"/>
+                        <outletCollection property="messageButtons" destination="Odq-3J-ejZ" collectionClass="NSMutableArray" id="VU0-2A-q1A"/>
+                        <outletCollection property="messageButtons" destination="IsQ-gN-vxl" collectionClass="NSMutableArray" id="yIY-e8-keQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I7n-xX-Oay" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="cOV-De-U5V" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1856.8" y="-195.6521739130435"/>
         </scene>
@@ -841,14 +942,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0t-OX-qcf">
-                                <rect key="frame" x="119" y="580" width="136" height="30"/>
-                                <state key="normal" title="Opret bruger"/>
-                                <connections>
-                                    <action selector="createUserAction:" destination="yc4-ic-7gi" eventType="touchUpInside" id="Dj4-LH-ew4"/>
-                                </connections>
-                            </button>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Bird" translatesAutoresizingMaskIntoConstraints="NO" id="ohl-08-OWN">
+                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="addImage" translatesAutoresizingMaskIntoConstraints="NO" id="ohl-08-OWN">
                                 <rect key="frame" x="127" y="119" width="120" height="120"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="Rpe-dL-ucG"/>
@@ -871,7 +965,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LYT-ov-sLN" customClass="SlideToControl" customModule="NeighBird" customModuleProvider="target">
-                                <rect key="frame" x="16" y="583" width="343" height="51"/>
+                                <rect key="frame" x="33" y="580" width="310" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -880,7 +974,6 @@
                         <constraints>
                             <constraint firstItem="K6G-7m-sPR" firstAttribute="centerX" secondItem="L11-3M-R4t" secondAttribute="centerX" id="3PJ-c9-Ncj"/>
                             <constraint firstItem="0cZ-Xw-E8V" firstAttribute="centerX" secondItem="L11-3M-R4t" secondAttribute="centerX" id="5tV-E2-Iar"/>
-                            <constraint firstItem="g0t-OX-qcf" firstAttribute="top" secondItem="joo-BU-wVA" secondAttribute="bottom" constant="19" id="63H-4L-xVI"/>
                             <constraint firstItem="557-Pe-MFy" firstAttribute="top" secondItem="P2j-pY-L3g" secondAttribute="bottom" constant="8" id="6qb-Xn-MsA"/>
                             <constraint firstItem="joo-BU-wVA" firstAttribute="centerX" secondItem="L11-3M-R4t" secondAttribute="centerX" id="ALB-OW-iKr"/>
                             <constraint firstItem="yXQ-JP-Ags" firstAttribute="leading" secondItem="L11-3M-R4t" secondAttribute="leading" id="CxE-xl-71P"/>
@@ -893,7 +986,6 @@
                             <constraint firstItem="0cZ-Xw-E8V" firstAttribute="top" secondItem="Gm6-qJ-Mr4" secondAttribute="bottom" constant="8" id="TtG-ab-rf9"/>
                             <constraint firstItem="Gm6-qJ-Mr4" firstAttribute="top" secondItem="erb-79-War" secondAttribute="bottom" constant="8" id="W9n-NV-Zfk"/>
                             <constraint firstItem="L11-3M-R4t" firstAttribute="trailing" secondItem="Gm6-qJ-Mr4" secondAttribute="trailing" constant="33" id="b4J-tl-ZcP"/>
-                            <constraint firstItem="g0t-OX-qcf" firstAttribute="centerX" secondItem="L11-3M-R4t" secondAttribute="centerX" id="feU-gH-NMY"/>
                             <constraint firstItem="yBj-aa-O2O" firstAttribute="trailing" secondItem="L11-3M-R4t" secondAttribute="trailing" id="iHN-Og-u8g"/>
                             <constraint firstItem="fvt-GZ-ZdM" firstAttribute="leading" secondItem="L11-3M-R4t" secondAttribute="leading" constant="17" id="iaC-8G-4eh"/>
                             <constraint firstItem="yBj-aa-O2O" firstAttribute="leading" secondItem="L11-3M-R4t" secondAttribute="leading" id="kJB-14-Woz"/>
