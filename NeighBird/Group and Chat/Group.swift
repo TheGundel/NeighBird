@@ -11,4 +11,5 @@ import UIKit
 class Group: NSObject{
     var name: String?
     var owner: String?
+    var key: String?
 }

@@ -33,8 +33,10 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
                     let group = Group()
                     let name = value["name"] as? String ?? "Name not found"
                     let owner = value["owner"] as? String ?? "Owner not found"
+                    let key = child.key
                     group.name = name
                     group.owner = owner
+                    group.key = key
                     self.groups.append(group)
                     DispatchQueue.main.async { self.groupTableView.reloadData() }
                 }
@@ -73,7 +75,7 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
 
@@ -94,6 +96,17 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
         return cell
     }
     
+    /*func showModifyGroupViewControllerForGroup(group: Group){
+        let chatViewController = ChatViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        chatViewController.group = group
+        self.present(chatViewController, animated: true, completion: nil)
+    }*/
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let group = self.groups[indexPath.row]
+        //showChatViewControllerForGroup(group: group)
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.

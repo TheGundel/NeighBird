@@ -11,6 +11,7 @@ import Firebase
 
 class ChatViewController: UICollectionViewController, UITextFieldDelegate{
     
+    var group: Group?
     
     lazy var inputTextField: UITextField = {
         let textField = UITextField()
@@ -42,6 +43,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate{
         //anchors
         topContainerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         topContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        topContainerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         topContainerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         topContainerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
@@ -52,21 +54,22 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate{
         
         //anchors
         backButton.leftAnchor.constraint(equalTo: topContainerView.leftAnchor).isActive = true
-        backButton.centerYAnchor.constraint(equalTo: topContainerView.centerYAnchor).isActive = true
+        backButton.centerYAnchor.constraint(equalTo: topContainerView.centerYAnchor, constant: 8).isActive = true
         backButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
         backButton.heightAnchor.constraint(equalTo: topContainerView.heightAnchor).isActive = true
         
+        backButton.addTarget(self, action: #selector(returnToPreView), for: .touchUpInside)
+        
         let chatName = UILabel()
-        chatName.text = "Chat titel"
+        chatName.text = group?.name
         chatName.translatesAutoresizingMaskIntoConstraints = false
         topContainerView.addSubview(chatName)
         
         //anchors
         chatName.centerXAnchor.constraint(equalTo: topContainerView.centerXAnchor).isActive = true
-        chatName.widthAnchor.constraint(equalToConstant: 80).isActive = true
+      //  chatName.widthAnchor.constraint(equalToConstant: 150).isActive = true
         chatName.heightAnchor.constraint(equalTo: topContainerView.heightAnchor).isActive = true
-        chatName.bottomAnchor.constraint(equalTo: topContainerView.bottomAnchor).isActive = true
-        
+        chatName.centerYAnchor.constraint(equalTo: topContainerView.centerYAnchor, constant: 8).isActive = true
         
         let separatorLineView = UIView()
         separatorLineView.backgroundColor = UIColor.darkGray
@@ -124,10 +127,17 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate{
         let sender = Auth.auth().currentUser?.uid
         
         //let groupId = sometihing
-        let values = ["text": inputTextField.text!, "sender": sender!]
+        let values = ["text": inputTextField.text!, "sender": sender!, "toId": group?.key!]
         ref.updateChildValues(values)
         
         inputTextField.text = ""
+    }
+    
+    @objc func returnToPreView(){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "Home") as! UITabBarController
+        vc.selectedIndex = 1
+        self.present(vc, animated: true, completion: nil )
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

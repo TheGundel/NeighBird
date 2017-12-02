@@ -18,7 +18,7 @@ class PreChatViewController: UIViewController,  UITableViewDelegate, UITableView
     @IBOutlet weak var groupTableView: UITableView!
     
     @IBAction func changeView(_ sender: UIButton) {
-        showChatViewController()
+       // showChatViewControllerForGroup(group: <#T##Group#>)()
     }
     private func loadGroups(){
         let rootRef = Database.database().reference()
@@ -29,8 +29,10 @@ class PreChatViewController: UIViewController,  UITableViewDelegate, UITableView
                     let group = Group()
                     let name = value["name"] as? String ?? "Name not found"
                     let owner = value["owner"] as? String ?? "Owner not found"
+                    let key = child.key
                     group.name = name
                     group.owner = owner
+                    group.key = key
                     self.groups.append(group)
                     DispatchQueue.main.async { self.groupTableView.reloadData() }
                 }
@@ -61,12 +63,17 @@ class PreChatViewController: UIViewController,  UITableViewDelegate, UITableView
         return cell
     }
     
-    func showChatViewController(){
-        let vc = self.storyboard?.instantiateViewController(withIdentifier: "chatView")
-        self.present(vc!, animated: true, completion: nil)
+    func showChatViewControllerForGroup(group: Group){
+        let chatViewController = ChatViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        chatViewController.group = group
+        self.present(chatViewController, animated: true, completion: nil)
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let group = self.groups[indexPath.row]
+        showChatViewControllerForGroup(group: group)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

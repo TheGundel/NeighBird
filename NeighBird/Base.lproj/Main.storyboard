@@ -132,7 +132,7 @@
         <!--Pre Chat View Controller-->
         <scene sceneID="RWV-yn-Bmq">
             <objects>
-                <viewController id="ebU-XH-gOQ" customClass="PreChatViewController" customModule="NeighBird" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="preChat" id="ebU-XH-gOQ" customClass="PreChatViewController" customModule="NeighBird" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fr4-N4-cyZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
