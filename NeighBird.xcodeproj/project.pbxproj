@@ -16,7 +16,6 @@
 		563FF4B11FCF20C3009ACCA5 /* UsersHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FF4B01FCF20C3009ACCA5 /* UsersHandler.swift */; };
 		563FF4B31FCF21D4009ACCA5 /* UserTableElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 563FF4B21FCF21D4009ACCA5 /* UserTableElement.swift */; };
 		564E4E041FD168E500EAF251 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E4E031FD168E500EAF251 /* AlertViewController.swift */; };
-		564E4E081FD1C71500EAF251 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 564E4E071FD1C71500EAF251 /* GoogleService-Info.plist */; };
 		564E4E0A1FD1CB6000EAF251 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564E4E091FD1CB6000EAF251 /* PopUpViewController.swift */; };
 		564EBA871FC6CF4C00BFCB45 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564EBA861FC6CF4C00BFCB45 /* EditProfileViewController.swift */; };
 		564EBA8B1FC6D0A900BFCB45 /* ProfilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 564EBA8A1FC6D0A900BFCB45 /* ProfilViewController.swift */; };
@@ -37,6 +36,10 @@
 		9DD0DF86F55997198912126D /* Pods_NeighBirdUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 155D8122008B2F12588E4023 /* Pods_NeighBirdUITests.framework */; };
 		9E7031DD4F62892B7FDCD774 /* Pods_NeighBirdTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB40251809776094194F89DF /* Pods_NeighBirdTests.framework */; };
 		E9032C3D1FD1C04E00360D0C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9032C3C1FD1C04E00360D0C /* Group.swift */; };
+		E9032C3F1FD2980000360D0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9032C3E1FD2980000360D0C /* GoogleService-Info.plist */; };
+		E9032C411FD2981800360D0C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9032C401FD2981800360D0C /* ChatViewController.swift */; };
+		E9032C431FD2989300360D0C /* PreChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9032C421FD2989300360D0C /* PreChatViewController.swift */; };
+		E9032C471FD29A7100360D0C /* PreChatGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9032C461FD29A7100360D0C /* PreChatGroupTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,7 +74,6 @@
 		563FF4B01FCF20C3009ACCA5 /* UsersHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersHandler.swift; sourceTree = "<group>"; };
 		563FF4B21FCF21D4009ACCA5 /* UserTableElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableElement.swift; sourceTree = "<group>"; };
 		564E4E031FD168E500EAF251 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
-		564E4E071FD1C71500EAF251 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		564E4E091FD1CB6000EAF251 /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		564EBA861FC6CF4C00BFCB45 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		564EBA8A1FC6D0A900BFCB45 /* ProfilViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,10 @@
 		BB40251809776094194F89DF /* Pods_NeighBirdTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NeighBirdTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4AC3462DE1B9DD75DCFB781 /* Pods-NeighBird.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NeighBird.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NeighBird/Pods-NeighBird.debug.xcconfig"; sourceTree = "<group>"; };
 		E9032C3C1FD1C04E00360D0C /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		E9032C3E1FD2980000360D0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E9032C401FD2981800360D0C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		E9032C421FD2989300360D0C /* PreChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreChatViewController.swift; sourceTree = "<group>"; };
+		E9032C461FD29A7100360D0C /* PreChatGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreChatGroupTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +143,7 @@
 				563FF4AC1FCF1BB7009ACCA5 /* UserTableViewCell.swift */,
 				563FF4B21FCF21D4009ACCA5 /* UserTableElement.swift */,
 				E9032C3C1FD1C04E00360D0C /* Group.swift */,
+				E9032C461FD29A7100360D0C /* PreChatGroupTableViewCell.swift */,
 			);
 			path = "Group and Chat";
 			sourceTree = "<group>";
@@ -154,6 +161,8 @@
 				563FF4AE1FCF1E4B009ACCA5 /* CreateGroupTableViewController.swift */,
 				564E4E031FD168E500EAF251 /* AlertViewController.swift */,
 				564E4E091FD1CB6000EAF251 /* PopUpViewController.swift */,
+				E9032C401FD2981800360D0C /* ChatViewController.swift */,
+				E9032C421FD2989300360D0C /* PreChatViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -194,7 +203,7 @@
 				563FF4B01FCF20C3009ACCA5 /* UsersHandler.swift */,
 				56F5F2DF1F8F51F2004D3E62 /* Assets.xcassets */,
 				56F5F2E11F8F51F2004D3E62 /* LaunchScreen.storyboard */,
-				564E4E071FD1C71500EAF251 /* GoogleService-Info.plist */,
+				E9032C3E1FD2980000360D0C /* GoogleService-Info.plist */,
 				56F5F2E41F8F51F2004D3E62 /* Info.plist */,
 			);
 			path = NeighBird;
@@ -361,7 +370,7 @@
 				56F5F2E01F8F51F2004D3E62 /* Assets.xcassets in Resources */,
 				56F5F2DE1F8F51F2004D3E62 /* Main.storyboard in Resources */,
 				569766AE1FD02CFE0096D3BC /* SlideToControl.xib in Resources */,
-				564E4E081FD1C71500EAF251 /* GoogleService-Info.plist in Resources */,
+				E9032C3F1FD2980000360D0C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -542,6 +551,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9032C431FD2989300360D0C /* PreChatViewController.swift in Sources */,
 				569766B01FD02D120096D3BC /* SlideToControl.swift in Sources */,
 				564E4E041FD168E500EAF251 /* AlertViewController.swift in Sources */,
 				564EBA8B1FC6D0A900BFCB45 /* ProfilViewController.swift in Sources */,
@@ -552,9 +562,11 @@
 				5682DBCA1FCC75EE00DEECC3 /* GroupTableViewCell.swift in Sources */,
 				563FF4AD1FCF1BB7009ACCA5 /* UserTableViewCell.swift in Sources */,
 				563FF4AF1FCF1E4B009ACCA5 /* CreateGroupTableViewController.swift in Sources */,
+				E9032C411FD2981800360D0C /* ChatViewController.swift in Sources */,
 				56B9FD7F1FB4BA3B00F82589 /* SignUpControllerHandler.swift in Sources */,
 				5682DBCC1FCC7A1600DEECC3 /* GroupTableViewController.swift in Sources */,
 				5633C4001FAAFC1F00B091F9 /* LoginViewController.swift in Sources */,
+				E9032C471FD29A7100360D0C /* PreChatGroupTableViewCell.swift in Sources */,
 				563FF4AB1FCEF7B6009ACCA5 /* SettingsViewController.swift in Sources */,
 				56B9FD7D1FB44BDD00F82589 /* ResetPasswordViewController.swift in Sources */,
 				564E4E0A1FD1CB6000EAF251 /* PopUpViewController.swift in Sources */,
