@@ -125,9 +125,10 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate{
         
         let ref = Database.database().reference().child("messages").childByAutoId()
         let sender = Auth.auth().currentUser?.uid
-        
+        let toId = group!.key!
+        let timestamp = Int(NSDate().timeIntervalSince1970) as NSNumber
         //let groupId = sometihing
-        let values = ["text": inputTextField.text!, "sender": sender!, "toId": group?.key!]
+        let values = ["text": inputTextField.text!, "sender": sender!, "toId": toId, "timestamp": timestamp] as [String : Any]
         ref.updateChildValues(values)
         
         inputTextField.text = ""

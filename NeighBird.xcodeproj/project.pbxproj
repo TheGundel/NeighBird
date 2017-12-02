@@ -40,6 +40,7 @@
 		E9032C411FD2981800360D0C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9032C401FD2981800360D0C /* ChatViewController.swift */; };
 		E9032C431FD2989300360D0C /* PreChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9032C421FD2989300360D0C /* PreChatViewController.swift */; };
 		E9032C471FD29A7100360D0C /* PreChatGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9032C461FD29A7100360D0C /* PreChatGroupTableViewCell.swift */; };
+		E9EB6C111FD33D3C00DB5D2F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EB6C101FD33D3C00DB5D2F /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +106,7 @@
 		E9032C401FD2981800360D0C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		E9032C421FD2989300360D0C /* PreChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreChatViewController.swift; sourceTree = "<group>"; };
 		E9032C461FD29A7100360D0C /* PreChatGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreChatGroupTableViewCell.swift; sourceTree = "<group>"; };
+		E9EB6C101FD33D3C00DB5D2F /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				563FF4B21FCF21D4009ACCA5 /* UserTableElement.swift */,
 				E9032C3C1FD1C04E00360D0C /* Group.swift */,
 				E9032C461FD29A7100360D0C /* PreChatGroupTableViewCell.swift */,
+				E9EB6C101FD33D3C00DB5D2F /* Message.swift */,
 			);
 			path = "Group and Chat";
 			sourceTree = "<group>";
@@ -572,6 +575,7 @@
 				564E4E0A1FD1CB6000EAF251 /* PopUpViewController.swift in Sources */,
 				563FF4B31FCF21D4009ACCA5 /* UserTableElement.swift in Sources */,
 				5677BC291FC6DC32000F8176 /* ProfileHandler.swift in Sources */,
+				E9EB6C111FD33D3C00DB5D2F /* Message.swift in Sources */,
 				5633C4021FAB0D7100B091F9 /* SignupViewController.swift in Sources */,
 				56F5F2D91F8F51F2004D3E62 /* AppDelegate.swift in Sources */,
 			);
