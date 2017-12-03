@@ -35,7 +35,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate{
     
     func setupTopComponents(){
         let topContainerView = UIView()
-        topContainerView.backgroundColor = UIColor.yellow
+        topContainerView.backgroundColor = UIColor(red:0.98, green:0.93, blue:0.31, alpha:1.0)
         topContainerView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(topContainerView)
@@ -45,7 +45,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate{
         topContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         topContainerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         topContainerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        topContainerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        topContainerView.heightAnchor.constraint(equalToConstant: 80).isActive = true
         
         let backButton = UIButton(type: .system)
         backButton.setTitle("Tilbage", for: .normal)

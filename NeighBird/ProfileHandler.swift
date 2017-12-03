@@ -34,9 +34,8 @@ struct ProfileHandler {
         phoneNumber = (snapshot.value! as! NSDictionary) ["phoneNumber"] as? String
         email = (snapshot.value! as! NSDictionary) ["email"] as? String
         imageURL = (snapshot.value! as! NSDictionary) ["profilePhotoURL"] as? String
-        
     }
-
+    
     func setDefaults(){
         UserDefaults.standard.set(firstName, forKey: "firstName")
         UserDefaults.standard.set(lastName, forKey: "lastName")
@@ -47,7 +46,6 @@ struct ProfileHandler {
         UserDefaults.standard.set(phoneNumber, forKey: "phoneNumber")
         
         storageRef.reference(forURL: imageURL!).getData(maxSize: 2 * 1024 * 1024, completion: { (photoData, error) in
-            
             if error == nil {
                 if let data = photoData {
                     UserDefaults.standard.set(data, forKey: "picture")

@@ -15,6 +15,8 @@ import FirebaseStorage
 class SignupViewController: UIViewController, SlideToControlDelegate {
     
     var ref: DatabaseReference!
+    var errorHandler = ErrorHandler.init()
+    var textFields: [UITextField] = []
     
     @IBOutlet weak var photo: UIImageView!
     @IBOutlet weak var firstName: UITextField!
@@ -48,26 +50,65 @@ class SignupViewController: UIViewController, SlideToControlDelegate {
 
         slideButton.delegate = self
         
+        setTextFieldArray()
         
     }
     
     func sliderCameToEnd(){
-        if email.text == "" {
-            let alertComtroller = UIAlertController(title: "Fejl", message: "Indtast venligst email", preferredStyle: .alert)
-            
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertComtroller.addAction(defaultAction)
-            
+        var message: String = ""
+        if errorHandler.isMultipleFieldsEmpty(uiTextFieldArray: textFields, message: "Udfyld venligst alle felter", parentView: self){
             slideButton.setThumbViewX()
-            present(alertComtroller, animated: true, completion: nil)
-        } else if(password.text != repeatpassword.text) {
-            let alertComtroller = UIAlertController(title: "Fejl", message: "Passwords er ikke ens", preferredStyle: .alert)
             
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertComtroller.addAction(defaultAction)
-            
+        } else {
+            for textField in textFields{
+                switch textField {
+                case firstName:
+                    if (firstName.text?.isEmpty)!{
+                        message = "Indtast venligst fornavn"
+                    }
+                case lastName:
+                    if (lastName.text?.isEmpty)! {
+                        message = "Indtast venligst efternavn"
+                    }
+                case adress:
+                    if (adress.text?.isEmpty)!{
+                        message = "Indtast venligst adresse"
+                    }
+                case zipcode:
+                    if (zipcode.text?.isEmpty)!{
+                        message = "Indtast venligst postnummer"
+                    }
+                case city:
+                    if (city.text?.isEmpty)!{
+                        message = "Indtast venligst by"
+                    }
+                case phoneNumber:
+                    if (phoneNumber.text?.isEmpty)!{
+                        message = "Indtast venligst telefon nummer"
+                    }
+                case email:
+                    if (email.text?.isEmpty)!{
+                        message = "Indtast venligst email"
+                    }
+                case password:
+                    if (password.text?.isEmpty)!{
+                        message = "Indtast venligst password på minimum 6 karaktere"
+                    }
+                case repeatpassword:
+                    if (repeatpassword.text?.isEmpty)!{
+                        message = "Gentag venligst password"
+                    }
+                default:
+                    break
+                }
+            }
+            if !message.isEmpty {
+                errorHandler.textFieldIsEmpty(message: message, parentView: self)
+                slideButton.setThumbViewX()
+            }
+        }
+        if errorHandler.textFieldMatch(uiTextField1: password, uiTextField2: repeatpassword, message: "Passwords er ikke ens", parentView: self) {
             slideButton.setThumbViewX()
-            present(alertComtroller, animated: true, completion: nil)
         }else {
             Auth.auth().createUser(withEmail: email.text!, password: password.text!) { (user, error) in
                 
@@ -128,6 +169,18 @@ class SignupViewController: UIViewController, SlideToControlDelegate {
                 }
             }
         }
+    }
+    
+    func setTextFieldArray(){
+        textFields.append(firstName)
+        textFields.append(lastName)
+        textFields.append(adress)
+        textFields.append(zipcode)
+        textFields.append(city)
+        textFields.append(phoneNumber)
+        textFields.append(email)
+        textFields.append(password)
+        textFields.append(repeatpassword)
     }
     
     override func didReceiveMemoryWarning() {
