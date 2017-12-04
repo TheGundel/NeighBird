@@ -46,7 +46,11 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
                                 group.name = name
                                 group.owner = owner
                                 group.key = key
-                                self.groups.append(group)
+                                if self.groups.contains(group){
+                                    return
+                                } else {
+                                    self.groups.append(group)
+                                }
                                 self.groups.sort(by: { (group1, group2) -> Bool in
                                     return group1.name! < group2.name!
                                 })
