@@ -38,6 +38,9 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
                     group.owner = owner
                     group.key = key
                     self.groups.append(group)
+                    self.groups.sort(by: { (group1, group2) -> Bool in
+                        return group1.name! < group2.name!
+                    })
                     DispatchQueue.main.async { self.groupTableView.reloadData() }
                 }
             }

@@ -96,8 +96,7 @@ class PreChatViewController: UIViewController,  UITableViewDelegate, UITableView
                         self.messageDictionary[toId] = message
                         self.messages = Array(self.messageDictionary.values)
                         self.messages.sort(by: { (message1, message2) -> Bool in
-                            return true
-                            //return message1.timestamp?.intValue > message2.timestamp?.intValue
+                            return message1.timestamp!.intValue > message2.timestamp!.intValue
                         })
 
                     }
