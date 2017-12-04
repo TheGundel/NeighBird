@@ -24,8 +24,10 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        members.removeAll()
         collectionView?.backgroundColor = UIColor.lightGray
         setupChatComponents()
+        findUsersForGroup()
     }
     
     func setupChatComponents(){
@@ -126,9 +128,6 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate{
         if inputTextField.text!.isEmpty{
             return
         } else {
-            
-        
-        
         let ref = Database.database().reference().child("messages").childByAutoId()
         let sender = Auth.auth().currentUser?.uid
         let toId = group!.key!
@@ -136,7 +135,13 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate{
         //let groupId = sometihing
         let values = ["text": inputTextField.text!, "sender": sender!, "toId": toId, "timestamp": timestamp] as [String : Any]
         ref.updateChildValues(values)
-        
+            
+            
+        let messageRef = Database.database().reference()
+        for user in members {
+            messageRef.child("user-messages").child(user).updateChildValues([ref.key: 1])
+        }
+            
         inputTextField.text = ""
         }
     }
@@ -151,5 +156,18 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         sendMessage()
         return true
+    }
+    
+    var members = [String]()
+    
+    func findUsersForGroup(){
+        let groupId = group?.key
+        print(groupId)
+        let ref = Database.database().reference().child("group-members").child(groupId!)
+        ref.observe(.childAdded, with: { (snapshot) in
+            let userId = snapshot.key as? String
+            self.members.append(userId!)
+        }, withCancel: nil)
+        print(members.count)
     }
 }

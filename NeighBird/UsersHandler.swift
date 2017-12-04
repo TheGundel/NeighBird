@@ -17,9 +17,12 @@ struct UsersHandler {
     init(snapshot: DataSnapshot){
         ref = snapshot.ref
         let enumerator = snapshot.children
+
         
         while let rest = enumerator.nextObject() as? DataSnapshot {
-            
+           if rest.key == Auth.auth().currentUser?.uid{
+                break
+            }
             
             let firstName = (rest.value! as! NSDictionary) ["firstName"] as? String
             let lastName = (rest.value! as! NSDictionary) ["lastName"] as? String
@@ -27,10 +30,6 @@ struct UsersHandler {
             let userID = rest.key
             
             let fullName = firstName! + " " + lastName!
-            
-            if userID == Auth.auth().currentUser?.uid{
-                break
-            }
             
             if !(address?.isEmpty)!{
                 let user = UserTableElement(name: fullName, address: address!, userID: userID)

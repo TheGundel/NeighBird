@@ -116,30 +116,6 @@ func loadUserInfo() {
         
         let user = ProfileHandler(snapshot: snapshot)
         user.setDefaults()
-//        UserDefaults.standard.set(user.firstName, forKey: "firstName")
-//        UserDefaults.standard.set(user.lastName, forKey: "lastName")
-//        UserDefaults.standard.set(user.adress, forKey: "address")
-//        UserDefaults.standard.set(user.city, forKey: "city")
-//        UserDefaults.standard.set(user.zipcode, forKey: "zipcode")
-//        UserDefaults.standard.set(user.email, forKey: "email")
-//        UserDefaults.standard.set(user.phoneNumber, forKey: "phoneNumber")
-//
-//
-//
-//
-//        let photoURL = user.imageURL!
-//        storageRef.reference(forURL: photoURL).getData(maxSize: 2 * 1024 * 1024, completion: { (photoData, error) in
-//
-//            if error == nil {
-//                if let data = photoData {
-//                    UserDefaults.standard.set(data, forKey: "picture")
-//
-//                }
-//            } else {
-//                print(error!.localizedDescription)
-//            }
-//        })
-//
     }) { (error) in
         print (error.localizedDescription)
     }}

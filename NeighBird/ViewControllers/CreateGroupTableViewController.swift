@@ -12,6 +12,7 @@ import FirebaseAuth
 
 class CreateGroupTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     var userElements = [UserTableElement]()
+    var selectedUsers = [String]()
     var ref: DatabaseReference! {
         return Database.database().reference()
     }
@@ -33,6 +34,7 @@ class CreateGroupTableViewController: UIViewController, UITableViewDataSource, U
             self.userElements = users.getUsersElements()
             self.userTable.dataSource = self
             self.userTable.delegate = self
+            DispatchQueue.main.async { self.userTable.reloadData() }
         }
     }
     
@@ -43,14 +45,22 @@ class CreateGroupTableViewController: UIViewController, UITableViewDataSource, U
         let welcomeMessage = "Velkommen til min gruppe. Lad os hjælpe hinanden"
         let timestamp = Int(NSDate().timeIntervalSince1970) as NSNumber
         //send welcome message
-        ref.child("messages").childByAutoId().setValue(["sender": owner!, "text": welcomeMessage, "timestamp": timestamp, "toId": child.key])
+        let messageChild = ref.child("messages").childByAutoId()
+            messageChild.setValue(["sender": owner!, "text": welcomeMessage, "timestamp": timestamp, "toId": child.key])
         
+        for user in selectedUsers {
+            ref.child("user-messages").child(user).updateChildValues([messageChild.key: 1])
+            ref.child("group-members").child(child.key).updateChildValues([user: 1])
+        }
     }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        userElements.removeAll()
+        selectedUsers.removeAll()
         print(userElements.count)
+        selectedUsers.append((Auth.auth().currentUser?.uid)!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,5 +103,26 @@ class CreateGroupTableViewController: UIViewController, UITableViewDataSource, U
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home") as! UITabBarController
         vc.selectedIndex = 3
         self.present(vc, animated: true, completion: nil )
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user = userElements[indexPath.row]
+        let cell = userTable.cellForRow(at: indexPath)
+        
+        if selectedUsers.contains(user.userID) {
+            var i = 0
+            for users in selectedUsers{
+                if users == user.userID{
+                    selectedUsers.remove(at: i)
+                    cell?.backgroundColor = UIColor.white
+                } else {
+                    i += 1
+                }
+            }
+        } else {
+            selectedUsers.append(user.userID)
+            cell?.backgroundColor = UIColor.green
+        }
+        
     }
 }

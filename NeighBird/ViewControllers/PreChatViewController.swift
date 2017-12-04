@@ -72,11 +72,14 @@ class PreChatViewController: UIViewController,  UITableViewDelegate, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        messages.removeAll()
+        messageDictionary.removeAll()
         self.groupTableView.dataSource = self
         self.groupTableView.delegate = self
         self.groupTableView.backgroundColor = .clear
 
-        observeMessages()
+        //observeMessages()
+        observeUserMessages()
     }
     
     func observeMessages() {
@@ -98,13 +101,43 @@ class PreChatViewController: UIViewController,  UITableViewDelegate, UITableView
                         self.messages.sort(by: { (message1, message2) -> Bool in
                             return message1.timestamp!.intValue > message2.timestamp!.intValue
                         })
-
                     }
                     DispatchQueue.main.async { self.groupTableView.reloadData() }
                 }
             }
         }
         }
+    
+    func observeUserMessages() {
+        guard let uid = Auth.auth().currentUser?.uid
+        else {
+            return
+            }
+        let ref = Database.database().reference().child("user-messages").child(uid)
+        ref.observe(.childAdded, with: { (snapshot) in
+            let messageId = snapshot.key
+            let messageRef = Database.database().reference().child("messages").child(messageId)
+            messageRef.observe(.value, with: { (snapshot) in
+                    if let value = snapshot.value as? NSDictionary {
+                        let message = Message()
+                        let text = value["text"] as? String ?? "Name not found"
+                        let toId = value["toId"] as? String ?? "Owner not found"
+                        let timestamp = value["timestamp"] as? NSNumber
+                        message.text = text
+                        message.toId = toId
+                        message.timestamp = timestamp
+                        if let toId = message.toId{
+                            self.messageDictionary[toId] = message
+                            self.messages = Array(self.messageDictionary.values)
+                            self.messages.sort(by: { (message1, message2) -> Bool in
+                                return message1.timestamp!.intValue > message2.timestamp!.intValue
+                            })
+                        }
+                        DispatchQueue.main.async { self.groupTableView.reloadData() }
+                }
+            }, withCancel: nil)
+        }, withCancel: nil)
+    }
         
 }
 

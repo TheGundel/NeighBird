@@ -60,7 +60,6 @@ class AlertViewController: UIViewController, SlideToControlDelegate {
                     group.owner = owner
                     group.key = key
                     self.dropButton.dropDownView.groups.append(group)
-                    print(group.name!)
                     DispatchQueue.main.async {self.dropButton.dropDownView.tableView.reloadData() }
                 }
             }
