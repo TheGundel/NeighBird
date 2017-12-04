@@ -12,7 +12,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 
-class SignupViewController: UIViewController, SlideToControlDelegate {
+class SignupViewController: UIViewController, SlideToControlDelegate, UITextFieldDelegate {
     
     var ref: DatabaseReference!
     var errorHandler = ErrorHandler.init()
@@ -49,6 +49,9 @@ class SignupViewController: UIViewController, SlideToControlDelegate {
         slideButton.backgroundColor = .clear
 
         slideButton.delegate = self
+        
+        zipcode.delegate = self
+        phoneNumber.delegate = self
         
         setTextFieldArray()
         
@@ -186,5 +189,11 @@ class SignupViewController: UIViewController, SlideToControlDelegate {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let allowedCharacters = CharacterSet.decimalDigits
+        let characterSet = CharacterSet(charactersIn: string)
+        return allowedCharacters.isSuperset(of: characterSet)
     }
 }

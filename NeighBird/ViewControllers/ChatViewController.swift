@@ -123,6 +123,12 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate{
     @objc func sendMessage(){
         print(inputTextField.text!)
         
+        if inputTextField.text!.isEmpty{
+            return
+        } else {
+            
+        
+        
         let ref = Database.database().reference().child("messages").childByAutoId()
         let sender = Auth.auth().currentUser?.uid
         let toId = group!.key!
@@ -132,6 +138,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate{
         ref.updateChildValues(values)
         
         inputTextField.text = ""
+        }
     }
     
     @objc func returnToPreView(){
