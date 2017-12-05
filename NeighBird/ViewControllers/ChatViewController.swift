@@ -9,9 +9,10 @@
 import UIKit
 import Firebase
 
-class ChatViewController: UICollectionViewController, UITextFieldDelegate{
+class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout{
     
     var group: Group?
+    var messages = [Message]()
     
     lazy var inputTextField: UITextField = {
         let textField = UITextField()
@@ -22,12 +23,17 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate{
         return textField
     }()
     
+    let cellId = "cellId"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         members.removeAll()
+        collectionView?.alwaysBounceVertical = true
         collectionView?.backgroundColor = UIColor.lightGray
+        collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         setupChatComponents()
         findUsersForGroup()
+        observeMessages()
     }
     
     func setupChatComponents(){
@@ -47,7 +53,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate{
         topContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         topContainerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         topContainerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        topContainerView.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        topContainerView.heightAnchor.constraint(equalToConstant: 76).isActive = true
         
         let backButton = UIButton(type: .system)
         backButton.setTitle("Tilbage", for: .normal)
@@ -146,6 +152,24 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate{
         }
     }
     
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return messages.count
+    }
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
+        
+        let message = messages[indexPath.item]
+        cell.textView.text = message.text
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 80)
+    }
+    
     @objc func returnToPreView(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "Home") as! UITabBarController
@@ -162,12 +186,36 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate{
     
     func findUsersForGroup(){
         let groupId = group?.key
-        print(groupId)
         let ref = Database.database().reference().child("group-members").child(groupId!)
         ref.observe(.childAdded, with: { (snapshot) in
-            let userId = snapshot.key as? String
-            self.members.append(userId!)
+            let userId = snapshot.key
+            self.members.append(userId)
         }, withCancel: nil)
-        print(members.count)
+    }
+    
+    func observeMessages(){
+        guard let userId = Auth.auth().currentUser?.uid else {
+            return
+        }
+        let userMessageRef = Database.database().reference().child("user-messages").child(userId)
+        userMessageRef.observe(.childAdded, with: { (snapshot) in
+            let messageId = snapshot.key
+            let messageRef = Database.database().reference().child("messages").child(messageId)
+            messageRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                if let value = snapshot.value as? NSDictionary{
+                    let message = Message()
+                    message.senderId = value["senderId"] as? String
+                    message.toId = value["toId"] as? String
+                    message.text = value["text"] as? String
+                    message.timestamp = value["timestamp"] as? NSNumber
+                    
+                    if message.toId == self.group?.key{
+                        self.messages.append(message)
+                        DispatchQueue.main.async { self.collectionView?.reloadData() }
+                    }
+                    
+                }
+            }, withCancel: nil)
+        }, withCancel: nil)
     }
 }

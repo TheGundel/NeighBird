@@ -41,6 +41,7 @@
 		E9032C431FD2989300360D0C /* PreChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9032C421FD2989300360D0C /* PreChatViewController.swift */; };
 		E9032C471FD29A7100360D0C /* PreChatGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9032C461FD29A7100360D0C /* PreChatGroupTableViewCell.swift */; };
 		E91A3F1B1FD4746F00589813 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E91A3F1A1FD4746F00589813 /* GoogleService-Info.plist */; };
+		E9C2159A1FD695DA00A533AA /* ChatMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C215991FD695DA00A533AA /* ChatMessageCell.swift */; };
 		E9EB6C111FD33D3C00DB5D2F /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EB6C101FD33D3C00DB5D2F /* Message.swift */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +109,7 @@
 		E9032C421FD2989300360D0C /* PreChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreChatViewController.swift; sourceTree = "<group>"; };
 		E9032C461FD29A7100360D0C /* PreChatGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreChatGroupTableViewCell.swift; sourceTree = "<group>"; };
 		E91A3F1A1FD4746F00589813 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E9C215991FD695DA00A533AA /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatMessageCell.swift; path = Model/ChatMessageCell.swift; sourceTree = "<group>"; };
 		E9EB6C101FD33D3C00DB5D2F /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,6 +200,7 @@
 		56F5F2D71F8F51F2004D3E62 /* NeighBird */ = {
 			isa = PBXGroup;
 			children = (
+				E9C215991FD695DA00A533AA /* ChatMessageCell.swift */,
 				561FFA211FCB32D30067D893 /* Group and Chat */,
 				56F5F2D81F8F51F2004D3E62 /* AppDelegate.swift */,
 				561FFA241FCB33D30067D893 /* ViewControllers */,
@@ -576,6 +579,7 @@
 				E9032C471FD29A7100360D0C /* PreChatGroupTableViewCell.swift in Sources */,
 				563FF4AB1FCEF7B6009ACCA5 /* SettingsViewController.swift in Sources */,
 				56B9FD7D1FB44BDD00F82589 /* ResetPasswordViewController.swift in Sources */,
+				E9C2159A1FD695DA00A533AA /* ChatMessageCell.swift in Sources */,
 				564E4E0A1FD1CB6000EAF251 /* PopUpViewController.swift in Sources */,
 				563FF4B31FCF21D4009ACCA5 /* UserTableElement.swift in Sources */,
 				5677BC291FC6DC32000F8176 /* ProfileHandler.swift in Sources */,
