@@ -28,6 +28,10 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         members.removeAll()
+        //set 8 pixels padding in the top and 58 in the bottom to avoid bottom components
+        collectionView?.contentInset = UIEdgeInsetsMake(8, 0, 58, 0)
+        //padding for scrollbar
+        collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 50, 0)
         collectionView?.alwaysBounceVertical = true
         collectionView?.backgroundColor = UIColor.lightGray
         collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
@@ -163,12 +167,33 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         let message = messages[indexPath.item]
         cell.textView.text = message.text
         
+        cell.bubbleWidthAnchor?.constant = estimateFrameForText(text: message.text!).width + 32
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width, height: 80)
+        var height: CGFloat = 70
+        
+        //get estimated size required for the text to fit
+        if let text = messages[indexPath.item].text {
+            //+20 as the frame needs a few pixels extra
+            height = estimateFrameForText(text: text).height + 20
+        }
+        
+        return CGSize(width: view.frame.width, height: height)
     }
+    
+    private func estimateFrameForText(text: String) -> CGRect{
+        //width matches cell width and height needs to be large
+        //so we have some room to work with
+        let size = CGSize(width: 200, height:1500)
+        let options = NSStringDrawingOptions.usesFontLeading.union(.usesLineFragmentOrigin)
+        //Font must match cell font
+        return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)], context: nil)
+    }
+    
+    
     
     @objc func returnToPreView(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
