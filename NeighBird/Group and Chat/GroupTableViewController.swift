@@ -15,6 +15,9 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var groups = [Group]()
     
+    var messages = [Message]()
+    var messageDictionary = [String: Message]()
+    
     @IBOutlet weak var addButton: UIButton!
     
     @IBOutlet weak var groupTableView: UITableView!
@@ -23,12 +26,10 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "createGroup")
         self.present(vc!, animated: true, completion: nil)
     }
-    
-    private func loadGroups(){
-        groups.removeAll()
+    func loadUserMessages(){
         guard let uid = Auth.auth().currentUser?.uid
-        else {
-            return
+            else {
+                return
         }
         let ref = Database.database().reference().child("user-messages").child(uid)
         ref.observe(.childAdded, with: { (snapshot) in
@@ -36,29 +37,18 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
             let messageRef = Database.database().reference().child("messages").child(messageId)
             messageRef.observe(.value, with: { (snapshot) in
                 if let value = snapshot.value as? NSDictionary {
-                    let groupId = value["toId"] as? String
-                    let groupRef = Database.database().reference().child("groups").child(groupId!)
-                    groupRef.observe(.value, with: { (snapshot) in
-                            if let value = snapshot.value as? NSDictionary {
-                                let group = Group()
-                                let name = value["name"] as? String ?? "Name not found"
-                                let owner = value["owner"] as? String ?? "Owner not found"
-                                let key = snapshot.key
-                                group.name = name
-                                group.owner = owner
-                                group.key = key
-                                if self.groups.contains(group){
-                                    return
-                                } else {
-                                    self.groups.append(group)
-                                }
-                                self.groups.sort(by: { (group1, group2) -> Bool in
-                                    return group1.name! < group2.name!
-                                })
-                                DispatchQueue.main.async { self.groupTableView.reloadData() }
-                            }
-                        
-                    }, withCancel: nil)
+                    let message = Message()
+                    let text = value["text"] as? String ?? "Name not found"
+                    let toId = value["toId"] as? String ?? "Owner not found"
+                    let timestamp = value["timestamp"] as? NSNumber
+                    message.text = text
+                    message.toId = toId
+                    message.timestamp = timestamp
+                    if let toId = message.toId{
+                        self.messageDictionary[toId] = message
+                        self.messages = Array(self.messageDictionary.values)
+                    }
+                    DispatchQueue.main.async { self.groupTableView.reloadData() }
                 }
             }, withCancel: nil)
         }, withCancel: nil)
@@ -66,13 +56,12 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        groups.removeAll()
         self.groupTableView.dataSource = self
         self.groupTableView.delegate = self
         self.groupTableView.backgroundColor = .clear
         
         //load Groups
-        loadGroups()
+        loadUserMessages()
         
         addButton.layer.borderWidth = 4
         addButton.layer.borderColor = UIColor.white.cgColor
@@ -94,7 +83,7 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return groups.count
+        return messages.count
     }
 
     
@@ -104,14 +93,10 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
             fatalError("Dequeued cell is not instance of GroupTableViewCell")
         }
         // Configure the cell...
-        let group = groups[indexPath.row]
-        cell.nameLabel.text = group.name
+        let message = messages[indexPath.row]
+        cell.message = message
+        
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let group = self.groups[indexPath.row]
-        //showChatViewControllerForGroup(group: group)
-        
-    }
 }
