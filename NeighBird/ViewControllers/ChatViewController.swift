@@ -143,7 +143,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         let toId = group!.key!
         let timestamp = Int(NSDate().timeIntervalSince1970) as NSNumber
         //let groupId = sometihing
-        let values = ["text": inputTextField.text!, "sender": sender!, "toId": toId, "timestamp": timestamp] as [String : Any]
+        let values = ["text": inputTextField.text!, "senderId": sender!, "toId": toId, "timestamp": timestamp] as [String : Any]
         ref.updateChildValues(values)
             
             
@@ -167,9 +167,26 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         let message = messages[indexPath.item]
         cell.textView.text = message.text
         
+        setupCell(cell: cell, message: message)
+        
         cell.bubbleWidthAnchor?.constant = estimateFrameForText(text: message.text!).width + 32
         
         return cell
+    }
+    
+    private func setupCell(cell: ChatMessageCell, message: Message){
+        if message.senderId == Auth.auth().currentUser?.uid{
+            cell.bubbleView.backgroundColor = ChatMessageCell.blueColor
+            cell.textView.textColor = UIColor.white
+            cell.bubbleViewLeftAnchor?.isActive = false
+            cell.bubbleViewRightAnchor?.isActive = true
+            
+        } else {
+            cell.bubbleView.backgroundColor = UIColor(displayP3Red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+            cell.textView.textColor = UIColor.black
+            cell.bubbleViewRightAnchor?.isActive = false
+            cell.bubbleViewLeftAnchor?.isActive = true
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

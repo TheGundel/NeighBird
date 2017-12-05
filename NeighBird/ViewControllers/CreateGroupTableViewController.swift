@@ -46,7 +46,7 @@ class CreateGroupTableViewController: UIViewController, UITableViewDataSource, U
         let timestamp = Int(NSDate().timeIntervalSince1970) as NSNumber
         //send welcome message
         let messageChild = ref.child("messages").childByAutoId()
-            messageChild.setValue(["sender": owner!, "text": welcomeMessage, "timestamp": timestamp, "toId": child.key])
+            messageChild.setValue(["senderId": owner!, "text": welcomeMessage, "timestamp": timestamp, "toId": child.key])
         
         for user in selectedUsers {
             ref.child("user-messages").child(user).updateChildValues([messageChild.key: 1])

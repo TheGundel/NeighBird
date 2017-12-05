@@ -10,6 +10,16 @@ import UIKit
 
 class ChatMessageCell: UICollectionViewCell {
     
+    let senderView: UITextView = {
+        let sv = UITextView()
+        sv.text = "Sender"
+        sv.translatesAutoresizingMaskIntoConstraints = false
+        sv.font = UIFont.systemFont(ofSize: 12)
+        sv.backgroundColor = UIColor.clear
+        sv.textColor = UIColor.lightGray
+        return sv
+    }()
+    
     let textView: UITextView = {
         let tv = UITextView()
         tv.text = "Sample"
@@ -20,9 +30,11 @@ class ChatMessageCell: UICollectionViewCell {
         return tv
     }()
     
+    static let blueColor = UIColor(red: 0, green: 137/255, blue: 249/255, alpha: 1)
+    
     let bubbleView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.blue
+        view.backgroundColor = blueColor
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 16
         view.layer.masksToBounds = true
@@ -30,6 +42,8 @@ class ChatMessageCell: UICollectionViewCell {
     }()
     
     var bubbleWidthAnchor: NSLayoutConstraint?
+    var bubbleViewRightAnchor: NSLayoutConstraint?
+    var bubbleViewLeftAnchor: NSLayoutConstraint?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,7 +51,11 @@ class ChatMessageCell: UICollectionViewCell {
         addSubview(textView)
         
         //anchors
-        bubbleView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8).isActive = true
+        bubbleViewRightAnchor = bubbleView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8)
+        bubbleViewRightAnchor?.isActive = true
+        
+        bubbleViewLeftAnchor = bubbleView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 8)
+        
         bubbleView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         bubbleWidthAnchor = bubbleView.widthAnchor.constraint(equalToConstant: 200)
         bubbleWidthAnchor?.isActive = true
