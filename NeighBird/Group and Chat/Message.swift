@@ -14,4 +14,5 @@ class Message: NSObject {
     var text: String?
     var toId: String?
     var timestamp: NSNumber?
+    var isAlert: String?
 }

@@ -32,6 +32,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         collectionView?.contentInset = UIEdgeInsetsMake(8, 0, 58, 0)
         //padding for scrollbar
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 50, 0)
+        collectionView?.translatesAutoresizingMaskIntoConstraints = false
         collectionView?.alwaysBounceVertical = true
         collectionView?.backgroundColor = UIColor.lightGray
         collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
@@ -47,7 +48,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
     
     func setupTopComponents(){
         let topContainerView = UIView()
-        topContainerView.backgroundColor = UIColor(red:0.98, green:0.93, blue:0.31, alpha:1.0)
+        topContainerView.backgroundColor = UIColor(red:254/255, green:237/255, blue:1/255, alpha:1.0)
         topContainerView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(topContainerView)
@@ -61,6 +62,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         
         let backButton = UIButton(type: .system)
         backButton.setTitle("Tilbage", for: .normal)
+        backButton.setTitleColor(UIColor .black, for: .normal)
         backButton.translatesAutoresizingMaskIntoConstraints = false
         topContainerView.addSubview(backButton)
         
@@ -74,6 +76,8 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         
         let chatName = UILabel()
         chatName.text = group?.name
+        
+        chatName.font = chatName.font.withSize(20)
         chatName.translatesAutoresizingMaskIntoConstraints = false
         topContainerView.addSubview(chatName)
         
@@ -92,6 +96,11 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         separatorLineView.bottomAnchor.constraint(equalTo: topContainerView.bottomAnchor).isActive = true
         separatorLineView.widthAnchor.constraint(equalTo: topContainerView.widthAnchor).isActive = true
         separatorLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        
+        collectionView?.topAnchor.constraint(equalTo: topContainerView.bottomAnchor).isActive = true
+        collectionView?.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        collectionView?.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
     }
     
     
@@ -130,6 +139,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         inputTextField.rightAnchor.constraint(equalTo: sendButton.leftAnchor).isActive = true
         inputTextField.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
         
+        collectionView?.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
     }
     
     @objc func sendMessage(){
@@ -143,7 +153,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         let toId = group!.key!
         let timestamp = Int(NSDate().timeIntervalSince1970) as NSNumber
         //let groupId = sometihing
-        let values = ["text": inputTextField.text!, "senderId": sender!, "toId": toId, "timestamp": timestamp] as [String : Any]
+            let values = ["text": inputTextField.text!, "senderId": sender!, "toId": toId, "timestamp": timestamp, "isAlert": "N"] as [String : Any]
         ref.updateChildValues(values)
             
             
@@ -177,7 +187,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
     private func setupCell(cell: ChatMessageCell, message: Message){
         if message.senderId == Auth.auth().currentUser?.uid{
             cell.bubbleView.backgroundColor = ChatMessageCell.blueColor
-            cell.textView.textColor = UIColor.white
+            cell.textView.textColor = UIColor.black
             cell.bubbleViewLeftAnchor?.isActive = false
             cell.bubbleViewRightAnchor?.isActive = true
             
@@ -186,6 +196,10 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
             cell.textView.textColor = UIColor.black
             cell.bubbleViewRightAnchor?.isActive = false
             cell.bubbleViewLeftAnchor?.isActive = true
+        }
+        if message.isAlert == "Y" {
+            cell.bubbleView.backgroundColor = UIColor(red:254/255, green:237/255, blue:1/255, alpha:1.0)
+            cell.textView.textColor = UIColor.black
         }
     }
     
@@ -250,6 +264,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
                     message.toId = value["toId"] as? String
                     message.text = value["text"] as? String
                     message.timestamp = value["timestamp"] as? NSNumber
+                    message.isAlert = value["isAlert"] as? String
                     
                     if message.toId == self.group?.key{
                         self.messages.append(message)

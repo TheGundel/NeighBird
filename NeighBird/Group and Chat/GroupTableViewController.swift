@@ -25,6 +25,7 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     private func loadGroups(){
+        groups.removeAll()
         guard let uid = Auth.auth().currentUser?.uid
         else {
             return
