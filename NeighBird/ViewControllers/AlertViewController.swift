@@ -40,9 +40,10 @@ class AlertViewController: UIViewController, SlideToControlDelegate {
         
         if topButton.titleLabel?.text == "Vælg besked" || button.titleLabel?.text == "Vælg gruppe" {
             let alert: UIAlertController = UIAlertController(title: "Fejl", message: "Vælg både besked og gruppe", preferredStyle: .alert)
-            let action: UIAlertAction = UIAlertAction(title: "OK", style: .cancel) {
-                (action) in alert.dismiss(animated: true, completion: nil)
+            let action: UIAlertAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                alert.dismiss(animated: true, completion: nil)
             }
+            alert.addAction(action)
         } else {
         
         let groupId = button.dropView.selectedGroup.key
