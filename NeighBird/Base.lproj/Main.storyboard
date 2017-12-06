@@ -62,8 +62,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pGV-Vd-Xhp">
-                                <rect key="frame" x="50" y="541" width="83" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <rect key="frame" x="50" y="541" width="98" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="Glemt password?">
                                     <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -72,8 +72,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vm5-Uq-sd6">
-                                <rect key="frame" x="276" y="541" width="49" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <rect key="frame" x="268" y="541" width="57" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="Ny bruger">
                                     <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -877,6 +877,7 @@ Skriv besked...................................</string>
                     </tabBarItem>
                     <connections>
                         <outlet property="alertButton" destination="wsq-vB-AJV" id="MXk-oV-K6J"/>
+                        <outlet property="stackView" destination="4Lh-ys-oUw" id="InY-nG-PTf"/>
                         <outlet property="topButton" destination="WPg-rQ-G4D" id="ZtG-R4-8DT"/>
                         <outletCollection property="messageButtons" destination="ibj-Bk-Gok" collectionClass="NSMutableArray" id="6zp-no-Pnz"/>
                         <outletCollection property="messageButtons" destination="Odq-3J-ejZ" collectionClass="NSMutableArray" id="VU0-2A-q1A"/>

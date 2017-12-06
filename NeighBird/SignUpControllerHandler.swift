@@ -11,10 +11,7 @@ import UIKit
 extension SignupViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
    @objc func handleSelectProfilePhoto() {
-        print("hej")
         let picker = UIImagePickerController()
-    
-    
         picker.delegate = self
         picker.allowsEditing = true
         present(picker, animated: true, completion: nil)

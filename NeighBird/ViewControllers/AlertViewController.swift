@@ -14,12 +14,14 @@ class AlertViewController: UIViewController, SlideToControlDelegate {
     @IBOutlet var messageButtons: [UIButton]!
     @IBOutlet weak var alertButton: SlideToControl!
     @IBOutlet weak var topButton: UIButton!
+    @IBOutlet weak var stackView: UIStackView!
     
     
     @IBAction func selectionHandler(_ sender: UIButton) {
         messageButtons.forEach { (button) in
             UIView.animate(withDuration: 0.5, animations: {
                 button.isHidden = !button.isHidden
+                self.view.bringSubview(toFront: self.stackView)
                 self.view.layoutIfNeeded()
             })
         }
