@@ -139,9 +139,10 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         containerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         containerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        let sendButton = UIButton(type: .system)
-        sendButton.setTitle("Send", for: .normal)
-        sendButton.backgroundColor = UIColor.yellow
+        let sendButton = UIButton(type: .custom)
+//        sendButton.setTitle("Send", for: .normal)
+//        sendButton.backgroundColor = UIColor.yellow
+        sendButton.setImage(#imageLiteral(resourceName: "sendButtonImage"), for: .normal)
         sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
         sendButton.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(sendButton)
