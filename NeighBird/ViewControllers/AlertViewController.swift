@@ -18,7 +18,7 @@ class AlertViewController: UIViewController, SlideToControlDelegate {
     
     @IBAction func selectionHandler(_ sender: UIButton) {
         messageButtons.forEach { (button) in
-            UIView.animate(withDuration: 0.3, animations: {
+            UIView.animate(withDuration: 0.5, animations: {
                 button.isHidden = !button.isHidden
                 self.view.layoutIfNeeded()
             })
@@ -243,7 +243,7 @@ class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = UITableViewCell()
+        let cell = UITableViewCell()
         cell.backgroundColor = UIColor.white
         let group = groups[indexPath.row]
         cell.textLabel?.text = group.name

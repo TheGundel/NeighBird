@@ -39,7 +39,7 @@ extension SignupViewController: UIImagePickerControllerDelegate, UINavigationCon
         }
         
         if let selectedPhoto = selectedPhotoFromPicker {
-            photo.image = selectedPhotoFromPicker
+            photo.image = selectedPhoto
         }
         dismiss(animated: true, completion: nil)
     }

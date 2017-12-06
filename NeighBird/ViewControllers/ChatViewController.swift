@@ -39,7 +39,26 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         setupChatComponents()
         findUsersForGroup()
         observeMessages()
+        showAndHideKeyboard()
     }
+    
+    func showAndHideKeyboard(){
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc func handleKeyboardWillShow(notification: Notification){
+        let keyboardFrame = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        
+        containerViewBottomAnchor?.constant = -keyboardFrame!.height
+    }
+    
+    @objc func handleKeyboardWillHide(notification: Notification){
+        containerViewBottomAnchor?.constant = 0
+    }
+    
+    
     
     func setupChatComponents(){
         setupTopComponents()
@@ -103,6 +122,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         collectionView?.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
     }
     
+    var containerViewBottomAnchor: NSLayoutConstraint?
     
     func setupBottomComponents(){
         let containerView = UIView()
@@ -114,7 +134,8 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         //anchors
         
         containerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        containerViewBottomAnchor = containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        containerViewBottomAnchor?.isActive = true
         containerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         containerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
@@ -180,7 +201,6 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         setupCell(cell: cell, message: message)
         
         cell.bubbleWidthAnchor?.constant = estimateFrameForText(text: message.text!).width + 32
-        
         return cell
     }
     
