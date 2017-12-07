@@ -79,7 +79,7 @@ class SignupViewController: UIViewController, SlideToControlDelegate, UITextFiel
                         message = "Indtast venligst adresse"
                     }
                 case zipcode:
-                    if (zipcode.text?.isEmpty)!{
+                    if (zipcode.text?.isEmpty)! || zipcode.text?.count != 4{
                         message = "Indtast venligst postnummer"
                     }
                 case city:
@@ -87,7 +87,7 @@ class SignupViewController: UIViewController, SlideToControlDelegate, UITextFiel
                         message = "Indtast venligst by"
                     }
                 case phoneNumber:
-                    if (phoneNumber.text?.isEmpty)!{
+                    if (phoneNumber.text?.isEmpty)! || phoneNumber.text?.count != 8{
                         message = "Indtast venligst telefon nummer"
                     }
                 case email:

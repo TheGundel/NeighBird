@@ -49,7 +49,7 @@ class AlertViewController: UIViewController, SlideToControlDelegate {
             
             let groupId = button.dropView.selectedGroup.key
             sendAlertMessage(groupId: groupId!, alertMessage: (topButton.titleLabel?.text)!)
-            let alert: UIAlertController = UIAlertController(title: "Slider", message: "work", preferredStyle: .alert)
+            let alert: UIAlertController = UIAlertController(title: "Alert afsendt", message: "Din gruppe er notificeret", preferredStyle: .alert)
             let action: UIAlertAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
                 alert.dismiss(animated: true, completion: nil)
             }
@@ -57,6 +57,7 @@ class AlertViewController: UIViewController, SlideToControlDelegate {
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
         }
+        alertButton.setThumbViewX()
     }
     
     func loadGroups(){
