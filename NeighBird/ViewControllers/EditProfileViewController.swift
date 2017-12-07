@@ -18,7 +18,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     var ref: DatabaseReference!
     
     @IBOutlet weak var image: UIImageView!
-    
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
     @IBOutlet weak var address: UITextField!
@@ -78,9 +77,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                 image.image = picture
             }
         }
-        
-        
-        
     }
 
     func updateUserInfo(){
@@ -106,15 +102,15 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
                         return
                     }
                     if let profilePhotoUurl = metadata?.downloadURL()?.absoluteString {
-            let userRef = self.dataBaseRef.child("users").child((Auth.auth().currentUser!.uid))
-            let post = ["firstName": self.firstName.text!, "lastName": self.lastName.text!, "email": self.email.text!, "zipcode": self.zipcode.text!, "address": self.address.text!, "city": self.City.text!, "phoneNumber": self.phoneNumber.text!, "profilePhotoURL": profilePhotoUurl]
-            userRef.updateChildValues(post)
-            self.updateUserDefaults()
-            
-            
-                    }})}}
+                        let userRef = self.dataBaseRef.child("users").child((Auth.auth().currentUser!.uid))
+                        let post = ["firstName": self.firstName.text!, "lastName": self.lastName.text!, "email": self.email.text!, "zipcode": self.zipcode.text!, "address": self.address.text!, "city": self.City.text!, "phoneNumber": self.phoneNumber.text!, "profilePhotoURL": profilePhotoUurl]
+                        userRef.updateChildValues(post)
+                        self.updateUserDefaults()
+                    }
+                })
+            }
+        }
     }
-    
     
     func updateUserDefaults(){
         let userRef = dataBaseRef.child("users").child((Auth.auth().currentUser!.uid))
@@ -150,10 +146,10 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             alertComtroller.addAction(defaultAction)
             present(alertComtroller, animated: true, completion: nil)
         } else {
-                let picker = UIImagePickerController()
-                picker.delegate = self
-                picker.allowsEditing = true
-                self.present(picker, animated: true, completion: nil)
+            let picker = UIImagePickerController()
+            picker.delegate = self
+            picker.allowsEditing = true
+            self.present(picker, animated: true, completion: nil)
         }
     }
     
@@ -164,10 +160,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     var selectedPhotoFromPicker: UIImage?
     
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         //Vi sætter her vores variable to enten at være editedPhoto eller originalPhoto.
         //Her bliver vi nød til at kaste det til et UIImage med as?
@@ -176,7 +169,6 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         } else if let originalPhoto = info["UIImagePickerControllerOriginalImage"] as? UIImage {
             selectedPhotoFromPicker = originalPhoto
         }
-        
         if let selectedPhoto = selectedPhotoFromPicker {
             image.image = selectedPhoto
         }

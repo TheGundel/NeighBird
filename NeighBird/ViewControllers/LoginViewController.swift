@@ -13,18 +13,15 @@ import FirebaseDatabase
 import FirebaseStorage
 import Photos
 
-
 func getDocumentsURL() -> URL {
     let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     return documentsURL
 }
 
 func fileInDocumentsDirectory(filename: String) -> String {
-    
     let fileURL = getDocumentsURL().appendingPathComponent(filename)
     return fileURL.path
 }
-
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -65,16 +62,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         }
                     }
                     self.perform(#selector (self.changeView), with: nil, afterDelay: 2.5)
-                    /*let alertController = UIAlertController(title: "Succes", message: "Du vil nu blive logget ind", preferredStyle: .alert)
-                    
-                    let action: UIAlertAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
-                        alertController.dismiss(animated: true, completion: nil)
-                        
-                     
-                    }
-                    alertController.addAction(action)
-                    self.present(alertController, animated: true, completion: nil)
-                    */
                 } else {
                     print("FAIL")
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
@@ -84,7 +71,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                     self.present(alertController, animated: true, completion: nil)
                 }
-                
             }
         }
     }
@@ -112,8 +98,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
         return true
     }
-    
-
 }
 
 extension UIViewController {
@@ -126,7 +110,6 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-    
 }
 
 var dataBaseRef: DatabaseReference! {
@@ -138,7 +121,6 @@ var storageRef: Storage {
 }
 
 func loadUserInfo() {
-    
     let userRef = dataBaseRef.child("users").child((Auth.auth().currentUser!.uid))
     userRef.observe(.value, with: {(snapshot) in
         
@@ -146,7 +128,8 @@ func loadUserInfo() {
         user.setDefaults()
     }) { (error) in
         print (error.localizedDescription)
-    }}
+    }
+}
 
 
 

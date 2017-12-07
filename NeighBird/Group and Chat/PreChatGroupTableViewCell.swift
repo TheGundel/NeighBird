@@ -11,6 +11,10 @@ import Firebase
 
 class PreChatGroupTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var groupNameLabel: UILabel!
+    @IBOutlet weak var latestMessageLabel: UILabel!
+    @IBOutlet weak var timestampLabel: UILabel!
+    
     var message: Message? {
         didSet {
             // Configure the cell...
@@ -31,15 +35,8 @@ class PreChatGroupTableViewCell: UITableViewCell {
                 dateFormatter.dateFormat = "HH:mm:ss"
                 timestampLabel.text = dateFormatter.string(from: timestampDate as Date)
             }
-            
-            
         }
     }
-    
-    @IBOutlet weak var groupNameLabel: UILabel!
-    @IBOutlet weak var latestMessageLabel: UILabel!
-    @IBOutlet weak var timestampLabel: UILabel!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,5 +48,4 @@ class PreChatGroupTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    
 }

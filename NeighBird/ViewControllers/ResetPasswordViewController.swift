@@ -16,7 +16,7 @@ class ResetPasswordViewController: UIViewController {
     
     @IBAction func resetPassword(_ sender: UIButton) {
         if self.email.text == "" {
-                let alertController = UIAlertController(title: "Fejl", message: "Indtast venligst email", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Fejl", message: "Indtast venligst email", preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             alertController.addAction(defaultAction)

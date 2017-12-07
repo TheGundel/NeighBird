@@ -56,8 +56,7 @@ struct ProfileHandler {
         UserDefaults.standard.set(phoneNumber, forKey: "phoneNumber")
         UserDefaults.standard.set(imageURL, forKey: "imageURL")
         
-        
-       UserDefaults.standard.synchronize()
+        UserDefaults.standard.synchronize()
     }
     let userID = Auth.auth().currentUser?.uid
 }

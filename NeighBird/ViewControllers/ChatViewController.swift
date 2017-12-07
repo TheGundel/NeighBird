@@ -58,8 +58,6 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         containerViewBottomAnchor?.constant = 0
     }
     
-    
-    
     func setupChatComponents(){
         setupTopComponents()
         setupBottomComponents()
@@ -80,11 +78,11 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         topContainerView.heightAnchor.constraint(equalToConstant: 76).isActive = true
         
         let backButton = UIButton(type: .custom)
-//        backButton.setTitle("<", for: .normal)
+        //        backButton.setTitle("<", for: .normal)
         backButton.setImage(#imageLiteral(resourceName: "backbtnImage"), for: .normal)
         backButton.imageView?.contentMode = .scaleAspectFit
         
-//        backButton.setTitleColor(UIColor .black, for: .normal)
+        //        backButton.setTitleColor(UIColor .black, for: .normal)
         backButton.translatesAutoresizingMaskIntoConstraints = false
         topContainerView.addSubview(backButton)
         
@@ -105,7 +103,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         
         //anchors
         chatName.centerXAnchor.constraint(equalTo: topContainerView.centerXAnchor).isActive = true
-      //  chatName.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        //  chatName.widthAnchor.constraint(equalToConstant: 150).isActive = true
         chatName.heightAnchor.constraint(equalTo: topContainerView.heightAnchor).isActive = true
         chatName.centerYAnchor.constraint(equalTo: topContainerView.centerYAnchor, constant: 8).isActive = true
         
@@ -131,8 +129,8 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         containerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         let sendButton = UIButton(type: .custom)
-//        sendButton.setTitle("Send", for: .normal)
-//        sendButton.backgroundColor = UIColor.yellow
+        //        sendButton.setTitle("Send", for: .normal)
+        //        sendButton.backgroundColor = UIColor.yellow
         sendButton.setImage(#imageLiteral(resourceName: "sendButtonImage"), for: .normal)
         sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
         sendButton.translatesAutoresizingMaskIntoConstraints = false
@@ -161,21 +159,21 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         if inputTextField.text!.isEmpty{
             return
         } else {
-        let ref = Database.database().reference().child("messages").childByAutoId()
-        let sender = Auth.auth().currentUser?.uid
-        let toId = group!.key!
-        let timestamp = Int(NSDate().timeIntervalSince1970) as NSNumber
-        //let groupId = sometihing
+            let ref = Database.database().reference().child("messages").childByAutoId()
+            let sender = Auth.auth().currentUser?.uid
+            let toId = group!.key!
+            let timestamp = Int(NSDate().timeIntervalSince1970) as NSNumber
+            //let groupId = sometihing
             let values = ["text": inputTextField.text!, "senderId": sender!, "toId": toId, "timestamp": timestamp, "isAlert": "N"] as [String : Any]
-        ref.updateChildValues(values)
+            ref.updateChildValues(values)
             
             
-        let messageRef = Database.database().reference()
-        for user in members {
-            messageRef.child("user-messages").child(user).updateChildValues([ref.key: 1])
-        }
+            let messageRef = Database.database().reference()
+            for user in members {
+                messageRef.child("user-messages").child(user).updateChildValues([ref.key: 1])
+            }
             
-        inputTextField.text = ""
+            inputTextField.text = ""
         }
     }
     
@@ -235,8 +233,6 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         return NSString(string: text).boundingRect(with: size, options: options, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 16)], context: nil)
     }
     
-    
-    
     @objc func returnToPreView(){
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "Home") as! UITabBarController
@@ -281,7 +277,6 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
                         self.messages.append(message)
                         DispatchQueue.main.async { self.collectionView?.reloadData() }
                     }
-                    
                 }
             }, withCancel: nil)
         }, withCancel: nil)

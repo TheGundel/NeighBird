@@ -17,10 +17,10 @@ struct UsersHandler {
     init(snapshot: DataSnapshot){
         ref = snapshot.ref
         let enumerator = snapshot.children
-
+        
         
         while let rest = enumerator.nextObject() as? DataSnapshot {
-           if rest.key == Auth.auth().currentUser?.uid{
+            if rest.key == Auth.auth().currentUser?.uid{
                 break
             }
             
@@ -35,8 +35,6 @@ struct UsersHandler {
                 let user = UserTableElement(name: fullName, address: address!, userID: userID)
                 users.append(user!)
             }
-            
-            
         }
     }
     

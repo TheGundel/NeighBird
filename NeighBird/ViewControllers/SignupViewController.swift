@@ -149,19 +149,16 @@ class SignupViewController: UIViewController, SlideToControlDelegate, UITextFiel
                             
                         })
                     }
-                            let alert: UIAlertController = UIAlertController(title: "Bruger oprettet", message: "Log nu ind i NeighBird", preferredStyle: .alert)
-                            let action: UIAlertAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
-                                alert.dismiss(animated: true, completion: nil)
-                               
-                                //Changes view
-                                let vc = self.storyboard?.instantiateViewController(withIdentifier: "Login")
-                                self.present(vc!, animated: true, completion: nil)
-                            }
-                            alert.addAction(action)
-                            self.present(alert, animated: true, completion: nil)
-                    
-                    
-                    
+                    let alert: UIAlertController = UIAlertController(title: "Bruger oprettet", message: "Log nu ind i NeighBird", preferredStyle: .alert)
+                    let action: UIAlertAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                        alert.dismiss(animated: true, completion: nil)
+                        
+                        //Changes view
+                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "Login")
+                        self.present(vc!, animated: true, completion: nil)
+                    }
+                    alert.addAction(action)
+                    self.present(alert, animated: true, completion: nil)
                 }else {
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                     

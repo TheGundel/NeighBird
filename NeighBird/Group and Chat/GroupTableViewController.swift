@@ -26,6 +26,7 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "createGroup")
         self.present(vc!, animated: true, completion: nil)
     }
+    
     func loadUserMessages(){
         guard let uid = Auth.auth().currentUser?.uid
             else {
@@ -52,7 +53,7 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
             }, withCancel: nil)
         }, withCancel: nil)
-}
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,29 +64,28 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
         //load Groups
         loadUserMessages()
         
+        //Changes layout of add group button
         addButton.layer.borderWidth = 4
         addButton.layer.borderColor = UIColor.white.cgColor
         addButton.titleLabel?.baselineAdjustment = .alignCenters
         addButton.clipsToBounds = true
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return messages.count
     }
-
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "GroupTableViewCell"
@@ -98,5 +98,4 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
         
         return cell
     }
-    
 }

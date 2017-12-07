@@ -34,14 +34,13 @@ struct ErrorHandler {
         return false
     }
     
-    
     func textFieldIsEmpty(message: String, parentView: UIViewController) {
-            let alertComtroller = UIAlertController(title: "Fejl", message: message, preferredStyle: .alert)
-            
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertComtroller.addAction(defaultAction)
-            
-            parentView.present(alertComtroller, animated: true, completion: nil)
+        let alertComtroller = UIAlertController(title: "Fejl", message: message, preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertComtroller.addAction(defaultAction)
+        
+        parentView.present(alertComtroller, animated: true, completion: nil)
     }
     
     func textFieldMatch(uiTextField1: UITextField, uiTextField2: UITextField, message: String, parentView: UIViewController) -> Bool{

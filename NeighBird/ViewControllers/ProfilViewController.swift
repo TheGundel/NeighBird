@@ -46,7 +46,6 @@ class ProfilViewController: UIViewController {
         
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         image.layer.borderColor = UIColor.white.cgColor
@@ -62,5 +61,4 @@ class ProfilViewController: UIViewController {
         super.viewWillAppear(true)
         getUserInfo()
     }
-
 }

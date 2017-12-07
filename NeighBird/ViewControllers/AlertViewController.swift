@@ -16,7 +16,6 @@ class AlertViewController: UIViewController, SlideToControlDelegate {
     @IBOutlet weak var topButton: UIButton!
     @IBOutlet weak var stackView: UIStackView!
     
-    
     @IBAction func selectionHandler(_ sender: UIButton) {
         messageButtons.forEach { (button) in
             UIView.animate(withDuration: 0.5, animations: {
@@ -26,7 +25,7 @@ class AlertViewController: UIViewController, SlideToControlDelegate {
             })
         }
     }
-        
+    
     @IBAction func messageTap(_ sender: UIButton) {
         switch sender.tag{
         case 0:
@@ -47,18 +46,19 @@ class AlertViewController: UIViewController, SlideToControlDelegate {
             }
             alert.addAction(action)
         } else {
-        
-        let groupId = button.dropView.selectedGroup.key
-        sendAlertMessage(groupId: groupId!, alertMessage: (topButton.titleLabel?.text)!)
-        let alert: UIAlertController = UIAlertController(title: "Slider", message: "work", preferredStyle: .alert)
-        let action: UIAlertAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
-            alert.dismiss(animated: true, completion: nil)
-        }
-        
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
+            
+            let groupId = button.dropView.selectedGroup.key
+            sendAlertMessage(groupId: groupId!, alertMessage: (topButton.titleLabel?.text)!)
+            let alert: UIAlertController = UIAlertController(title: "Slider", message: "work", preferredStyle: .alert)
+            let action: UIAlertAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                alert.dismiss(animated: true, completion: nil)
+            }
+            
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
         }
     }
+    
     func loadGroups(){
         let rootRef = Database.database().reference()
         let query = rootRef.child("groups").queryOrdered(byChild: "name")
@@ -87,14 +87,11 @@ class AlertViewController: UIViewController, SlideToControlDelegate {
         let child = alertRef.childByAutoId()
         child.setValue(["senderId": senderId!, "text": alertMessage, "timestamp": timestamp, "toId": groupId, "isAlert": "Y"])
         
-       
-        
         let messageRef = Database.database().reference()
         print(button.dropView.members.count)
         for user in button.dropView.members {
             messageRef.child("user-messages").child(user).updateChildValues([child.key: 1])
         }
-        
     }
     
     override func viewDidLoad() {
@@ -135,7 +132,6 @@ class dropDownButton: UIButton, dropDownProtocol{
         self.dismissDropDown()
     }
     
-    
     var dropView = dropDownView()
     var height = NSLayoutConstraint()
     
@@ -146,7 +142,6 @@ class dropDownButton: UIButton, dropDownProtocol{
         dropView.delegate = self
         
         dropView.translatesAutoresizingMaskIntoConstraints = false
-
     }
     
     override func didMoveToSuperview() {
@@ -160,6 +155,7 @@ class dropDownButton: UIButton, dropDownProtocol{
     }
     
     var isOpen = false
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if isOpen == false {
             isOpen = true
@@ -170,10 +166,6 @@ class dropDownButton: UIButton, dropDownProtocol{
             } else {
                 self.height.constant = self.dropView.tableView.contentSize.height
             }
-            
-            
-            
-            
             NSLayoutConstraint.activate([self.height])
             
             UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
@@ -224,7 +216,7 @@ class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource{
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         self.addSubview(tableView)
-    
+        
         tableView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         tableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
@@ -250,7 +242,6 @@ class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource{
         let group = groups[indexPath.row]
         cell.textLabel?.text = group.name
         
-        
         return cell
     }
     
@@ -274,19 +265,3 @@ class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource{
         }, withCancel: nil)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class PreChatViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource  {
-
+    
     var messages = [Message]()
     var messageDictionary = [String: Message]()
     
@@ -20,7 +20,6 @@ class PreChatViewController: UIViewController,  UITableViewDelegate, UITableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
@@ -66,8 +65,6 @@ class PreChatViewController: UIViewController,  UITableViewDelegate, UITableView
                 }
             })
         }
-        
-        
     }
     
     override func viewDidLoad() {
@@ -77,7 +74,7 @@ class PreChatViewController: UIViewController,  UITableViewDelegate, UITableView
         self.groupTableView.dataSource = self
         self.groupTableView.delegate = self
         self.groupTableView.backgroundColor = .clear
-
+        
         //observeMessages()
         observeUserMessages()
     }
@@ -106,38 +103,37 @@ class PreChatViewController: UIViewController,  UITableViewDelegate, UITableView
                 }
             }
         }
-        }
+    }
     
     func observeUserMessages() {
         guard let uid = Auth.auth().currentUser?.uid
-        else {
-            return
-            }
+            else {
+                return
+        }
         let ref = Database.database().reference().child("user-messages").child(uid)
         ref.observe(.childAdded, with: { (snapshot) in
             let messageId = snapshot.key
             let messageRef = Database.database().reference().child("messages").child(messageId)
             messageRef.observe(.value, with: { (snapshot) in
-                    if let value = snapshot.value as? NSDictionary {
-                        let message = Message()
-                        let text = value["text"] as? String ?? "Name not found"
-                        let toId = value["toId"] as? String ?? "Owner not found"
-                        let timestamp = value["timestamp"] as? NSNumber
-                        message.text = text
-                        message.toId = toId
-                        message.timestamp = timestamp
-                        if let toId = message.toId{
-                            self.messageDictionary[toId] = message
-                            self.messages = Array(self.messageDictionary.values)
-                            self.messages.sort(by: { (message1, message2) -> Bool in
-                                return message1.timestamp!.intValue > message2.timestamp!.intValue
-                            })
-                        }
-                        DispatchQueue.main.async { self.groupTableView.reloadData() }
+                if let value = snapshot.value as? NSDictionary {
+                    let message = Message()
+                    let text = value["text"] as? String ?? "Name not found"
+                    let toId = value["toId"] as? String ?? "Owner not found"
+                    let timestamp = value["timestamp"] as? NSNumber
+                    message.text = text
+                    message.toId = toId
+                    message.timestamp = timestamp
+                    if let toId = message.toId{
+                        self.messageDictionary[toId] = message
+                        self.messages = Array(self.messageDictionary.values)
+                        self.messages.sort(by: { (message1, message2) -> Bool in
+                            return message1.timestamp!.intValue > message2.timestamp!.intValue
+                        })
+                    }
+                    DispatchQueue.main.async { self.groupTableView.reloadData() }
                 }
             }, withCancel: nil)
         }, withCancel: nil)
     }
-        
 }
 

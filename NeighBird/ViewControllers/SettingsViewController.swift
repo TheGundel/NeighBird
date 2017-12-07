@@ -27,7 +27,6 @@ class SettingsViewController: UIViewController {
         popUpVc.textBox.numberOfLines = 0
         popUpVc.textBox.text = "Nogle smarte ord omkring Neighbird"
         popUpVc.textBox.sizeToFit()
-    
     }
     
     @IBAction func helpPopUp(_ sender: UIButton) {
@@ -55,8 +54,6 @@ class SettingsViewController: UIViewController {
                 print(error.localizedDescription)
             }
         }
-        
     }
-    
 }
 

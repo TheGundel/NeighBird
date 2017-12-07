@@ -24,9 +24,11 @@ class CreateGroupTableViewController: UIViewController, UITableViewDataSource, U
         createGroup()
         changeView()
     }
+    
     @IBAction func Cancel(_ sender: UIButton) {
         changeView()
     }
+    
     func getUsers(){
         let usersRef = ref.child("users")
         usersRef.observe(.value) { (snapshot) in
@@ -41,12 +43,12 @@ class CreateGroupTableViewController: UIViewController, UITableViewDataSource, U
     func createGroup(){
         let owner = Auth.auth().currentUser?.uid
         let child = self.ref.child("groups").childByAutoId()
-            child.setValue(["name": "\(groupNameLabel.text!)", "owner": "\(owner!)"])
+        child.setValue(["name": "\(groupNameLabel.text!)", "owner": "\(owner!)"])
         let welcomeMessage = "Velkommen til min gruppe. Lad os hjælpe hinanden"
         let timestamp = Int(NSDate().timeIntervalSince1970) as NSNumber
         //send welcome message
         let messageChild = ref.child("messages").childByAutoId()
-            messageChild.setValue(["senderId": owner!, "text": welcomeMessage, "timestamp": timestamp, "toId": child.key, "isAlert": "N"])
+        messageChild.setValue(["senderId": owner!, "text": welcomeMessage, "timestamp": timestamp, "toId": child.key, "isAlert": "N"])
         
         for user in selectedUsers {
             ref.child("user-messages").child(user).updateChildValues([messageChild.key: 1])
@@ -54,7 +56,6 @@ class CreateGroupTableViewController: UIViewController, UITableViewDataSource, U
         }
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         userElements.removeAll()
@@ -66,36 +67,36 @@ class CreateGroupTableViewController: UIViewController, UITableViewDataSource, U
     override func viewWillAppear(_ animated: Bool) {
         self.getUsers()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return userElements.count
     }
-
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "UserTableViewCell"
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? UserTableViewCell else {
             fatalError("Dequeue cell is not instance of UserTableViewCell")
         }
-
+        
         let user = userElements[indexPath.row]
         // Configure the cell...
         cell.UserLabel.text = user.name
         cell.addressLabel.text = user.address
-
+        
         return cell
     }
     

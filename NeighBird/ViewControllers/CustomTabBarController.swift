@@ -32,33 +32,6 @@ class CustomTabBarController: UITabBarController {
         }
     }
     
-//    func getImage(){
-//        let userRef = dataBaseRef.child("users").child((Auth.auth().currentUser!.uid))
-//        userRef.observe(.value, with: {(snapshot) in
-//
-//            let user = ProfileHandler(snapshot: snapshot)
-//
-//            print(user.firstName!)
-//
-//            let photoURL = user.imageURL!
-//            self.storageRef.reference(forURL: photoURL).getData(maxSize: 2 * 1024 * 1024, completion: { (photoData, error) in
-//
-//                if error == nil {
-//                    if let data = photoData {
-//                        self.middleButton.setImage(UIImage(data:data), for: UIControlState.normal)
-////                        image = UIImage(data: data)
-//                        print("The picture is hereeee")
-//                    }
-//                } else {
-//                    print(error!.localizedDescription)
-//                }
-//            })
-//
-//        }) { (error) in
-//            print (error.localizedDescription)
-//        }
-//    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         middleButton.frame = CGRect.init(x: self.tabBar.center.x - 32, y: self.view.bounds.height - 74, width: 66, height: 66)
@@ -76,7 +49,7 @@ class CustomTabBarController: UITabBarController {
         
         if(UserDefaults.standard.object(forKey: "picture") != nil){
             let picture = UIImage(data: UserDefaults.standard.object(forKey: "picture") as! Data)
-                middleButton.setImage(picture, for: .normal)
+            middleButton.setImage(picture, for: .normal)
         }
         
         middleButton.layer.masksToBounds = false
