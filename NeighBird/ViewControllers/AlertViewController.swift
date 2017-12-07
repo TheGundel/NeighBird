@@ -200,9 +200,7 @@ class dropDownButton: UIButton, dropDownProtocol{
 
 class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource{
     
-    var groups = [Group]()
-    var options = [String]()
-    
+    var groups = [Group]()    
     var tableView = UITableView()
     
     var delegate: dropDownProtocol!

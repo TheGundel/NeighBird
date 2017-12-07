@@ -38,10 +38,6 @@ class CustomTabBarController: UITabBarController {
         middleButton.layer.cornerRadius = 32
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
     func setupMiddleButton(){
         middleButton.backgroundColor = .black
         middleButton.layer.borderWidth = 4

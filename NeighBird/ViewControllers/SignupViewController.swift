@@ -184,11 +184,6 @@ class SignupViewController: UIViewController, SlideToControlDelegate, UITextFiel
         textFields.append(repeatpassword)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let characterSet = CharacterSet(charactersIn: string)
         

@@ -13,8 +13,6 @@ import FirebaseDatabase
 class GroupTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     //    Mark: Properties
     
-    var groups = [Group]()
-    
     var messages = [Message]()
     var messageDictionary = [String: Message]()
     
@@ -69,11 +67,6 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
         addButton.layer.borderColor = UIColor.white.cgColor
         addButton.titleLabel?.baselineAdjustment = .alignCenters
         addButton.clipsToBounds = true
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     // MARK: - Table view data source
