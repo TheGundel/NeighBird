@@ -31,42 +31,17 @@ class ProfilViewController: UIViewController {
     var storageRef: Storage {
         return Storage.storage()
     }
-
-//    func loadUserInfo() {
-//
-//        let userRef = dataBaseRef.child("users").child((Auth.auth().currentUser!.uid))
-//        userRef.observe(.value, with: {(snapshot) in
-//            
-//            let user = ProfileHandler(snapshot: snapshot)
-////            self.name.text = user.firstName! + " " + user.lastName!
-////            self.adress.text = user.adress! + " - " + user.zipcode! + " " + user.city!
-////            self.phoneNumber.text = user.phoneNumber
-//            
-//            let photoURL = user.imageURL!
-//            self.storageRef.reference(forURL: photoURL).getData(maxSize: 2 * 1024 * 1024, completion: { (photoData, error) in
-//
-//                if error == nil {
-//                    if let data = photoData {
-//                        self.image.image = UIImage(data: data)
-//                    }
-//                } else {
-//                    print(error!.localizedDescription)
-//                }
-//            })
-//
-//        }) { (error) in
-//            print (error.localizedDescription)
-//        }}
     
-    func setUserInfo(){
+    func getUserInfo(){
         let name = "\(UserDefaults.standard.object(forKey: "firstName")!) \(UserDefaults.standard.object(forKey: "lastName")!)"
         self.name.text = name
         
         adress.text = UserDefaults.standard.object(forKey: "address") as? String
         phoneNumber.text = UserDefaults.standard.object(forKey: "phoneNumber") as? String
         
-        if let picture = UIImage(data: UserDefaults.standard.object(forKey: "picture") as! Data){
-            image.image = picture
+        if(UserDefaults.standard.object(forKey: "picture") != nil){
+        let picture = UIImage(data: UserDefaults.standard.object(forKey: "picture") as! Data)
+        image.image = picture
         }
         
     }
@@ -79,14 +54,13 @@ class ProfilViewController: UIViewController {
         image.layer.masksToBounds = false
         image.layer.cornerRadius = image.frame.height/2
         image.clipsToBounds = true
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleToFill
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        loadUserInfo()
-        setUserInfo()
+        getUserInfo()
     }
 
 }

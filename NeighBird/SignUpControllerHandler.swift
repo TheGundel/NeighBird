@@ -7,14 +7,24 @@
 //
 
 import UIKit
+import Photos
 
 extension SignupViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
    @objc func handleSelectProfilePhoto() {
+    let authorizationStatus = PHPhotoLibrary.authorizationStatus()
+    if authorizationStatus == PHAuthorizationStatus.denied {
+        let alertComtroller = UIAlertController(title: "Adgang nægtet", message: "Ops.. Vi har ikke adgang til dine billeder. Gå til indstillinger og giv adgang", preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertComtroller.addAction(defaultAction)
+        present(alertComtroller, animated: true, completion: nil)
+    } else {
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = true
         present(picker, animated: true, completion: nil)
+    }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

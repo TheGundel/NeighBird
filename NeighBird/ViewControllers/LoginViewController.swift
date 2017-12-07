@@ -11,6 +11,8 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
+import Photos
+
 
 func getDocumentsURL() -> URL {
     let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
@@ -32,6 +34,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var forgotPassword: UIButton!
     @IBOutlet weak var newUser: UIButton!
     
+    var indicator = UIActivityIndicatorView()
+    
     @IBAction func loginAction(_ sender: UIButton) {
         
         if self.email.text == "" || self.password.text == "" {
@@ -47,13 +51,30 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
                 if error == nil {
                     print("Login successful")
-                    
+                    self.indicator.transform = CGAffineTransform(scaleX: 3,y: 3)
+                    self.indicator.center = self.view.center
+                    self.indicator.hidesWhenStopped = true
+                    self.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+                    self.view.addSubview(self.indicator)
+                    self.indicator.startAnimating()
                     //Go to home screen if login was successfull
+                    DispatchQueue.main.async {
+                        loadUserInfo()
+                        DispatchQueue.main.async {
+                            
+                        }
+                    }
+                    self.perform(#selector (self.changeView), with: nil, afterDelay: 2.5)
+                    /*let alertController = UIAlertController(title: "Succes", message: "Du vil nu blive logget ind", preferredStyle: .alert)
                     
-                    loadUserInfo()
-                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home")
-                    self.present(vc!, animated: true, completion: nil)
-                    
+                    let action: UIAlertAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
+                        alertController.dismiss(animated: true, completion: nil)
+                        
+                     
+                    }
+                    alertController.addAction(action)
+                    self.present(alertController, animated: true, completion: nil)
+                    */
                 } else {
                     print("FAIL")
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
@@ -66,6 +87,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 
             }
         }
+    }
+    
+    @objc func changeView(){
+        indicator.stopAnimating()
+        //Changes view
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "Home")
+        self.present(vc!, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {

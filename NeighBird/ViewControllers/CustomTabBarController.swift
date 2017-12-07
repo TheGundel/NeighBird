@@ -73,10 +73,10 @@ class CustomTabBarController: UITabBarController {
         middleButton.backgroundColor = .black
         middleButton.layer.borderWidth = 4
         middleButton.layer.borderColor = UIColor.white.cgColor
-//        getImage()
+        
         if(UserDefaults.standard.object(forKey: "picture") != nil){
             let picture = UIImage(data: UserDefaults.standard.object(forKey: "picture") as! Data)
-                middleButton.setImage(picture, for: UIControlState.normal)
+                middleButton.setImage(picture, for: .normal)
         }
         
         middleButton.layer.masksToBounds = false
@@ -92,7 +92,5 @@ class CustomTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMiddleButton()
-        
     }
-    
 }
