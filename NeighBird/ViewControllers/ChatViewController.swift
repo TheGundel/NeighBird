@@ -34,7 +34,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         collectionView?.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 50, 0)
         collectionView?.translatesAutoresizingMaskIntoConstraints = false
         collectionView?.alwaysBounceVertical = true
-        collectionView?.backgroundColor = UIColor.lightGray
+        collectionView?.backgroundColor = UIColor(red: 225/255, green: 225/255, blue: 225/255, alpha: 1)
         collectionView?.register(ChatMessageCell.self, forCellWithReuseIdentifier: cellId)
         setupChatComponents()
         findUsersForGroup()
@@ -79,16 +79,19 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         topContainerView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         topContainerView.heightAnchor.constraint(equalToConstant: 76).isActive = true
         
-        let backButton = UIButton(type: .system)
-        backButton.setTitle("Tilbage", for: .normal)
-        backButton.setTitleColor(UIColor .black, for: .normal)
+        let backButton = UIButton(type: .custom)
+//        backButton.setTitle("<", for: .normal)
+        backButton.setImage(#imageLiteral(resourceName: "backbtnImage"), for: .normal)
+        backButton.imageView?.contentMode = .scaleAspectFit
+        
+//        backButton.setTitleColor(UIColor .black, for: .normal)
         backButton.translatesAutoresizingMaskIntoConstraints = false
         topContainerView.addSubview(backButton)
         
         //anchors
         backButton.leftAnchor.constraint(equalTo: topContainerView.leftAnchor).isActive = true
         backButton.centerYAnchor.constraint(equalTo: topContainerView.centerYAnchor, constant: 8).isActive = true
-        backButton.widthAnchor.constraint(equalToConstant: 80).isActive = true
+        backButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
         backButton.heightAnchor.constraint(equalTo: topContainerView.heightAnchor).isActive = true
         
         backButton.addTarget(self, action: #selector(returnToPreView), for: .touchUpInside)
@@ -106,17 +109,6 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         chatName.heightAnchor.constraint(equalTo: topContainerView.heightAnchor).isActive = true
         chatName.centerYAnchor.constraint(equalTo: topContainerView.centerYAnchor, constant: 8).isActive = true
         
-        let separatorLineView = UIView()
-        separatorLineView.backgroundColor = UIColor.darkGray
-        separatorLineView.translatesAutoresizingMaskIntoConstraints = false
-        topContainerView.addSubview(separatorLineView)
-        //anchors
-        separatorLineView.leftAnchor.constraint(equalTo: topContainerView.leftAnchor).isActive = true
-        separatorLineView.bottomAnchor.constraint(equalTo: topContainerView.bottomAnchor).isActive = true
-        separatorLineView.widthAnchor.constraint(equalTo: topContainerView.widthAnchor).isActive = true
-        separatorLineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
-        
-        
         collectionView?.topAnchor.constraint(equalTo: topContainerView.bottomAnchor).isActive = true
         collectionView?.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         collectionView?.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -132,7 +124,6 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         view.addSubview(containerView)
         
         //anchors
-        
         containerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         containerViewBottomAnchor = containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         containerViewBottomAnchor?.isActive = true
@@ -207,13 +198,11 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
     
     private func setupCell(cell: ChatMessageCell, message: Message){
         if message.senderId == Auth.auth().currentUser?.uid{
-            cell.bubbleView.backgroundColor = ChatMessageCell.blueColor
             cell.textView.textColor = UIColor.black
             cell.bubbleViewLeftAnchor?.isActive = false
             cell.bubbleViewRightAnchor?.isActive = true
             
         } else {
-            cell.bubbleView.backgroundColor = UIColor(displayP3Red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
             cell.textView.textColor = UIColor.black
             cell.bubbleViewRightAnchor?.isActive = false
             cell.bubbleViewLeftAnchor?.isActive = true
@@ -221,6 +210,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         if message.isAlert == "Y" {
             cell.bubbleView.backgroundColor = UIColor(red:254/255, green:237/255, blue:1/255, alpha:1.0)
             cell.textView.textColor = UIColor.black
+            cell.textView.font = UIFont.boldSystemFont(ofSize: 16)
         }
     }
     
