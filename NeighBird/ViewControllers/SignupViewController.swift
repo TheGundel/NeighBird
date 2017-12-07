@@ -50,8 +50,9 @@ class SignupViewController: UIViewController, SlideToControlDelegate, UITextFiel
 
         slideButton.delegate = self
         
-        zipcode.delegate = self
-        phoneNumber.delegate = self
+        for textField in textFields{
+            textField.delegate = self
+        }
         
         setTextFieldArray()
         
@@ -189,8 +190,16 @@ class SignupViewController: UIViewController, SlideToControlDelegate, UITextFiel
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let allowedCharacters = CharacterSet.decimalDigits
         let characterSet = CharacterSet(charactersIn: string)
-        return allowedCharacters.isSuperset(of: characterSet)
+        
+        if textField == phoneNumber || textField == zipcode{
+            let allowedCharacters = CharacterSet.decimalDigits
+            return allowedCharacters.isSuperset(of: characterSet)
+        } else if textField == email{
+            return true
+            
+        }
+        return CharacterSet.letters.isSuperset(of: characterSet)
+        
     }
 }
