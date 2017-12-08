@@ -109,7 +109,7 @@
 		E9032C421FD2989300360D0C /* PreChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreChatViewController.swift; sourceTree = "<group>"; };
 		E9032C461FD29A7100360D0C /* PreChatGroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreChatGroupTableViewCell.swift; sourceTree = "<group>"; };
 		E91A3F1A1FD4746F00589813 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E9C215991FD695DA00A533AA /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ChatMessageCell.swift; path = Model/ChatMessageCell.swift; sourceTree = "<group>"; };
+		E9C215991FD695DA00A533AA /* ChatMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessageCell.swift; sourceTree = "<group>"; };
 		E9EB6C101FD33D3C00DB5D2F /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,23 +141,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		561FFA211FCB32D30067D893 /* Group and Chat */ = {
-			isa = PBXGroup;
-			children = (
-				5682DBC91FCC75EE00DEECC3 /* GroupTableViewCell.swift */,
-				5682DBCB1FCC7A1600DEECC3 /* GroupTableViewController.swift */,
-				563FF4AC1FCF1BB7009ACCA5 /* UserTableViewCell.swift */,
-				563FF4B21FCF21D4009ACCA5 /* UserTableElement.swift */,
-				E9032C3C1FD1C04E00360D0C /* Group.swift */,
-				E9032C461FD29A7100360D0C /* PreChatGroupTableViewCell.swift */,
-				E9EB6C101FD33D3C00DB5D2F /* Message.swift */,
-			);
-			path = "Group and Chat";
-			sourceTree = "<group>";
-		};
 		561FFA241FCB33D30067D893 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5682DBCB1FCC7A1600DEECC3 /* GroupTableViewController.swift */,
 				5633C3FF1FAAFC1F00B091F9 /* LoginViewController.swift */,
 				5633C4011FAB0D7100B091F9 /* SignupViewController.swift */,
 				564EBA861FC6CF4C00BFCB45 /* EditProfileViewController.swift */,
@@ -200,17 +187,13 @@
 		56F5F2D71F8F51F2004D3E62 /* NeighBird */ = {
 			isa = PBXGroup;
 			children = (
-				E9C215991FD695DA00A533AA /* ChatMessageCell.swift */,
-				561FFA211FCB32D30067D893 /* Group and Chat */,
+				E99E99F61FDA9A94002C14E0 /* Helpers */,
+				E99E99F41FDA9A5E002C14E0 /* Cells */,
+				E99E99F71FDA9AD7002C14E0 /* Third Party Code */,
 				56F5F2D81F8F51F2004D3E62 /* AppDelegate.swift */,
+				E99E99F51FDA9A7E002C14E0 /* Models */,
 				561FFA241FCB33D30067D893 /* ViewControllers */,
 				56F5F2DC1F8F51F2004D3E62 /* Main.storyboard */,
-				569766AF1FD02D120096D3BC /* SlideToControl.swift */,
-				569766AD1FD02CFE0096D3BC /* SlideToControl.xib */,
-				5677BC281FC6DC32000F8176 /* ProfileHandler.swift */,
-				564E4E0D1FD4140500EAF251 /* ErrorHandler.swift */,
-				56B9FD7E1FB4BA3B00F82589 /* SignUpControllerHandler.swift */,
-				563FF4B01FCF20C3009ACCA5 /* UsersHandler.swift */,
 				56F5F2DF1F8F51F2004D3E62 /* Assets.xcassets */,
 				56F5F2E11F8F51F2004D3E62 /* LaunchScreen.storyboard */,
 				56F5F2E41F8F51F2004D3E62 /* Info.plist */,
@@ -257,6 +240,47 @@
 				32D2684AD6D97ABC92182600 /* Pods-NeighBirdUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E99E99F41FDA9A5E002C14E0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				5682DBC91FCC75EE00DEECC3 /* GroupTableViewCell.swift */,
+				563FF4AC1FCF1BB7009ACCA5 /* UserTableViewCell.swift */,
+				E9C215991FD695DA00A533AA /* ChatMessageCell.swift */,
+				E9032C461FD29A7100360D0C /* PreChatGroupTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		E99E99F51FDA9A7E002C14E0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E9EB6C101FD33D3C00DB5D2F /* Message.swift */,
+				E9032C3C1FD1C04E00360D0C /* Group.swift */,
+				563FF4B21FCF21D4009ACCA5 /* UserTableElement.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E99E99F61FDA9A94002C14E0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				563FF4B01FCF20C3009ACCA5 /* UsersHandler.swift */,
+				56B9FD7E1FB4BA3B00F82589 /* SignUpControllerHandler.swift */,
+				564E4E0D1FD4140500EAF251 /* ErrorHandler.swift */,
+				5677BC281FC6DC32000F8176 /* ProfileHandler.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		E99E99F71FDA9AD7002C14E0 /* Third Party Code */ = {
+			isa = PBXGroup;
+			children = (
+				569766AD1FD02CFE0096D3BC /* SlideToControl.xib */,
+				569766AF1FD02D120096D3BC /* SlideToControl.swift */,
+			);
+			path = "Third Party Code";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
