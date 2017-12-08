@@ -11,6 +11,7 @@ import FirebaseDatabase
 import FirebaseAuth
 
 class CreateGroupTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+    // Variables
     var userElements = [UserTableElement]()
     var selectedUsers = [String]()
     var ref: DatabaseReference! {
@@ -29,6 +30,7 @@ class CreateGroupTableViewController: UIViewController, UITableViewDataSource, U
         changeView()
     }
     
+    //Calls the users child node in Firebase and populates the tableView with users
     func getUsers(){
         let usersRef = ref.child("users")
         usersRef.observe(.value) { (snapshot) in
@@ -40,6 +42,7 @@ class CreateGroupTableViewController: UIViewController, UITableViewDataSource, U
         }
     }
     
+    //Firebase function that creates a group using the typed name and setting the owner to the current user. Also sends out a standard welcoming message to the newly created group and creates the relation between users and a group
     func createGroup(){
         let owner = Auth.auth().currentUser?.uid
         let child = self.ref.child("groups").childByAutoId()

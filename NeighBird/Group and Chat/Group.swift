@@ -8,7 +8,9 @@
 
 import UIKit
 
+//simple Group Object
 class Group: NSObject{
+    // Variables
     var name: String?
     var owner: String?
     var key: String?

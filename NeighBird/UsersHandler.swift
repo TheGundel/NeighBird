@@ -10,7 +10,7 @@ import Firebase
 import FirebaseDatabase
 
 struct UsersHandler {
-    
+    // Variables
     var users = [UserTableElement]()
     var ref: DatabaseReference
     

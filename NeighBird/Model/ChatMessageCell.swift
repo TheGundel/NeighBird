@@ -9,7 +9,7 @@
 import UIKit
 
 class ChatMessageCell: UICollectionViewCell {
-    
+    // Variables
     let senderView: UITextView = {
         let sv = UITextView()
         sv.text = "Sender"
@@ -49,7 +49,7 @@ class ChatMessageCell: UICollectionViewCell {
         addSubview(bubbleView)
         addSubview(textView)
         
-        //anchors
+        //constraints
         bubbleViewRightAnchor = bubbleView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -8)
         bubbleViewRightAnchor?.isActive = true
         
@@ -60,7 +60,7 @@ class ChatMessageCell: UICollectionViewCell {
         bubbleWidthAnchor?.isActive = true
         bubbleView.heightAnchor.constraint(equalTo: self.heightAnchor).isActive = true
         
-        //anchors
+        //constraints
         textView.leftAnchor.constraint(equalTo: bubbleView.leftAnchor, constant: 8).isActive = true
         textView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         textView.rightAnchor.constraint(equalTo: bubbleView.rightAnchor).isActive = true

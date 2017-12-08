@@ -12,7 +12,7 @@ import FirebaseDatabase
 import FirebaseStorage
 
 class CustomTabBarController: UITabBarController {
-    
+    // Variables
     let middleButton = UIButton.init(type: .custom)
     
     var dataBaseRef: DatabaseReference! {
@@ -38,6 +38,7 @@ class CustomTabBarController: UITabBarController {
         middleButton.layer.cornerRadius = 32
     }
     
+    //Setup the middlebutton to be round and populate with profilepicture
     func setupMiddleButton(){
         middleButton.backgroundColor = .black
         middleButton.layer.borderWidth = 4

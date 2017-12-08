@@ -9,6 +9,7 @@
 import UIKit
 
 class PopUpViewController: UIViewController {
+    // Variables
     @IBOutlet weak var textBox: UILabel!
     @IBOutlet weak var headerText: UILabel!
     

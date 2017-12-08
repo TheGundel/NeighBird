@@ -8,9 +8,9 @@
 
 import UIKit
 
+//A user Element
 class UserTableElement {
-    //    Mark: Properties
-    
+    // Variables
     var name: String
     var address: String
     var userID: String

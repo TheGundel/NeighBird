@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 
 class PreChatViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource  {
-    
+    // Variables
     var messages = [Message]()
     var messageDictionary = [String: Message]()
     
@@ -40,6 +40,7 @@ class PreChatViewController: UIViewController,  UITableViewDelegate, UITableView
         return cell
     }
     
+    //Changes view to the ChatViewController for the chosen group
     func showChatViewControllerForGroup(group: Group){
         let chatViewController = ChatViewController(collectionViewLayout: UICollectionViewFlowLayout())
         chatViewController.group = group
@@ -79,32 +80,7 @@ class PreChatViewController: UIViewController,  UITableViewDelegate, UITableView
         observeUserMessages()
     }
     
-    func observeMessages() {
-        let rootRef = Database.database().reference()
-        let query = rootRef.child("messages").queryOrdered(byChild: "toId")
-        query.observe(.value) { (snapshot) in
-            for child in snapshot.children.allObjects as! [DataSnapshot] {
-                if let value = child.value as? NSDictionary {
-                    let message = Message()
-                    let text = value["text"] as? String ?? "Name not found"
-                    let toId = value["toId"] as? String ?? "Owner not found"
-                    let timestamp = value["timestamp"] as? NSNumber
-                    message.text = text
-                    message.toId = toId
-                    message.timestamp = timestamp
-                    if let toId = message.toId{
-                        self.messageDictionary[toId] = message
-                        self.messages = Array(self.messageDictionary.values)
-                        self.messages.sort(by: { (message1, message2) -> Bool in
-                            return message1.timestamp!.intValue > message2.timestamp!.intValue
-                        })
-                    }
-                    DispatchQueue.main.async { self.groupTableView.reloadData() }
-                }
-            }
-        }
-    }
-    
+    //Observes message for a user which is used to set the text for the newest mesage for a group.
     func observeUserMessages() {
         guard let uid = Auth.auth().currentUser?.uid
             else {

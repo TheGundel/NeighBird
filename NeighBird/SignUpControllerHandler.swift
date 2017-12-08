@@ -11,6 +11,7 @@ import Photos
 
 extension SignupViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    //First request access to photo library if permission is not determined otherwise perform actions based on permissions
     @objc func handleSelectProfilePhoto() {
         let authorizationStatus = PHPhotoLibrary.authorizationStatus()
         if authorizationStatus == PHAuthorizationStatus.denied {
@@ -32,6 +33,7 @@ extension SignupViewController: UIImagePickerControllerDelegate, UINavigationCon
         dismiss(animated: true, completion: nil)
     }
     
+    //sets the image picked by the UIImagePicker
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : Any]) {
         

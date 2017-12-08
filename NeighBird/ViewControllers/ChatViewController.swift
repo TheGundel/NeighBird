@@ -10,10 +10,11 @@ import UIKit
 import Firebase
 
 class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICollectionViewDelegateFlowLayout{
-    
+    // Variables
     var group: Group?
     var messages = [Message]()
     
+    //create a UITextField to type in messages
     lazy var inputTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Skriv besked!"
@@ -42,6 +43,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         showAndHideKeyboard()
     }
     
+    //Used to allow sendButton and inputTextField to stay above the keyboard
     func showAndHideKeyboard(){
         NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         
@@ -63,6 +65,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         setupBottomComponents()
     }
     
+    //Creating UIObjects and settings constraints in the top part of the screen
     func setupTopComponents(){
         let topContainerView = UIView()
         topContainerView.backgroundColor = UIColor(red:254/255, green:237/255, blue:1/255, alpha:1.0)
@@ -70,7 +73,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         
         view.addSubview(topContainerView)
         
-        //anchors
+        //constraints
         topContainerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         topContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         topContainerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -78,15 +81,12 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         topContainerView.heightAnchor.constraint(equalToConstant: 76).isActive = true
         
         let backButton = UIButton(type: .custom)
-        //        backButton.setTitle("<", for: .normal)
         backButton.setImage(#imageLiteral(resourceName: "backbtnImage"), for: .normal)
         backButton.imageView?.contentMode = .scaleAspectFit
-        
-        //        backButton.setTitleColor(UIColor .black, for: .normal)
         backButton.translatesAutoresizingMaskIntoConstraints = false
         topContainerView.addSubview(backButton)
         
-        //anchors
+        //constraints
         backButton.leftAnchor.constraint(equalTo: topContainerView.leftAnchor).isActive = true
         backButton.centerYAnchor.constraint(equalTo: topContainerView.centerYAnchor, constant: 8).isActive = true
         backButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
@@ -101,12 +101,12 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         chatName.translatesAutoresizingMaskIntoConstraints = false
         topContainerView.addSubview(chatName)
         
-        //anchors
+        //constraints
         chatName.centerXAnchor.constraint(equalTo: topContainerView.centerXAnchor).isActive = true
-        //  chatName.widthAnchor.constraint(equalToConstant: 150).isActive = true
         chatName.heightAnchor.constraint(equalTo: topContainerView.heightAnchor).isActive = true
         chatName.centerYAnchor.constraint(equalTo: topContainerView.centerYAnchor, constant: 8).isActive = true
         
+        //constraints
         collectionView?.topAnchor.constraint(equalTo: topContainerView.bottomAnchor).isActive = true
         collectionView?.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         collectionView?.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
@@ -114,6 +114,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
     
     var containerViewBottomAnchor: NSLayoutConstraint?
     
+    //Creating UIObjects and settings constraints in the lower part of the screen
     func setupBottomComponents(){
         let containerView = UIView()
         containerView.backgroundColor = UIColor.white
@@ -121,7 +122,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         
         view.addSubview(containerView)
         
-        //anchors
+        //constraints
         containerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         containerViewBottomAnchor = containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         containerViewBottomAnchor?.isActive = true
@@ -129,22 +130,19 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         containerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
         let sendButton = UIButton(type: .custom)
-        //        sendButton.setTitle("Send", for: .normal)
-        //        sendButton.backgroundColor = UIColor.yellow
         sendButton.setImage(#imageLiteral(resourceName: "sendButtonImage"), for: .normal)
         sendButton.addTarget(self, action: #selector(sendMessage), for: .touchUpInside)
         sendButton.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(sendButton)
         
-        //anchors
+        //constraints
         sendButton.rightAnchor.constraint(equalTo: containerView.rightAnchor).isActive = true
         sendButton.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         sendButton.widthAnchor.constraint(equalToConstant: 50).isActive = true
         sendButton.heightAnchor.constraint(equalTo: containerView.heightAnchor).isActive = true
         
         containerView.addSubview(inputTextField)
-        
-        //anchors
+        //constraints
         inputTextField.leftAnchor.constraint(equalTo: containerView.leftAnchor, constant: 8).isActive = true
         inputTextField.centerYAnchor.constraint(equalTo: containerView.centerYAnchor).isActive = true
         inputTextField.rightAnchor.constraint(equalTo: sendButton.leftAnchor).isActive = true
@@ -153,6 +151,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         collectionView?.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
     }
     
+    //Sends out a message to a group using the currentUser information, group key and inputTextField when the sendButton is pressed.
     @objc func sendMessage(){
         print(inputTextField.text!)
         
@@ -181,7 +180,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         return messages.count
     }
     
-    
+    //Populates our collectionView with ChatMessageCells
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ChatMessageCell
         
@@ -194,6 +193,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         return cell
     }
     
+    //Private function to setup cell based on the senderId of a message. Will then set backcolor and place the message on the left or on the right
     private func setupCell(cell: ChatMessageCell, message: Message){
         if message.senderId == Auth.auth().currentUser?.uid{
             cell.textView.textColor = UIColor.black
@@ -224,6 +224,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         return CGSize(width: view.frame.width, height: height)
     }
     
+    //Estimates the size needed to wrap around a text. This allows our bubbleViews to change size which fits the text.
     private func estimateFrameForText(text: String) -> CGRect{
         //width matches cell width and height needs to be large
         //so we have some room to work with
@@ -247,6 +248,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
     
     var members = [String]()
     
+    //Calls Firebase group-members child node to find members of the current group.
     func findUsersForGroup(){
         let groupId = group?.key
         let ref = Database.database().reference().child("group-members").child(groupId!)
@@ -256,6 +258,7 @@ class ChatViewController: UICollectionViewController, UITextFieldDelegate, UICol
         }, withCancel: nil)
     }
     
+    //An observer that update the collectionView everytime a new message is observed for the group
     func observeMessages(){
         guard let userId = Auth.auth().currentUser?.uid else {
             return

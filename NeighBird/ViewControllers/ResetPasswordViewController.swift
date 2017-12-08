@@ -11,9 +11,10 @@ import Firebase
 import FirebaseAuth
 
 class ResetPasswordViewController: UIViewController {
-
+    // Variables
     @IBOutlet weak var email: UITextField!
     
+    //A IBBAction which using the email textField sends a password reset request to Firebase
     @IBAction func resetPassword(_ sender: UIButton) {
         if self.email.text == "" {
             let alertController = UIAlertController(title: "Fejl", message: "Indtast venligst email", preferredStyle: .alert)

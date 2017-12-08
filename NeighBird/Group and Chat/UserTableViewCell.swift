@@ -8,9 +8,9 @@
 
 import UIKit
 
+//User Cell for tableView
 class UserTableViewCell: UITableViewCell {
-    //    Variables
-    
+    //  Variables
     @IBOutlet weak var UserLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     

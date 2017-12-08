@@ -13,7 +13,7 @@ import FirebaseAuth
 
 class ProfilViewController: UIViewController {
     
-    
+    // Variables
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var adress: UILabel!
@@ -32,6 +32,7 @@ class ProfilViewController: UIViewController {
         return Storage.storage()
     }
     
+    //Receive user info from UserDefaults
     func getUserInfo(){
         let name = "\(UserDefaults.standard.object(forKey: "firstName")!) \(UserDefaults.standard.object(forKey: "lastName")!)"
         self.name.text = name

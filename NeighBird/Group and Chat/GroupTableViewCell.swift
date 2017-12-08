@@ -10,13 +10,13 @@ import UIKit
 import Firebase
 
 class GroupTableViewCell: UITableViewCell {
-    //    Variables
+    //  Variables
     
     @IBOutlet weak var nameLabel: UILabel!
     
     var message: Message? {
         didSet {
-            // Configure the cell...
+            // Configure the cell using Firebase
             if let toId = message?.toId {
                 let ref = Database.database().reference().child("groups").child(toId)
                 ref.observe(.value, with: { (snapshot) in

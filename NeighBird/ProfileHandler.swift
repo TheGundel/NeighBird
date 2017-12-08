@@ -12,7 +12,7 @@ import FirebaseStorage
 import FirebaseDatabase
 
 struct ProfileHandler {
-    
+    //    Variables
     var firstName: String?
     var lastName: String?
     var adress: String?
@@ -23,6 +23,7 @@ struct ProfileHandler {
     var imageURL: String?
     var ref: DatabaseReference!
     
+    //initialize the variable using a snapshot
     init(snapshot: DataSnapshot){
         ref = snapshot.ref
         
@@ -36,6 +37,7 @@ struct ProfileHandler {
         imageURL = (snapshot.value! as! NSDictionary) ["profilePhotoURL"] as? String
     }
     
+    //sets UserDefaults
     func setDefaults(){
         storageRef.reference(forURL: imageURL!).getData(maxSize: 2 * 1024 * 1024, completion: { (photoData, error) in
             if error == nil {

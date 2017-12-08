@@ -11,8 +11,7 @@ import Firebase
 import FirebaseDatabase
 
 class GroupTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    //    Mark: Properties
-    
+    //    Variables
     var messages = [Message]()
     var messageDictionary = [String: Message]()
     
@@ -25,6 +24,7 @@ class GroupTableViewController: UIViewController, UITableViewDelegate, UITableVi
         self.present(vc!, animated: true, completion: nil)
     }
     
+    //Observer used to find which groups the user is a member of
     func loadUserMessages(){
         guard let uid = Auth.auth().currentUser?.uid
             else {

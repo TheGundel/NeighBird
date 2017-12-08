@@ -24,7 +24,7 @@ func fileInDocumentsDirectory(filename: String) -> String {
 }
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
-    
+    // Variables
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var login: UIButton!
@@ -36,7 +36,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginAction(_ sender: UIButton) {
         
         if self.email.text == "" || self.password.text == "" {
-            //Alert user that an error accured
+            //Alert user to type in email and password
             let alertController = UIAlertController(title: "Login mislykkedes", message: "Indtast email og password", preferredStyle: .alert)
             
             let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
@@ -44,9 +44,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             self.present(alertController, animated: true, completion: nil)
         } else {
+            //Try to log in the user
             Auth.auth().signIn(withEmail: self.email.text!, password: self.password.text!) { (user, error) in
                 
                 if error == nil {
+                    //If there is no error, then the user is logged in
                     print("Login successful")
                     self.indicator.transform = CGAffineTransform(scaleX: 3,y: 3)
                     self.indicator.center = self.view.center
@@ -63,6 +65,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     }
                     self.perform(#selector (self.changeView), with: nil, afterDelay: 2.5)
                 } else {
+                    //otherwise show the user an alert with the firebare message
                     print("FAIL")
                     let alertController = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
                     
@@ -84,7 +87,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         self.hideKeyboardWhenTappedAround()
         self.email.delegate = self
         self.password.delegate = self

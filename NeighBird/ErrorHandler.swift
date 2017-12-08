@@ -15,6 +15,7 @@ struct ErrorHandler {
         emptyFields = 0
     }
     
+    //Check array of UITextFields for textFields that might be empty. If more than 1 is empty show an error
     mutating func isMultipleFieldsEmpty(uiTextFieldArray: [UITextField], message: String, parentView: UIViewController) -> Bool{
         emptyFields = 0
         for element in uiTextFieldArray{
@@ -34,6 +35,7 @@ struct ErrorHandler {
         return false
     }
     
+    //Check if a textField is empty and show an error if it is
     func textFieldIsEmpty(message: String, parentView: UIViewController) {
         let alertComtroller = UIAlertController(title: "Fejl", message: message, preferredStyle: .alert)
         
@@ -43,6 +45,7 @@ struct ErrorHandler {
         parentView.present(alertComtroller, animated: true, completion: nil)
     }
     
+    //Check if two UITextFields text match
     func textFieldMatch(uiTextField1: UITextField, uiTextField2: UITextField, message: String, parentView: UIViewController) -> Bool{
         if(uiTextField1.text != uiTextField2.text) {
             let alertComtroller = UIAlertController(title: "Fejl", message: message, preferredStyle: .alert)

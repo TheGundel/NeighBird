@@ -864,7 +864,6 @@
                             <constraint firstItem="LuC-kd-5K8" firstAttribute="top" secondItem="c67-65-ucp" secondAttribute="bottom" constant="8" id="HYF-AK-xec"/>
                             <constraint firstItem="Kzm-6M-apO" firstAttribute="top" secondItem="hzg-TK-hnm" secondAttribute="bottom" constant="8" id="Hdg-5I-zxf"/>
                             <constraint firstItem="L8n-G3-rq5" firstAttribute="top" secondItem="bje-9i-Em3" secondAttribute="bottom" constant="8" id="Ngv-bZ-zR3"/>
-                            <constraint firstItem="BJK-uA-J1r" firstAttribute="leading" secondItem="XGA-ef-ZP5" secondAttribute="leading" constant="32" id="O07-GG-QiB"/>
                             <constraint firstItem="L8n-G3-rq5" firstAttribute="centerX" secondItem="XGA-ef-ZP5" secondAttribute="centerX" id="Rg9-qR-OH0"/>
                             <constraint firstItem="XGA-ef-ZP5" firstAttribute="trailing" secondItem="Kzm-6M-apO" secondAttribute="trailing" constant="113" id="SVX-au-vGA"/>
                             <constraint firstItem="wOQ-5B-1pH" firstAttribute="top" secondItem="XGA-ef-ZP5" secondAttribute="top" constant="60" id="Wre-Xg-9vn"/>
@@ -876,6 +875,7 @@
                             <constraint firstItem="XGA-ef-ZP5" firstAttribute="trailing" secondItem="LuC-kd-5K8" secondAttribute="trailing" constant="33" id="f1q-5Q-d3e"/>
                             <constraint firstItem="Lc2-K2-tFE" firstAttribute="top" secondItem="XGA-ef-ZP5" secondAttribute="top" constant="93" id="g8d-bi-Zie"/>
                             <constraint firstItem="CG2-cv-qVp" firstAttribute="top" secondItem="VzR-OW-SJq" secondAttribute="bottom" constant="15" id="hia-BN-pYv"/>
+                            <constraint firstItem="LuC-kd-5K8" firstAttribute="leading" secondItem="BJK-uA-J1r" secondAttribute="trailing" constant="8" id="iWl-cI-bzh"/>
                             <constraint firstItem="VzR-OW-SJq" firstAttribute="centerX" secondItem="XGA-ef-ZP5" secondAttribute="centerX" id="npq-qL-V2v"/>
                             <constraint firstItem="bje-9i-Em3" firstAttribute="top" secondItem="Kzm-6M-apO" secondAttribute="bottom" constant="15" id="p3H-hP-obI"/>
                             <constraint firstItem="c67-65-ucp" firstAttribute="top" secondItem="L8n-G3-rq5" secondAttribute="bottom" constant="8" id="rF0-Kq-cXV"/>
@@ -1272,7 +1272,6 @@ Skriv besked...................................</string>
                         <constraints>
                             <constraint firstItem="erb-79-War" firstAttribute="top" secondItem="ati-NR-hGp" secondAttribute="bottom" constant="8" id="1LE-iv-6FF"/>
                             <constraint firstItem="P2j-pY-L3g" firstAttribute="top" secondItem="0cZ-Xw-E8V" secondAttribute="bottom" constant="8" id="2Ac-mt-jZD"/>
-                            <constraint firstItem="7La-I5-S6X" firstAttribute="leading" secondItem="L11-3M-R4t" secondAttribute="leading" constant="32" id="3JB-xX-5Ka"/>
                             <constraint firstItem="L11-3M-R4t" firstAttribute="trailing" secondItem="Gm6-qJ-Mr4" secondAttribute="trailing" constant="33" id="3TU-KP-vBG"/>
                             <constraint firstItem="557-Pe-MFy" firstAttribute="centerX" secondItem="L11-3M-R4t" secondAttribute="centerX" id="4K6-xl-MLw"/>
                             <constraint firstItem="yBj-aa-O2O" firstAttribute="trailing" secondItem="L11-3M-R4t" secondAttribute="trailing" id="8bP-B3-xD4"/>
@@ -1285,6 +1284,7 @@ Skriv besked...................................</string>
                             <constraint firstItem="LYT-ov-sLN" firstAttribute="top" secondItem="joo-BU-wVA" secondAttribute="bottom" constant="17" id="YlH-Tm-Fdi"/>
                             <constraint firstItem="erb-79-War" firstAttribute="centerX" secondItem="L11-3M-R4t" secondAttribute="centerX" id="YvV-KR-Y3Q"/>
                             <constraint firstItem="ati-NR-hGp" firstAttribute="top" secondItem="K6G-7m-sPR" secondAttribute="bottom" constant="10" id="chc-dQ-qH9"/>
+                            <constraint firstItem="Gm6-qJ-Mr4" firstAttribute="leading" secondItem="7La-I5-S6X" secondAttribute="trailing" constant="8" id="fLu-up-I4i"/>
                             <constraint firstItem="K6G-7m-sPR" firstAttribute="centerX" secondItem="L11-3M-R4t" secondAttribute="centerX" id="goo-yU-IzA"/>
                             <constraint firstItem="7La-I5-S6X" firstAttribute="top" secondItem="erb-79-War" secondAttribute="bottom" constant="8" id="jds-gV-Bwv"/>
                             <constraint firstItem="joo-BU-wVA" firstAttribute="top" secondItem="557-Pe-MFy" secondAttribute="bottom" constant="8" id="jkM-Oj-UpL"/>

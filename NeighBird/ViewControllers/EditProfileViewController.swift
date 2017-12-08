@@ -14,9 +14,8 @@ import Photos
 
 
 class EditProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
+    // Variables
     var ref: DatabaseReference!
-    
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
@@ -63,6 +62,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         self.present(vc, animated: true, completion: nil)
     }
     
+    //Load the user information from UserDefaults
     func loadUserInfo() {
         firstName.text = UserDefaults.standard.object(forKey: "firstName") as? String
         lastName.text = UserDefaults.standard.object(forKey: "lastName") as? String
@@ -79,6 +79,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         }
     }
 
+    //Update user information to Firebase
     func updateUserInfo(){
         if(self.firstName.text!.isEmpty || self.lastName.text!.isEmpty || self.zipcode.text!.isEmpty || self.address.text!.isEmpty || self.City.text!.isEmpty || self.phoneNumber.text!.isEmpty || self.email.text!.isEmpty){
             
@@ -112,6 +113,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         }
     }
     
+    //Update user information to UserDefaults
     func updateUserDefaults(){
         let userRef = dataBaseRef.child("users").child((Auth.auth().currentUser!.uid))
         userRef.observe(.value, with: {(snapshot) in
@@ -137,6 +139,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         self.loadUserInfo()
     }
     
+    //Selector for when choosing a new profile picture
     @objc func handleSelectProfilePhoto() {
         let authorizationStatus = PHPhotoLibrary.authorizationStatus()
         if authorizationStatus == PHAuthorizationStatus.denied {
@@ -160,6 +163,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     
     var selectedPhotoFromPicker: UIImage?
     
+    //The imagepickerController that is called in the selector
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
         //Vi sætter her vores variable to enten at være editedPhoto eller originalPhoto.

@@ -11,11 +11,12 @@ import Firebase
 import FirebaseAuth
 
 class SettingsViewController: UIViewController {
-    
+    // Variables
     @IBOutlet weak var signOutButton: UIButton!
     @IBOutlet weak var about: UIButton!
     @IBOutlet weak var help: UIButton!
     
+    //IBAction to show the about pop up
     @IBAction func aboutPopUp(_ sender: UIButton) {
         let popUpVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PopUp") as! PopUpViewController
         self.addChildViewController(popUpVc)
@@ -29,6 +30,7 @@ class SettingsViewController: UIViewController {
         popUpVc.textBox.sizeToFit()
     }
     
+    //IBAction to show the help pop up
     @IBAction func helpPopUp(_ sender: UIButton) {
         let popUpVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PopUp") as! PopUpViewController
         self.addChildViewController(popUpVc)
@@ -42,6 +44,7 @@ class SettingsViewController: UIViewController {
         popUpVc.textBox.sizeToFit()
     }
     
+    //IBAction to sign the user out using Firebase and then change view to the login screen
     @IBAction func signOut(_ sender: UIButton) {
         if Auth.auth().currentUser != nil {
             do {

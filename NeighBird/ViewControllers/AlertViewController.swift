@@ -10,12 +10,13 @@ import UIKit
 import Firebase
 
 class AlertViewController: UIViewController, SlideToControlDelegate {
-    
+    // Variables
     @IBOutlet var messageButtons: [UIButton]!
     @IBOutlet weak var alertButton: SlideToControl!
     @IBOutlet weak var topButton: UIButton!
     @IBOutlet weak var stackView: UIStackView!
     
+    //IBAction to show and hide the buttons in the stack view.
     @IBAction func selectionHandler(_ sender: UIButton) {
         messageButtons.forEach { (button) in
             UIView.animate(withDuration: 0.5, animations: {
@@ -26,6 +27,7 @@ class AlertViewController: UIViewController, SlideToControlDelegate {
         }
     }
     
+    //Setting the topbuttons text based on which button was clicked
     @IBAction func messageTap(_ sender: UIButton) {
         switch sender.tag{
         case 0:
@@ -37,8 +39,8 @@ class AlertViewController: UIViewController, SlideToControlDelegate {
         selectionHandler(sender)
     }
     
+    //Function called when our slidebar comes to end. This will check that both group and message have been chosen and calls sendAlertMessage
     func sliderCameToEnd() {
-        
         if topButton.titleLabel?.text == "Vælg besked" || button.titleLabel?.text == "Vælg gruppe" {
             let alert: UIAlertController = UIAlertController(title: "Fejl", message: "Vælg både besked og gruppe", preferredStyle: .alert)
             let action: UIAlertAction = UIAlertAction(title: "OK", style: .cancel) { (action) in
@@ -60,6 +62,7 @@ class AlertViewController: UIViewController, SlideToControlDelegate {
         alertButton.setThumbViewX()
     }
     
+    //Loads groups from Firebase
     func loadGroups(){
         let rootRef = Database.database().reference()
         let query = rootRef.child("groups").queryOrdered(byChild: "name")
@@ -81,6 +84,7 @@ class AlertViewController: UIViewController, SlideToControlDelegate {
         
     }
     
+    //Sends out an alert using a groupId and a alertMessage
     func sendAlertMessage(groupId: String, alertMessage: String){
         let senderId = Auth.auth().currentUser?.uid
         let timestamp = Int(NSDate().timeIntervalSince1970) as NSNumber
@@ -127,6 +131,7 @@ protocol dropDownProtocol {
     func dropDownPressed(string: String)
 }
 
+//Creating our custom dropDownButton which will contain a dropView
 class dropDownButton: UIButton, dropDownProtocol{
     func dropDownPressed(string: String) {
         self.setTitle(string, for: .normal)
@@ -145,10 +150,9 @@ class dropDownButton: UIButton, dropDownProtocol{
         dropView.translatesAutoresizingMaskIntoConstraints = false
     }
     
+    //Add button to superView and set constraints for it
     override func didMoveToSuperview() {
         self.superview?.addSubview(dropView)
-        //self.superview?.bringSubview(toFront: dropView)
-        
         dropView.topAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         dropView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         dropView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
@@ -157,6 +161,7 @@ class dropDownButton: UIButton, dropDownProtocol{
     
     var isOpen = false
     
+    //Function to interact with the dropView
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if isOpen == false {
             isOpen = true
@@ -183,6 +188,7 @@ class dropDownButton: UIButton, dropDownProtocol{
         fatalError("init(coder:) has not been implemented")
     }
     
+    //Closes the dropView
     func dismissDropDown(){
         isOpen = false
         
@@ -198,6 +204,7 @@ class dropDownButton: UIButton, dropDownProtocol{
     }
 }
 
+//Custom dropDownView used to display groups
 class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource{
     
     var groups = [Group]()    
@@ -205,6 +212,7 @@ class dropDownView: UIView, UITableViewDelegate, UITableViewDataSource{
     
     var delegate: dropDownProtocol!
     
+    //Initializing the view and settings constraints
     override init(frame: CGRect) {
         super.init(frame: frame)
         tableView.backgroundColor = UIColor.white

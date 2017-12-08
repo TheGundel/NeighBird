@@ -8,8 +8,9 @@
 
 import UIKit
 
+//Simple message object
 class Message: NSObject {
-
+    // Variables
     var senderId: String?
     var text: String?
     var toId: String?

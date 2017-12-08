@@ -13,7 +13,7 @@ import FirebaseDatabase
 import FirebaseStorage
 
 class SignupViewController: UIViewController, SlideToControlDelegate, UITextFieldDelegate {
-    
+    // Variables
     var ref: DatabaseReference!
     var errorHandler = ErrorHandler.init()
     var textFields: [UITextField] = []
@@ -64,6 +64,7 @@ class SignupViewController: UIViewController, SlideToControlDelegate, UITextFiel
             slideButton.setThumbViewX()
             
         } else {
+            //Check that all textfields have been filled out
             for textField in textFields{
                 switch textField {
                 case firstName:
@@ -114,9 +115,11 @@ class SignupViewController: UIViewController, SlideToControlDelegate, UITextFiel
         if errorHandler.textFieldMatch(uiTextField1: password, uiTextField2: repeatpassword, message: "Passwords er ikke ens", parentView: self) {
             slideButton.setThumbViewX()
         }else {
+            //Create the user
             Auth.auth().createUser(withEmail: email.text!, password: password.text!) { (user, error) in
                 
                 if error == nil {
+                    //if no error occured create the user in as a user object in Firebase
                     print("Signup successfull")
                     
                     let user = Auth.auth().currentUser!.uid
@@ -137,7 +140,7 @@ class SignupViewController: UIViewController, SlideToControlDelegate, UITextFiel
                     if let uploadData = UIImagePNGRepresentation(self.photo.image!) {
                         
                         storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
-                            //Check hvis der sker en fejl ved upload
+                            //Check if an error occured
                             if error != nil {
                                 print(error!)
                                 return
