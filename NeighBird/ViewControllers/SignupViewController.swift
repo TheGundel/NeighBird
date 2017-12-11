@@ -134,7 +134,7 @@ class SignupViewController: UIViewController, SlideToControlDelegate, UITextFiel
                     if self.photo.image == nil {
                         self.photo.image = #imageLiteral(resourceName: "Bird")
                     }
-                    let photoName = NSUUID().uuidString
+                    let photoName = Auth.auth().currentUser!.uid
                     let storageRef = Storage.storage().reference().child("\(photoName).png")
                     
                     if let uploadData = UIImagePNGRepresentation(self.photo.image!) {

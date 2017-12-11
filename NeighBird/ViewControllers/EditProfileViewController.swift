@@ -91,7 +91,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             present(alertComtroller, animated: true, completion: nil)
             
         } else {
-            let photoName = NSUUID().uuidString
+            let photoName = Auth.auth().currentUser!.uid //photoname is equal to the user's id in Firebase
             let storageRef = Storage.storage().reference().child("\(photoName).png")
             
             if let uploadData = UIImagePNGRepresentation(self.image.image!) {
@@ -132,6 +132,7 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
         image.layer.cornerRadius = image.frame.height/2
         image.clipsToBounds = true
         image.contentMode = .scaleToFill
+        
         image.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleSelectProfilePhoto)))
     }
     
@@ -143,12 +144,19 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
     @objc func handleSelectProfilePhoto() {
         let authorizationStatus = PHPhotoLibrary.authorizationStatus()
         if authorizationStatus == PHAuthorizationStatus.denied {
-            let alertComtroller = UIAlertController(title: "Adgang nægtet", message: "Ops.. Vi har ikke adgang til dine billeder. Gå til indstillinger og giv adgang", preferredStyle: .alert)
-            
-            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertComtroller.addAction(defaultAction)
-            present(alertComtroller, animated: true, completion: nil)
-        } else {
+           errorMessage()
+        }else if authorizationStatus == PHAuthorizationStatus.notDetermined {
+            PHPhotoLibrary.requestAuthorization({ (request) in
+                if request == PHAuthorizationStatus.denied {
+                   errorMessage()
+                } else {
+                    let picker = UIImagePickerController()
+                    picker.delegate = self
+                    picker.allowsEditing = true
+                    self.present(picker, animated: true, completion: nil)
+                }
+            })
+        }else {
             let picker = UIImagePickerController()
             picker.delegate = self
             picker.allowsEditing = true
@@ -177,5 +185,13 @@ class EditProfileViewController: UIViewController, UIImagePickerControllerDelega
             image.image = selectedPhoto
         }
         dismiss(animated: true, completion: nil)
+    }
+    
+    func errorMessage(){
+        let alertComtroller = UIAlertController(title: "Adgang nægtet", message: "Ops.. Vi har ikke adgang til dine billeder. Gå til indstillinger og giv adgang", preferredStyle: .alert)
+        
+        let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertComtroller.addAction(defaultAction)
+        present(alertComtroller, animated: true, completion: nil)
     }
 }
